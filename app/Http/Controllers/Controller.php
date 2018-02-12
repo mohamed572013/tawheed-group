@@ -54,10 +54,10 @@ class Controller extends BaseController {
         $data = null;
         $data['title'] = "title_" . $this->_lang;
         $data['about_us'] = "about_us_" . $this->_lang;
-        $data['vision'] = "about_us_" . $this->_lang;
-        $data['mission'] = "about_us_" . $this->_lang;
-        $data['why_us'] = "about_us_" . $this->_lang;
-        $data['what_we_do'] = "about_us_" . $this->_lang;
+        $data['vision'] = "vision_" . $this->_lang;
+        $data['mission'] = "mission_" . $this->_lang;
+        $data['why_us'] = "why_us_" . $this->_lang;
+        $data['what_we_do'] = "what_we_do_" . $this->_lang;
         $data['content'] = "content_" . $this->_lang;
         $data['site_title'] = "site_title_" . $this->_lang;
         $data['site_address'] = "site_address_" . $this->_lang;
