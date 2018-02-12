@@ -60,9 +60,9 @@ class HotelsController extends Controller {
         $hotels->title_ar = $request->title_ar;
         $hotels->title_en = $request->title_en;
         $hotels->title_ur = $request->title_ur;
-        $hotels->content_ar = $request->content_ar;
-        $hotels->content_en = $request->content_en;
-        $hotels->content_ur = $request->content_ur;
+        $hotels->content_ar = nl2br($request->content_ar);
+        $hotels->content_en = nl2br($request->content_en);
+        $hotels->content_ur = nl2br($request->content_ur);
         $hotels->keywords_ar = $request->keywords_ar;
         $hotels->keywords_en = $request->keywords_en;
         $hotels->keywords_ur = $request->keywords_ur;
@@ -121,9 +121,9 @@ class HotelsController extends Controller {
         $hotels->title_ar = $request->title_ar;
         $hotels->title_en = $request->title_en;
         $hotels->title_ur = $request->title_ur;
-        $hotels->content_ar = $request->content_ar;
-        $hotels->content_en = $request->content_en;
-        $hotels->content_ur = $request->content_ur;
+        $hotels->content_ar = nl2br($request->content_ar);
+        $hotels->content_en = nl2br($request->content_en);
+        $hotels->content_ur = nl2br($request->content_ur);
         $hotels->keywords_ar = $request->keywords_ar;
         $hotels->keywords_en = $request->keywords_en;
         $hotels->keywords_ur = $request->keywords_ur;

@@ -66,25 +66,25 @@
         <div class="container">
             <h1 class="logo navbar-brand">
                 <a href="{{ url('/'.$lang.'/') }}" title="{{ $settings->site_title_en }}">
-                    <img src="{{asset('front/images/logo.png')}}" alt="{{ $settings->site_title_en }}" />
+                    <img src="{{asset($settings->site_logo)}}" alt="{{ $settings->site_title_en }}" />
                 </a>
             </h1>
 
             <nav id="main-menu" role="navigation">
                 <ul class="menu">
                     <li class="current-menu-item hvr-pulse"><a href="{{ url('/'.LaravelLocalization::getCurrentLocale().'/') }}">{{ trans('lang.home') }}</a></li>
-                    <li class="hvr-pulse"><a href="{{ url('/'.LaravelLocalization::getCurrentLocale().'/about') }}">{{ trans('lang.about_us') }}</a>
+                    <!--                    <li class="hvr-pulse"><a href="{{ url('/'.LaravelLocalization::getCurrentLocale().'/about') }}">{{ trans('lang.about_us') }}</a>
 
-                        <ul>
-                            <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.vision') }}</a></li>
-                            <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.mission') }}</a></li>
-                            <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.target') }}</a></li>
+                                            <ul>
+                                                <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.vision') }}</a></li>
+                                                <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.mission') }}</a></li>
+                                                <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.target') }}</a></li>
 
-                        </ul>
-                    </li>
+                                            </ul>
+                                        </li>-->
                     <li class="hvr-pulse menu-item-has-children">
                         <a href="{{ url('/'.$lang.'/destinations') }}">
-                            {{ trans('lang.sightseeing') }}
+                            {{ trans('lang.cities') }}
                         </a>
                         <ul>
                             @foreach($destinations as $one)

@@ -49,9 +49,9 @@ class SightseeingController extends Controller {
         $sightseeing->title_ar = $request->title_ar;
         $sightseeing->title_en = $request->title_en;
         $sightseeing->title_ur = $request->title_ur;
-        $sightseeing->content_ar = $request->content_ar;
-        $sightseeing->content_en = $request->content_en;
-        $sightseeing->content_ur = $request->content_ur;
+        $sightseeing->content_ar = nl2br($request->content_ar);
+        $sightseeing->content_en = nl2br($request->content_en);
+        $sightseeing->content_ur = nl2br($request->content_ur);
         $sightseeing->city_id = $request->city_id;
 
         if (!empty($request->image)) {
@@ -106,9 +106,9 @@ class SightseeingController extends Controller {
         $sightseeing->title_ar = $request->title_ar;
         $sightseeing->title_en = $request->title_en;
         $sightseeing->title_ur = $request->title_ur;
-        $sightseeing->content_ar = $request->content_ar;
-        $sightseeing->content_en = $request->content_en;
-        $sightseeing->content_ur = $request->content_ur;
+        $sightseeing->content_ar = nl2br($request->content_ar);
+        $sightseeing->content_en = nl2br($request->content_en);
+        $sightseeing->content_ur = nl2br($request->content_ur);
         if (!empty($request->image)) {
             $file = $request->image;
             $filename = str_random(6) . '_' . time() . '_' . $file->getClientOriginalName();

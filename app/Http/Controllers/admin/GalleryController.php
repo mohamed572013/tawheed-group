@@ -114,23 +114,23 @@ class GalleryController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $image = Gallery::find($id);
-        $data['type'] = "error";
-        $filename = URL::to('/') . '/' . $image->image;
-        if (@unlink($filename)) {
-            $data['message'] = "Deleted file ";
-        } else {
-            $data['message'] = "File can't be deleted";
-        }
-//        $gallery = Gallery::destroy((int) $id);
-//        $data = null;
-//        if ($gallery) {
-//            $data['type'] = "success";
-//            $data['message'] = "تم الحذف بنجاح";
+//        $image = Gallery::find($id);
+//        $data['type'] = "error";
+//        $filename = URL::to('/') . '/' . $image->image;
+//        if (@unlink($filename)) {
+//            $data['message'] = "Deleted file ";
 //        } else {
-//            $data['type'] = "error";
-//            $data['message'] = "لم يتم الحذف";
+//            $data['message'] = "File can't be deleted";
 //        }
+        $gallery = Gallery::destroy((int) $id);
+        $data = null;
+        if ($gallery) {
+            $data['type'] = "success";
+            $data['message'] = "تم الحذف بنجاح";
+        } else {
+            $data['type'] = "error";
+            $data['message'] = "لم يتم الحذف";
+        }
         echo json_encode($data);
         die();
     }

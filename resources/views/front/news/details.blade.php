@@ -3,8 +3,8 @@
 {{ $details->{$slug->title} }}
 @stop
 @section('meta')
-<meta name="keywords" content="{{ $details->{$slug->keywords} }}" />
-<meta name="description" content="{{ $details->{$slug->description} }}" />
+<meta name="keywords" content="{!! str_replace('<br />', '', $details->{$slug->keywords}) !!}" />
+<meta name="description" content="{!! str_replace('<br />', '', $details->{$slug->description}) !!}" />
 
 
 <!-- sharing data  -->
@@ -12,7 +12,7 @@
 <meta property="og:url"                content="{{ url('/'.$lang.'/news/details/'.$details->id . "/" . str_replace(' ', '-', $details->{$slug->title})) }}" />
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="{{ $details->{$slug->title} }}" />
-<meta property="og:description"        content="{{ $details->{$slug->content} }}" />
+<meta property="og:description"        content="{!! str_replace('<br />', '', $details->{$slug->description}) !!}" />
 <meta property="og:image"              content="{{ asset($details->image) }}" />
 <meta property="og:image:width"        content="600">
 <meta property="og:image:height"       content="315">
@@ -38,7 +38,9 @@
                         <ul class="slides image-box style9">
                             <li>
                                 <article class="box">
-                                    <figure><img style="width: 870px;height: 484px;"  src="{{ asset($details->image) }}" alt="{{ $details->{$slug->title} }}"></figure>
+                                    <figure>
+                                        <img style="width: 870px;height: 484px;"  src="{{ asset($details->image) }}" alt="{{ $details->{$slug->title} }}">
+                                    </figure>
 
                                 </article>
                             </li>
@@ -50,7 +52,7 @@
                         <h1 class="entry-title">{{ $details->{$slug->title} }}
                         </h1>
                         <div class="post-content">
-                            <p> {{ $details->{$slug->content} }}</p>
+                            <p> {!! $details->{$slug->content} !!} </p>
 
                         </div>
 
@@ -81,9 +83,16 @@
                 </div>
                 <div class="travelo-box contact-box">
                     <h4 class="box-title">{{ trans("lang.need_help") }}</h4>
-                    <p>{{ mb_substr($settings->{$slug->about_us}, 0, 100) }}</p>
+                    <p>{{ mb_substr(str_replace('<br />', '', $settings->{$slug->about_us}), 0, 100) }}
+                        <a href="{{ url('/'.$lang.'/about') }}"> [ ... ]</a>
+                    </p>
                     <address class="contact-details">
-                        <span class="contact-phone"><i class="soap-icon-phone"></i> {{ $settings->site_phone }}
+                        <span class="contact-phone">
+                            @php($phone_array = explode('/', $settings->site_phone))
+                            @foreach($phone_array as $one)
+                            <i class="soap-icon-phone"></i>
+                            {{ $one }} <br />
+                            @endforeach
                         </span>
                         <br />
                         <a href="javascript:;" class="contact-email">{{ $settings->site_email }}</a>

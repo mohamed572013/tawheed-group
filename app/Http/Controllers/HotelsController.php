@@ -23,7 +23,7 @@ class HotelsController extends Controller {
         $hotels = Hotel::
                 orderBy("id", "desc")
                 ->with("hotel_rooms")
-                ->limit(1)
+                ->limit(9)
                 ->get();
         $cities = City::all();
         $rooms = Room::all();
@@ -95,7 +95,7 @@ class HotelsController extends Controller {
                     $query->whereIn("room_id", $rooms);
                 })
                 ->orderBy("id", "desc")
-                ->limit(1)
+                ->limit(9)
                 ->offset($offset)
                 ->get();
         $count = Hotel::whereIn("city_id", $city_id)                //  get hotels of cities array

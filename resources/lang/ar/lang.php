@@ -13,6 +13,7 @@ return [
     'vision' => 'رؤيتنا',
     'mission' => 'مهمتنا',
     'target' => 'هدفنا',
+    'other_news' => 'أخبار هامة',
     'sightseeing' => 'المزارات السياحية',
     'services' => 'الخدمات',
     'make_your_umrah' => 'صمم عمرتك',

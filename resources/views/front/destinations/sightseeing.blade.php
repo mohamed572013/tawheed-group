@@ -3,14 +3,14 @@
 {{ $details->{$slug->title} }}
 @stop
 @section('meta')
-<meta name="keywords" content="{{ $settings->{$slug->site_keywords} }}" />
-<meta name="description" content="{{ $settings->{$slug->site_description} }}" />
+<meta name="keywords" content="{!! str_replace('<br />', '', $settings->{$slug->site_keywords}) !!}" />
+<meta name="description" content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <!-- sharing data  -->
 <!--facebook-->
-<meta property="og:url"                content="{{ url('/'.$lang.'/destinations/sightseeing/'.$one->id.'/'.str_replace(' ', '-', $details->{$slug->title})) }}" />
+<meta property="og:url"                content="{{ url('/'.$lang.'/destinations/sightseeing/'.$details->id.'/'.str_replace(' ', '-', $details->{$slug->title})) }}" />
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="{{ $details->{$slug->title} }}" />
-<meta property="og:description"        content="{{ $details->{$slug->content} }}" />
+<meta property="og:description"        content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <meta property="og:image"              content="{{ asset($details->image) }}" />
 <meta property="og:image:width"        content="600">
 <meta property="og:image:height"       content="315">
@@ -53,8 +53,7 @@
                     <div class="details">
                         <h1 class="entry-title">{{ $details->{$slug->title} }}</h1>
                         <div class="post-content">
-                            <p> {{ $details->{$slug->content} }} </p>
-
+                            <p> {!! $details->{$slug->content} !!} </p>
                         </div>
 
                     </div>

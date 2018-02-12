@@ -23,6 +23,7 @@
             <input type="hidden" value="edit" name="form_type" />
             <input type="hidden" id = "country_id" value="{{ $edit->country_id }}" />
             <input type="hidden" id = "city_id" value="{{ $edit->city_id }}" />
+
             <input type="hidden" id="selected_features" value="{{ $selected_features }}" />
             <input type="hidden" id="features" value="{{ $edit->features }}" />
             <div class="portlet">
@@ -69,7 +70,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="content_ar">{{ $edit->content_ar }}</textarea>
+                                                <textarea class="form-control" rows='5' name="content_ar">{{ str_replace('<br />', '', $edit->content_ar) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +134,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="content_en">{{ $edit->content_en }}</textarea>
+                                                <textarea class="form-control" rows='5' name="content_en">{{ str_replace('<br />', '', $edit->content_en) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -190,7 +191,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="content_ur">{{ $edit->content_ur }}</textarea>
+                                                <textarea class="form-control" rows='5' name="content_ur">{{ str_replace('<br />', '', $edit->content_ur) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -236,7 +237,7 @@
                 <div class="col-md-9">
                     <div class="input-icon right">
                         <i class="fa"></i>
-                        <input type="text" class="form-control" name="stars" value="{{ $details->stars }}" />
+                        <input type="text" class="form-control" name="stars" value="{{ $edit->stars }}" />
                     </div>
                 </div>
             </div>

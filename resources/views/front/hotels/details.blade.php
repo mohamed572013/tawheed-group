@@ -3,15 +3,15 @@
 {{ $details->{$slug->title} }}
 @stop
 @section('meta')
-<meta name="keywords" content="{{ $details->{$slug->keywords} }}" />
-<meta name="description" content="{{ $details->{$slug->description} }}" />
+<meta name="keywords" content="{!! str_replace('<br />', '', $details->{$slug->keywords}) !!}" />
+<meta name="description" content="{!! str_replace('<br />', '', $details->{$slug->description}) !!}" />
 
 <!-- sharing data  -->
 <!--facebook-->
 <meta property="og:url"                content="{{ url('/'.$lang.'/hotels/details/'.$details->id . "/" . str_replace(' ', '-', $details->{$slug->title})) }}" />
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="{{ $details->{$slug->title} }}" />
-<meta property="og:description"        content="{{ $details->{$slug->content} }}" />
+<meta property="og:description"        content="{!! str_replace('<br />', '', $details->{$slug->description}) !!}" />
 <meta property="og:image"              content="{{ asset($details->image) }}" />
 <meta property="og:image:width"        content="600">
 <meta property="og:image:height"       content="315">
@@ -82,7 +82,7 @@
 
                             <div class="long-description">
                                 <h2>{{ $details->{$slug->title} }}</h2>
-                                <p> {{ $details->{$slug->content} }}
+                                <p> {!! $details->{$slug->content} !!}
                                 </p>
                             </div>
                         </div>

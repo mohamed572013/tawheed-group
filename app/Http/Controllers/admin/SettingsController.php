@@ -34,7 +34,7 @@ class SettingsController extends Controller {
             if ($key == "_token")
                 continue;
             $settings = Setting::where("key", $key)->first();
-            $settings->value = $value;
+            $settings->value = nl2br($value);
             if ($key == "site_video") {
                 $settings->value = substr($request->site_video, strpos($request->site_video, "=") + 1);
             }

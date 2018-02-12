@@ -34,12 +34,13 @@ class HomeController extends Controller {
         $gallery = Gallery::all();
         $hotels = Hotel::all();
         $cities = City::all();
+        $sightseeing = \App\Sightseeing::all();
         $packages = Program::whereHas('dates', function ($query) {
                     $today = date("Y-m-d");
                     $query->where("start_date", ">", $today);
                 })->with("dates")->get();
         $countries = Country::has('agents')->get();
-        return view("front.index", compact('cities', 'sliders', 'reviews', 'partners', 'agents', 'countries', 'gallery', 'hotels', 'packages'));
+        return view("front.index", compact('sightseeing', 'cities', 'sliders', 'reviews', 'partners', 'agents', 'countries', 'gallery', 'hotels', 'packages'));
     }
 
     public function about() {

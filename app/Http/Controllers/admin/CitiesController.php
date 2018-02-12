@@ -49,9 +49,9 @@ class CitiesController extends Controller {
         $cities->title_ar = $request->title_ar;
         $cities->title_en = $request->title_en;
         $cities->title_ur = $request->title_ur;
-        $cities->content_ar = $request->content_ar;
-        $cities->content_en = $request->content_en;
-        $cities->content_ur = $request->content_ur;
+        $cities->content_ar = nl2br($request->content_ar);
+        $cities->content_en = nl2br($request->content_en);
+        $cities->content_ur = nl2br($request->content_ur);
         $cities->keywords_ar = $request->keywords_ar;
         $cities->keywords_en = $request->keywords_en;
         $cities->keywords_ur = $request->keywords_ur;
@@ -112,9 +112,9 @@ class CitiesController extends Controller {
         $cities->title_ar = $request->title_ar;
         $cities->title_en = $request->title_en;
         $cities->title_ur = $request->title_ur;
-        $cities->content_ar = $request->content_ar;
-        $cities->content_en = $request->content_en;
-        $cities->content_ur = $request->content_ur;
+        $cities->content_ar = nl2br($request->content_ar);
+        $cities->content_en = nl2br($request->content_en);
+        $cities->content_ur = nl2br($request->content_ur);
         $cities->keywords_ar = $request->keywords_ar;
         $cities->keywords_en = $request->keywords_en;
         $cities->keywords_ur = $request->keywords_ur;

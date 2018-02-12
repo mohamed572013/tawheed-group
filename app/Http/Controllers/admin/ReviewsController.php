@@ -47,9 +47,9 @@ class ReviewsController extends Controller {
         }
         $reviews = new Review;
         $reviews->title = $request->title;
-        $reviews->content_ar = $request->content_ar;
-        $reviews->content_en = $request->content_en;
-        $reviews->content_ur = $request->content_ur;
+        $reviews->content_ar = nl2br($request->content_ar);
+        $reviews->content_en = nl2br($request->content_en);
+        $reviews->content_ur = nl2br($request->content_ur);
 
 
         if (!empty($request->image)) {
@@ -91,9 +91,9 @@ class ReviewsController extends Controller {
         $reviews = Review::find((int) $id);
 
         $reviews->title = $request->title;
-        $reviews->content_ar = $request->content_ar;
-        $reviews->content_en = $request->content_en;
-        $reviews->content_ur = $request->content_ur;
+        $reviews->content_ar = nl2br($request->content_ar);
+        $reviews->content_en = nl2br($request->content_en);
+        $reviews->content_ur = nl2br($request->content_ur);
 
 
         if (!empty($request->image)) {

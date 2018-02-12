@@ -223,15 +223,22 @@ var FormValidation = function () {
         var city_ids = $("#city_id").val();
         var cities_object = JSON.parse(city_ids);
         var cities_array = Object.values(cities_object);
+        // get hotels
+        var hotel_ids = $("#hotel_id").val();
+        var hotels_object = JSON.parse(hotel_ids);
+        var hotels_array = Object.values(hotels_object);
+        // get nights
         var nights = JSON.parse($("#nights_json").val());
         var nights_array = Object.values(nights);
         var array_length = cities_array.length;
         $("#city_block1").fadeIn(500);
         $("#city_block1 select").val(cities_array[0]);
+        $("#city_block1 #first_hotel").val(hotels_array[0]);
         $("#city_block1 input").val(nights_array[0]);
         if (array_length > 1) {
             $("#city_block2").fadeIn(500);
             $("#city_block2 select").val(cities_array[1]);
+            $("#city_block2 #first_hotel").val(hotels_array[1]);
             $("#city_block2 input").val(nights_array[1]);
         }
     };
@@ -279,7 +286,6 @@ var FormValidation = function () {
                 handleSetCountryAndStars();
                 handleSetCitiesAndNights();
                 handleServicesChecked();
-                handleNights();
             }
             handleChangeCountry();
             handleChangeCity();

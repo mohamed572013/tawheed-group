@@ -64,7 +64,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="content_ar">{{ $edit->content_ar }}</textarea>
+                                                <textarea class="form-control" rows='5' name="content_ar">{{ str_replace('<br />', '', $edit->content_ar) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="keywords_ar">{{ $edit->keywords_ar }}</textarea>
+                                                <textarea class="form-control" rows='5' name="keywords_ar">{{ str_replace('<br />', '', $edit->keywords_ar) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="description_ar">{{ $edit->description_ar }}</textarea>
+                                                <textarea class="form-control" rows='5' name="description_ar">{{ str_replace('<br />', '', $edit->description_ar) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="content_en">{{ $edit->content_en }}</textarea>
+                                                <textarea class="form-control" rows='5' name="content_en">{{ str_replace('<br />', '', $edit->content_en) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="keywords_en">{{ $edit->keywords_en }}</textarea>
+                                                <textarea class="form-control" rows='5' name="keywords_en">{{ str_replace('<br />', '', $edit->keywords_en) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -150,7 +150,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="description_en">{{ $edit->description_en }}</textarea>
+                                                <textarea class="form-control" rows='5' name="description_en">{{ str_replace('<br />', '', $edit->description_en) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -185,7 +185,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="content_ur">{{ $edit->content_ur }}</textarea>
+                                                <textarea class="form-control" rows='5' name="content_ur">{{ str_replace('<br />', '', $edit->content_ur) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="keywords_ur">{{ $edit->keywords_ur }}</textarea>
+                                                <textarea class="form-control" rows='5' name="keywords_ur">{{ str_replace('<br />', '', $edit->keywords_ur) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -207,7 +207,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="description_ur">{{ $edit->description_ur }}</textarea>
+                                                <textarea class="form-control" rows='5' name="description_ur">{{ str_replace('<br />', '', $edit->description_ur) }}</textarea>
                                             </div>
                                         </div>
                                     </div>

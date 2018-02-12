@@ -35,8 +35,8 @@ tjq(document).ready(function () {
                 },
                 data: formData,
                 success: function (msg) {
-                    $("#submit_btn").html(lang.complete_request);
-                    $("#submit_btn").attr("disabled", "disabled");
+                    tjq("#submit_btn").html(lang.complete_request);
+                    tjq("#submit_btn").attr("disabled", "disabled");
                 }
             });
             return false;

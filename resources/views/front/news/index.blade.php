@@ -3,14 +3,14 @@
 {{ trans("lang.news") }}
 @stop
 @section('meta')
-<meta name="keywords" content="{{ $settings->{$slug->site_keywords} }}" />
-<meta name="description" content="{{ $settings->{$slug->site_description} }}" />
+<meta name="keywords" content="{!! str_replace('<br />', '', $settings->{$slug->site_keywords}) !!}" />
+<meta name="description" content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <!-- sharing data  -->
 <!--facebook-->
 <meta property="og:url"                content="{{ url('/'.$lang.'/news') }}" />
 <meta property="og:type"               content="article" />
-<meta property="og:title"              content="{{ trans("lang.news") }}" />
-<meta property="og:description"        content="{{ $settings->{$slug->site_description} }}" />
+<meta property="og:title"              content="{{ trans("lang.news") }}" /> 
+<meta property="og:description"        content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <meta property="og:image"              content="{{ asset($settings->site_logo) }}" />
 <meta property="og:image:width"        content="600">
 <meta property="og:image:height"       content="315">
@@ -42,13 +42,13 @@
                                 <div class="post-content-wrapper">
                                     <figure class="image-container">
                                         <a href="{{ url('/'.$lang.'/news/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}" class="hover-effect">
-                                            <img src="{{ asset($one->image) }}" alt="" />
+                                            <img style="width: 400px;height: 160px;" src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}" />
                                         </a>
                                     </figure>
                                     <div class="details">
                                         <h2 class="entry-title"><a href="{{ url('/'.$lang.'/news/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">{{ $one->{$slug->title} }}</a></h2>
                                         <div class="excerpt-container">
-                                            <p> {!!  mb_substr($one->{$slug->content}, 0, 300)  !!} <a href="{{ url('/'.$lang.'/news/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}"> [ ... ] </a></p>
+                                            <p> {{  mb_substr(str_replace('<br />', '', $one->{$slug->content}), 0, 200)  }} <a href="{{ url('/'.$lang.'/news/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}"> [ ... ] </a></p>
                                         </div>
 
                                     </div>
@@ -73,10 +73,11 @@
                         <article class="box">
                             <figure>
                                 <a href="{{ url('/'.$lang.'/news/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">
-                                    <img style="width: 63px;height: 59px;" src="{{ asset($one->image) }}" alt=""></a>
+                                    <img style="width: 63px;height: 59px;" src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}"></a>
                             </figure>
                             <div class="details">
                                 <h5 class="box-title"><a href="{{ url('/'.$lang.'/news/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">{{ $one->{$slug->title} }}</a></h5>
+                                <p>{{  mb_substr(str_replace('<br />', '', $one->{$slug->content}), 0, 35)  }} <a href="{{ url('/'.$lang.'/news/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">[ ... ] </a></p>
                             </div>
                         </article>
                         @endforeach

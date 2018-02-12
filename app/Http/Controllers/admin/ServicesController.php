@@ -50,9 +50,9 @@ class ServicesController extends Controller {
         $service->title_ar = $request->title_ar;
         $service->title_en = $request->title_en;
         $service->title_ur = $request->title_ur;
-        $service->content_ar = $request->content_ar;
-        $service->content_en = $request->content_en;
-        $service->content_ur = $request->content_ur;
+        $service->content_ar = nl2br($request->content_ar);
+        $service->content_en = nl2br($request->content_en);
+        $service->content_ur = nl2br($request->content_ur);
 
         if (!empty($request->image)) {
             $file = $request->image;
@@ -94,9 +94,9 @@ class ServicesController extends Controller {
         $service->title_ar = $request->title_ar;
         $service->title_en = $request->title_en;
         $service->title_ur = $request->title_ur;
-        $service->content_ar = $request->content_ar;
-        $service->content_en = $request->content_en;
-        $service->content_ur = $request->content_ur;
+        $service->content_ar = nl2br($request->content_ar);
+        $service->content_en = nl2br($request->content_en);
+        $service->content_ur = nl2br($request->content_ur);
 
         if (!empty($request->image)) {
             $file = $request->image;

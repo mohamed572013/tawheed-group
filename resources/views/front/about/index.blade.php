@@ -3,15 +3,15 @@
 {{ trans("lang.about_us") }}
 @stop
 @section('meta')
-<meta name="keywords" content="{{ $settings->{$slug->site_keywords} }}" />
-<meta name="description" content="{{ $settings->{$slug->site_description} }}" />
+<meta name="keywords" content="{!! str_replace('<br />', '', $settings->{$slug->site_keywords}) !!}" />
+<meta name="description" content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 
 <!-- sharing data  -->
 <!--facebook-->
 <meta property="og:url"                content="{{ url('/'.$lang.'/about') }}" />
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="{{ trans("lang.about_us") }}" />
-<meta property="og:description"        content="{{ $settings->{$slug->site_description} }}" />
+<meta property="og:description"        content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <meta property="og:image"              content="{{ asset($settings->site_logo) }}" />
 <meta property="og:image:width"        content="600">
 <meta property="og:image:height"       content="315">
@@ -39,7 +39,7 @@
                     </figure>
                     <div class="details col-md-7 pull-left">
                         <h4 class="box-title">{{ trans("lang.who_we_are") }}</h4>
-                        <p> {{ $settings->{$slug->about_us} }} </p>
+                        <p> {!! $settings->{$slug->about_us} !!} </p>
 
                     </div>
                 </article>
@@ -51,7 +51,7 @@
                     </figure>
                     <div class="details col-md-7 pull-left">
                         <h4 class="box-title">{{ trans("lang.vision") }}</h4>
-                        <p>{{ $settings->{$slug->vision} }}</p>
+                        <p>{!! $settings->{$slug->vision} !!}</p>
                     </div>
                 </article>
                 <article class="box">
@@ -60,7 +60,7 @@
                     </figure>
                     <div class="details col-md-7 pull-left">
                         <h4 class="box-title">{{ trans("lang.mission") }}</h4>
-                        <p>{{ $settings->{$slug->mission} }}</p>
+                        <p>{!! $settings->{$slug->mission} !!}</p>
                     </div>
                 </article>
                 <article class="box">
@@ -70,7 +70,7 @@
                     </figure>
                     <div class="details col-md-7 pull-left">
                         <h4 class="box-title">{{ trans("lang.why_us") }}</h4>
-                        <p>{{ $settings->{$slug->why_us} }}</p>
+                        <p>{!! $settings->{$slug->why_us} !!}</p>
                     </div>
                 </article>
             </div>

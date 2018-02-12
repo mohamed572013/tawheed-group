@@ -3,14 +3,14 @@
 {{ trans("lang.hotels") }}
 @stop
 @section('meta')
-<meta name="keywords" content="{{ $settings->{$slug->site_keywords} }}" />
-<meta name="description" content="{{ $settings->{$slug->site_description} }}" />
+<meta name="keywords" content="{!! str_replace('<br />', '', $settings->{$slug->site_keywords}) !!}" />
+<meta name="description" content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <!-- sharing data  -->
 <!--facebook-->
 <meta property="og:url"                content="{{ url('/'.$lang.'/hotels') }}" />
 <meta property="og:type"               content="article" />
-<meta property="og:title"              content="{{ trans("lang.hotels") }}" />
-<meta property="og:description"        content="{{ $settings->{$slug->site_description} }}" />
+<meta property="og:title"              content="{{ trans("lang.hotels") }}" /> 
+<meta property="og:description"        content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <meta property="og:image"              content="{{ asset($settings->site_logo) }}" />
 <meta property="og:image:width"        content="600">
 <meta property="og:image:height"       content="315">

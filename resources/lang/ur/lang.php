@@ -12,6 +12,7 @@ return [
     'home' => 'گھر',
     'vision' => 'ویژن',
     'mission' => 'مشن',
+    'other_news' => 'دیگر خبریں',
     'target' => 'ہدف',
     'sightseeing' => 'سیاحت',
     'services' => 'خدمات',

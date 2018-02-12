@@ -39,20 +39,10 @@
                                 <a href="#tab_social" data-toggle="tab"> التواصل الإجتماعى </a>
                             </li>
 
-                            <!--                            <li>
-                                                            <a href="#tab_email" data-toggle="tab"> إعدادات البريد الإلكترونى </a>
-                                                        </li>-->
                             <li>
                                 <a href="#tab_about" data-toggle="tab"> عن الشركة </a>
                             </li>
-                            <!--                            <li>
-                                                            <a href="#tab_reviews" data-toggle="tab"> Reviews
-                                                                <span class="badge badge-success"> 3 </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#tab_history" data-toggle="tab"> History </a>
-                                                        </li>-->
+
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_general">
@@ -141,7 +131,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="site_description_ar">{{ $settings->site_description_ar }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="site_description_ar">{{ str_replace('<br />', '', $settings->site_description_ar) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,7 +142,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="site_keywords_ar">{{ $settings->site_keywords_ar }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="site_keywords_ar">{{ str_replace('<br />', '', $settings->site_keywords_ar) }}</textarea>
                                                             <!--<span class="help-block"> shown in product listing </span>-->
                                                         </div>
                                                     </div>
@@ -187,7 +177,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="site_description_en">{{ $settings->site_description_en }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="site_description_en">{{ str_replace('<br />', '', $settings->site_description_en) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -198,7 +188,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="site_keywords_en">{{ $settings->site_keywords_en }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="site_keywords_en">{{ str_replace('<br />', '', $settings->site_keywords_en) }}</textarea>
                                                             <!--<span class="help-block"> shown in product listing </span>-->
                                                         </div>
                                                     </div>
@@ -220,7 +210,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <input type="text" class="form-control" name="site_title_ur" value="{{ $settings->site_title_ur }}" placeholder="">
+                                                            <input type="text" class="form-control" name="site_title_ur" value="{{ str_replace('<br />', '', $settings->site_title_ur) }}" placeholder="">
                                                         </div>
 
                                                     </div>
@@ -233,7 +223,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="site_description_ur">{{ $settings->site_description_ur }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="site_description_ur">{{ str_replace('<br />', '', $settings->site_description_ur) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -244,7 +234,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="site_keywords_ur">{{ $settings->site_keywords_ur }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="site_keywords_ur">{{ str_replace('<br />', '', $settings->site_keywords_ur) }}</textarea>
                                                             <!--<span class="help-block"> shown in product listing </span>-->
                                                         </div>
                                                     </div>
@@ -287,7 +277,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="site_address_ar">{{ $settings->site_address_ar }}</textarea>
+                                                <textarea class="form-control" rows='5' name="site_address_ar">{{ str_replace('<br />', '', $settings->site_address_ar) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -298,7 +288,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="site_address_en">{{ $settings->site_address_en }}</textarea>
+                                                <textarea class="form-control" rows='5' name="site_address_en">{{ str_replace('<br />', '', $settings->site_address_en) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -309,7 +299,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="site_address_ur">{{ $settings->site_address_ur }}</textarea>
+                                                <textarea class="form-control" rows='5' name="site_address_ur">{{ str_replace('<br />', '', $settings->site_address_ur) }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -414,7 +404,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="about_us_ar">{{ $settings->about_us_ar }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="about_us_ar">{{ str_replace('<br />', '', $settings->about_us_ar) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -425,7 +415,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="vision_ar">{{ $settings->vision_ar }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="vision_ar">{{ str_replace('<br />', '', $settings->vision_ar) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -437,7 +427,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="mission_ar">{{ $settings->mission_ar }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="mission_ar">{{ str_replace('<br />', '', $settings->mission_ar) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -450,7 +440,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="goal_ar">{{ $settings->goal_ar }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="goal_ar">{{ str_replace('<br />', '', $settings->goal_ar) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -471,7 +461,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="about_us_en">{{ $settings->about_us_en }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="about_us_en">{{ str_replace('<br />', '', $settings->about_us_en) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -482,7 +472,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="vision_en">{{ $settings->vision_en }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="vision_en">{{ str_replace('<br />', '', $settings->vision_en) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -494,7 +484,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="mission_en">{{ $settings->mission_en }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="mission_en">{{ str_replace('<br />', '', $settings->mission_en) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -507,7 +497,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="goal_en">{{ $settings->goal_en }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="goal_en">{{ str_replace('<br />', '', $settings->goal_en) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -528,7 +518,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="about_us_ur">{{ $settings->about_us_ur }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="about_us_ur">{{ str_replace('<br />', '', $settings->about_us_ur) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -539,7 +529,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="vision_ur">{{ $settings->vision_ur }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="vision_ur">{{ str_replace('<br />', '', $settings->vision_ur) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -551,7 +541,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="mission_ur">{{ $settings->mission_ur }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="mission_ur">{{ str_replace('<br />', '', $settings->mission_ur) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -564,7 +554,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
-                                                            <textarea class="form-control" rows='5' name="goal_ur">{{ $settings->goal_ur }}</textarea>
+                                                            <textarea class="form-control" rows='5' name="goal_ur">{{ str_replace('<br />', '', $settings->goal_ur) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>

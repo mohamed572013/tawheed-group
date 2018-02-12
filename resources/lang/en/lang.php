@@ -12,6 +12,7 @@ return [
     'home' => 'Home',
     'vision' => 'Vision',
     'mission' => 'Mission',
+    'other_news' => 'Other News',
     'target' => 'Target',
     'sightseeing' => 'Sightseeing',
     'services' => 'Services',

@@ -62,9 +62,9 @@ class ProgramsController extends Controller {
         $programs->title_ar = $request->title_ar;
         $programs->title_en = $request->title_en;
         $programs->title_ur = $request->title_ur;
-        $programs->content_ar = $request->content_ar;
-        $programs->content_en = $request->content_en;
-        $programs->content_ur = $request->content_ur;
+        $programs->content_ar = nl2br($request->content_ar);
+        $programs->content_en = nl2br($request->content_en);
+        $programs->content_ur = nl2br($request->content_ur);
         $programs->keywords_ar = $request->keywords_ar;
         $programs->keywords_en = $request->keywords_en;
         $programs->keywords_ur = $request->keywords_ur;
@@ -107,6 +107,7 @@ class ProgramsController extends Controller {
         $countries = Country::all();
         $city = $edit->city_id;
         $city_id = json_decode($city);
+//        dd($city_id);
         $nights = json_decode($edit->nights);
         $first_hotel = Hotel::where("city_id", $city_id[0])->get();
         $second_hotel = "";
@@ -134,9 +135,9 @@ class ProgramsController extends Controller {
         $programs->title_ar = $request->title_ar;
         $programs->title_en = $request->title_en;
         $programs->title_ur = $request->title_ur;
-        $programs->content_ar = $request->content_ar;
-        $programs->content_en = $request->content_en;
-        $programs->content_ur = $request->content_ur;
+        $programs->content_ar = nl2br($request->content_ar);
+        $programs->content_en = nl2br($request->content_en);
+        $programs->content_ur = nl2br($request->content_ur);
         $programs->keywords_ar = $request->keywords_ar;
         $programs->keywords_en = $request->keywords_en;
         $programs->keywords_ur = $request->keywords_ur;

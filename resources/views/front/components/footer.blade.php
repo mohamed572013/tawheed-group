@@ -1,112 +1,30 @@
-<!--
-<div id="live-chat">
-
-    <header class="clearfix">
-
-        <a href="#" class="chat-close">x</a>
-
-        <h4>Sales Chat</h4>
-
-        <span class="chat-message-counter pulse" style="display: block">3</span>
-
-    </header>
-
-    <div class="chat" style="display: none">
-
-        <div class="chat-history">
-
-            <div class="chat-message clearfix">
-
-                <img src="{{asset('front/images/user.png') }}" alt="" width="32" height="32">
-
-                <div class="chat-message-content clearfix">
-
-                    <span class="chat-time">13:35</span>
-
-                    <h5>Employee</h5>
-
-                    <p>Welcome, how can I help you</p>
-
-                </div>  end chat-message-content
-
-            </div>  end chat-message
-
-            <hr>
-
-            <div class="chat-message clearfix clint_user">
-
-                <img src="{{asset('front/images/user.png') }}" alt="" width="32" height="32">
-
-                <div class="chat-message-content clearfix">
-
-                    <span class="chat-time">13:37</span>
-
-                    <h5>Customer</h5>
-
-                    <p>I want to know how to book Umrah from your site</p>
-
-                </div>  end chat-message-content
-
-            </div>  end chat-message
-
-            <hr>
-
-            <div class="chat-message clearfix">
-
-                <img src="{{asset('front/images/user.png') }}" alt="" width="32" height="32">
-
-                <div class="chat-message-content clearfix">
-
-                    <span class="chat-time">13:38</span>
-
-                    <h5>Employee</h5>
-
-                    <p>Very simple, I appreciate your presence. You can choose Umrah program now and I am with your presence step by step</p>
-
-                </div>  end chat-message-content
-
-            </div>  end chat-message
-
-            <hr>
-
-        </div>  end chat-history
-
-        <hr>
-        <p class="chat-feedback">writing a message now</p>
-
-        <form action="#" method="post">
-
-            <fieldset>
-
-                <input type="text" placeholder="Type your message…" autofocus>
-
-                                <a href="#" class="chatbtn">Send</a>
-                <input class="chatbtn" type="button" value="Send"  onclick="play()">
-                <audio id="audio" src="{{asset('front/message.mp3') }}" ></audio>
-
-            </fieldset>
-
-        </form>
-
-    </div>  end chat
-
-</div>  end live-chat
--->
-
 <footer id="footer">
     <div class="footer-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-3  pull-left">
+                <div class="col-sm-6 col-md-3  pull-left bordered">
+
                     <h2>{{ trans("lang.about_us") }}</h2>
-                    <p> {{ $settings->{$slug->about_us} }}</p>
+                    <a href="{{ url('/'.$lang.'/') }}" title="{{ $settings->site_title_en }}">
+                        <img src="{{asset($settings->site_logo)}}" alt="{{ $settings->site_title_en }}" />
+                    </a>
+                    <p> {{ mb_substr(str_replace('<br />', '', $settings->{$slug->about_us}), 0, 100) }} <a href='{{ url('/' . $lang . '/about') }}'>[ ... ]</a></p>
+
+                </div>
+
+
+                <div class="col-sm-6 col-md-3 pull-left bordered">
+                    <h2>{{ trans("lang.important_links") }}</h2>
+                    <ul class="discover triangle hover row">
+                        <li class="active col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/') }}">{{ trans("lang.home") }}</a></li>
+                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/sightseeing') }}">{{ trans("lang.sightseeing") }}</a></li>
+                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/services') }}">{{ trans("lang.services") }}</a></li>
+                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/partners') }}">{{ trans("lang.partners") }}</a></li>
+                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/news') }}">{{ trans("lang.news") }}</a></li>
+                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/make_your_umrah') }}">{{ trans("lang.make_your_umrah") }}</a></li>
+                    </ul>
                     <br />
-                    <address class="contact-details">
-                        <span class="contact-phone"><i class="soap-icon-phone"></i>{{ $settings->site_phone }}</span>
-                        <br />
-                        <a href="javascript:;" class="contact-email">{{ $settings->site_email }}</a>
-                    </address>
-                    <ul class="social-icons clearfix">
+                    <ul class="social-icons clearfix ">
                         @if($settings->site_twitter != "")
                         <li class="twitter">
                             <a title="twitter" href="{{ $settings->site_twitter }}" target="_blank" data-toggle="tooltip">
@@ -152,18 +70,7 @@
 
                     </ul>
                 </div>
-                <div class="col-sm-6 col-md-3 pull-left">
-                    <h2>{{ trans("lang.important_links") }}</h2>
-                    <ul class="discover triangle hover row">
-                        <li class="active col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/') }}">{{ trans("lang.home") }}</a></li>
-                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/sightseeing') }}">{{ trans("lang.sightseeing") }}</a></li>
-                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/services') }}">{{ trans("lang.services") }}</a></li>
-                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/partners') }}">{{ trans("lang.partners") }}</a></li>
-                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/news') }}">{{ trans("lang.news") }}</a></li>
-                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/make_your_umrah') }}">{{ trans("lang.make_your_umrah") }}</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-md-3  pull-left">
+                <div class="col-sm-6 col-md-3  pull-left bordered">
                     <h2>{{ trans("lang.latest_news") }}</h2>
                     <ul class="travel-news">
                         @foreach($latest_news as $one)
@@ -177,7 +84,7 @@
                                 <h5 class="s-title">
                                     <a href="{{ url('/'.$lang.'/news/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">{{ $one->{$slug->title} }}</a>
                                 </h5>
-                                <p>{{ mb_substr($one->{$slug->content}, 0, 50) }} </p>
+                                <p>{{ mb_substr(str_replace('<br />', '', $one->{$slug->content}), 0, 50) }} <a href="{{ url('/'.$lang.'/news/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">[ ... ]</a></p>
                                 <span class="date">{{ Carbon\Carbon::parse($one->created_at)->format('d M') }}, {{ Carbon\Carbon::parse($one->created_at)->format('Y') }}</span>
                             </div>
                         </li>
@@ -195,10 +102,22 @@
                     </div>
                     <div id="subscribe-result"></div>
                     <br />
-                    <div class="col-md-12 text-center">
-                        <img src="{{asset('front/images/b_47_225.gif') }}" alt="" />
-                    </div>
+                    <address class="contact-details">
+                        <span class="contact-phone">
+
+                            @php($phone_array = explode('/', $settings->site_phone))
+
+                            @foreach($phone_array as $one)
+                            <i class="soap-icon-phone"></i>
+                            {{ $one }} <br />
+                            @endforeach
+
+                        </span>
+                        <br />
+                        <a href="javascript:;" class="contact-email">{{ $settings->site_email }}</a>
+                    </address>
                 </div>
+
 
             </div>
         </div>
@@ -215,7 +134,10 @@
     </div>
 </footer>
 
-
+<script>
+    console.groupCollapsed("Master Vision Integrated Solutions");
+    console.info("Development Team");
+</script>
 
 <!-- Javascript -->
 {!! HTML::script('front/js/jquery-1.11.1.min.js') !!}
@@ -399,7 +321,7 @@
             var currency_price = tjq(".nav_currency:first").data("price");
             var currency_sign = tjq(".nav_currency:first").data("sign");
             tjq.ajax({
-                url: config.base_url + "/change_currency/" + currency_id + "/" + currency_price,
+                url: config.base_url + "/change_currency/" + currency_id + "/" + currency_price + '/' + currency_sign,
                 type: "get",
                 data: {},
                 success: function (msg) {

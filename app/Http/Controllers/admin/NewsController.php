@@ -49,9 +49,9 @@ class NewsController extends Controller {
         $news->title_ar = $request->title_ar;
         $news->title_en = $request->title_en;
         $news->title_ur = $request->title_ur;
-        $news->content_ar = $request->content_ar;
-        $news->content_en = $request->content_en;
-        $news->content_ur = $request->content_ur;
+        $news->content_ar = nl2br($request->content_ar);
+        $news->content_en = nl2br($request->content_en);
+        $news->content_ur = nl2br($request->content_ur);
         $news->keywords_ar = $request->keywords_ar;
         $news->keywords_en = $request->keywords_en;
         $news->keywords_ur = $request->keywords_ur;
@@ -101,9 +101,9 @@ class NewsController extends Controller {
         $news->title_ar = $request->title_ar;
         $news->title_en = $request->title_en;
         $news->title_ur = $request->title_ur;
-        $news->content_ar = $request->content_ar;
-        $news->content_en = $request->content_en;
-        $news->content_ur = $request->content_ur;
+        $news->content_ar = nl2br($request->content_ar);
+        $news->content_en = nl2br($request->content_en);
+        $news->content_ur = nl2br($request->content_ur);
         $news->keywords_ar = $request->keywords_ar;
         $news->keywords_en = $request->keywords_en;
         $news->keywords_ur = $request->keywords_ur;
