@@ -86,17 +86,48 @@ class RoomsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $rooms = Room::destroy((int) $id);
-        $data = null;
-        if ($rooms) {
-            $data['type'] = "success";
-            $data['message'] = "تم الحذف بنجاح";
+        $meals_count = \App\Hotel_Room::where("room_id", $id)->count();
+        $make_umrah = \App\MakeUmrah::pluck("rooms");
+        $hotel_reserv = \App\Hotelreservation::pluck("room_type");
+        $program_reserv = \App\Programreservation::pluck("room_type");
+        $count_array = array(
+            $meals_count => "أسعار فنادق",
+        );
+        $data = $this->checkAvailabilityToDelete($count_array);
+        if ($data) {
+            echo json_encode($data);
+            die();
         } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            $make_umrah_ee = $this->decodeCities($make_umrah, $id);
+            $hotel_reserv_ee = $this->decodeCities($hotel_reserv, $id);
+            $program_reserv_ee = $this->decodeCities($program_reserv, $id);
+            if ($make_umrah_ee && $hotel_reserv_ee && $program_reserv_ee) {
+                Room::destroy((int) $id);
+                $data['type'] = "success";
+                $data['message'] = "تم الحذف بنجاح";
+                echo json_encode($data);
+                die();
+            } else {
+                if (!$make_umrah_ee) {
+                    $data['type'] = "خطأ";
+                    $data['message'] = "لا يمكن الحذف لوجود حجز صمم عمرتك متعلقة به";
+                    echo json_encode($data);
+                    die();
+                }
+                if (!$hotel_reserv_ee) {
+                    $data['type'] = "خطأ";
+                    $data['message'] = "لا يمكن الحذف لوجود حجز فنادق متعلقة به";
+                    echo json_encode($data);
+                    die();
+                }
+                if (!$program_reserv_ee) {
+                    $data['type'] = "خطأ";
+                    $data['message'] = "لا يمكن الحذف لوجود حجز برامج متعلقة به";
+                    echo json_encode($data);
+                    die();
+                }
+            }
         }
-        echo json_encode($data);
-        die();
     }
 
 }

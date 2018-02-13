@@ -139,17 +139,32 @@ class CitiesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $cities = City::destroy((int) $id);
-        $data = null;
-        if ($cities) {
-            $data['type'] = "success";
-            $data['message'] = "تم الحذف بنجاح";
+        $hotels_count = \App\Hotel::where("city_id", $id)->count();
+        $sightseeing_count = \App\Sightseeing::where("city_id", $id)->count();
+        $cities_in_programs = \App\Program::pluck("city_id");
+        $count_array = array(
+            $sightseeing_count => "مزارات سياحية",
+            $hotels_count => "فنادق",
+        );
+        $data = $this->checkAvailabilityToDelete($count_array);
+        if ($data) {
+            echo json_encode($data);
+            die();
         } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            $programs = $this->decodeCities($cities_in_programs, $id);
+            if ($programs) {
+                City::destroy((int) $id);
+                $data['type'] = "success";
+                $data['message'] = "تم الحذف بنجاح";
+                echo json_encode($data);
+                die();
+            } else {
+                $data['type'] = "خطأ";
+                $data['message'] = "لا يمكن الحذف لوجود برامج متعلقة به";
+                echo json_encode($data);
+                die();
+            }
         }
-        echo json_encode($data);
-        die();
     }
 
 }

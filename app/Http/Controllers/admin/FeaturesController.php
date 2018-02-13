@@ -112,17 +112,20 @@ class FeaturesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $features = Feature::destroy((int) $id);
-        $data = null;
-        if ($features) {
+        $cities_in_programs = \App\Hotel::pluck("features");
+        $programs = $this->decodeCities($cities_in_programs, $id);
+        if ($programs) {
+            Feature::destroy((int) $id);
             $data['type'] = "success";
             $data['message'] = "تم الحذف بنجاح";
+            echo json_encode($data);
+            die();
         } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            $data['type'] = "خطأ";
+            $data['message'] = "لا يمكن الحذف لوجود فنادق متعلقة به";
+            echo json_encode($data);
+            die();
         }
-        echo json_encode($data);
-        die();
     }
 
 }

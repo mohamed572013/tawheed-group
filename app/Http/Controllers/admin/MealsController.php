@@ -86,17 +86,40 @@ class MealsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $meals = Meal::destroy((int) $id);
-        $data = null;
-        if ($meals) {
-            $data['type'] = "success";
-            $data['message'] = "تم الحذف بنجاح";
+        $meals_count = \App\Hotel_Room::where("meal_id", $id)->count();
+        $meals_programs = \App\Programreservation::pluck("meals");
+        $meals_programs_make = \App\MakeUmrah::pluck("meals");
+        $count_array = array(
+            $meals_count => "أسعار فنادق",
+        );
+        $data = $this->checkAvailabilityToDelete($count_array);
+        if ($data) {
+            echo json_encode($data);
+            die();
         } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            $meals = $this->decodeCities($meals_programs, $id);
+            $meals_programs_ee = $this->decodeCities($meals_programs_make, $id);
+            if ($meals && $meals_programs_ee) {
+                Meal::destroy((int) $id);
+                $data['type'] = "success";
+                $data['message'] = "تم الحذف بنجاح";
+                echo json_encode($data);
+                die();
+            } else {
+                if (!$meals) {
+                    $data['type'] = "خطأ";
+                    $data['message'] = "لا يمكن الحذف لوجود حجز برامج متعلقة به";
+                    echo json_encode($data);
+                    die();
+                }
+                if (!$meals_programs_ee) {
+                    $data['type'] = "خطأ";
+                    $data['message'] = "لا يمكن الحذف لوجود حجز صمم عمرتك متعلقة به";
+                    echo json_encode($data);
+                    die();
+                }
+            }
         }
-        echo json_encode($data);
-        die();
     }
 
 }

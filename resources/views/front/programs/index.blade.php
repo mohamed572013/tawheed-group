@@ -195,7 +195,9 @@
                                                 @endfor
                                             </div>
                                         </div>
-                                        <p class="description"> {{ mb_substr($one->{$slug->content}, 0, 100) }} <a href="{{ url('/'.$lang.'/programs/details/'.$one->id."/".str_replace(' ', '-', $one->{$slug->title})) }}">[ ... ]</a></p>
+                                        <p class="description">
+                                            {{ mb_substr(str_replace('<br />', '',$one->{$slug->content}), 0, 100) }}
+                                            <a href="{{ url('/'.$lang.'/programs/details/'.$one->id."/".str_replace(' ', '-', $one->{$slug->title})) }}">[ ... ]</a></p>
                                         <div class="action">
                                             <a href="{{ url('/'.$lang.'/programs/details/'.$one->id."/".str_replace(' ', '-', $one->{$slug->title})) }}" class="button btn-small">{{ trans("lang.more") }}</a>
                                             <a href="{{ url('/'.$lang.'/programs/details/'.$one->id."/".str_replace(' ', '-', $one->{$slug->title})) }}" class="button btn-small yellow">{{ trans("lang.book") }}</a>

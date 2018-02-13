@@ -95,17 +95,27 @@ class CountriesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $countries = Country::destroy((int) $id);
-        $data = null;
-        if ($countries) {
+        $agents_count = \App\Agent::where("country_id", $id)->count();
+        $cities_count = \App\City::where("country_id", $id)->count();
+        $hotels_count = \App\Hotel::where("country_id", $id)->count();
+        $programs_count = \App\Program::where("country_id", $id)->count();
+        $count_array = array(
+            $agents_count => "وكلاء",
+            $cities_count => "مدن",
+            $hotels_count => "فنادق",
+            $programs_count => "برامج",
+        );
+        $data = $this->checkAvailabilityToDelete($count_array);
+        if ($data) {
+            echo json_encode($data);
+            die();
+        } else {
+            Country::destroy((int) $id);
             $data['type'] = "success";
             $data['message'] = "تم الحذف بنجاح";
-        } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            echo json_encode($data);
+            die();
         }
-        echo json_encode($data);
-        die();
     }
 
 }

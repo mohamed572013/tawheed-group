@@ -47,8 +47,9 @@
                         <ul class="tabs full-width">
                             <li class="active"><a href="#unlimited-layouts" data-toggle="tab">{{ trans("lang.vision") }}</a></li>
                             <li><a href="#design-inovation" data-toggle="tab">{{ trans("lang.mission") }}</a></li>
+                            <li><a href="#8-sliders" data-toggle="tab">{{ trans("lang.target") }}</a></li>
                             <li><a href="#best-support" data-toggle="tab">{{ trans("lang.why_us") }}</a></li>
-                            <li><a href="#8-sliders" data-toggle="tab">{{ trans("lang.what_we_do") }}</a></li>
+
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="unlimited-layouts">
@@ -64,16 +65,17 @@
                                 <p> {!! $settings->{$slug->mission} !!}</p>
 
                             </div>
+                            <div class="tab-pane fade" id="8-sliders">
+                                <h4>{{ trans("lang.target") }}</h4>
+                                <p>  {!! $settings->{$slug->goal} !!} </p>
+
+                            </div>
                             <div class="tab-pane fade" id="best-support">
                                 <h4>{{ trans("lang.why_us") }}</h4>
                                 <p>  {!! $settings->{$slug->why_us} !!}</p>
 
                             </div>
-                            <div class="tab-pane fade" id="8-sliders">
-                                <h4>{{ trans("lang.what_we_do") }}</h4>
-                                <p>  {!! $settings->{$slug->what_we_do} !!} </p>
 
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -134,6 +136,7 @@
                         <h4 class="box-title">{{ $one->{$slug->title} }}</h4>
                         <div class="feedback">
                             <span class="price">
+
                                 @php($money = $one->dates[0]->price)
                                 @php($currency_price = $one->dates[0]->currency->price)
                                 {{ view("front.currency.convert", compact('money', 'currency_price')) }}
@@ -144,7 +147,9 @@
                                 @endfor
                             </div>
                         </div>
-                        <p class="description">{{ mb_substr($one->{$slug->content}, 0, 120) }}</p>
+                        <p class="description">
+                            {{ mb_substr(str_replace('<br />', '',$one->{$slug->content}), 0, 120) }}
+                        </p>
                         <div class="action">
                             <a href="{{ url('/'.$lang.'/programs/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}" class="button btn-small">{{ trans("lang.more") }}</a>
                             <a href="{{ url('/'.$lang.'/programs/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}" class="button btn-small yellow">{{ trans("lang.book_now") }}</a>

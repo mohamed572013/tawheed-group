@@ -154,17 +154,34 @@ class HotelsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $hotels = Hotel::destroy((int) $id);
-        $data = null;
-        if ($hotels) {
-            $data['type'] = "success";
-            $data['message'] = "تم الحذف بنجاح";
+        $hotels_count = \App\Hotelreservation::where("hotel_id", $id)->count();
+        $sliders_count = \App\Hotelslider::where("hotel_id", $id)->count();
+        $hotel_rooms_count = \App\Hotel_Room::where("hotel_id", $id)->count();
+        $hotels_in_programs = \App\Program::pluck("hotel_id");
+        $count_array = array(
+            $sliders_count => "سلايدر",
+            $hotels_count => "فنادق",
+            $hotel_rooms_count => "أسعار فنادق",
+        );
+        $data = $this->checkAvailabilityToDelete($count_array);
+        if ($data) {
+            echo json_encode($data);
+            die();
         } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            $programs = $this->decodeCities($hotels_in_programs, $id);
+            if ($programs) {
+                Hotel::destroy((int) $id);
+                $data['type'] = "success";
+                $data['message'] = "تم الحذف بنجاح";
+                echo json_encode($data);
+                die();
+            } else {
+                $data['type'] = "خطأ";
+                $data['message'] = "لا يمكن الحذف لوجود برامج متعلقة به";
+                echo json_encode($data);
+                die();
+            }
         }
-        echo json_encode($data);
-        die();
     }
 
     public function getCitiesByCountry($country_id) {

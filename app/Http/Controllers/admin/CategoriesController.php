@@ -81,17 +81,23 @@ class CategoriesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $categories = Category::destroy((int) $id);
-        $data = null;
-        if ($categories) {
+        $make_count = \App\MakeUmrah::where("season_id", $id)->count();
+        $programs_count = \App\Program::where("category_id", $id)->count();
+        $count_array = array(
+            $make_count => "برامج صمم عمرتك",
+            $programs_count => "برامج",
+        );
+        $data = $this->checkAvailabilityToDelete($count_array);
+        if ($data) {
+            echo json_encode($data);
+            die();
+        } else {
+            Category::destroy((int) $id);
             $data['type'] = "success";
             $data['message'] = "تم الحذف بنجاح";
-        } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            echo json_encode($data);
+            die();
         }
-        echo json_encode($data);
-        die();
     }
 
 }

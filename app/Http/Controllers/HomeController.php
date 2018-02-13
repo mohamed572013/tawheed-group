@@ -26,7 +26,6 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $today = date("Y-m-d");
         $sliders = Slider::with('images')->get();
         $reviews = Review::all();
         $partners = Partner::all();
@@ -37,8 +36,11 @@ class HomeController extends Controller {
         $sightseeing = \App\Sightseeing::all();
         $packages = Program::whereHas('dates', function ($query) {
                     $today = date("Y-m-d");
+                    $query->where("currency_id", Session::get("currency_id"));
                     $query->where("start_date", ">", $today);
-                })->with("dates")->get();
+                })
+                ->with("dates")
+                ->get();
         $countries = Country::has('agents')->get();
         return view("front.index", compact('sightseeing', 'cities', 'sliders', 'reviews', 'partners', 'agents', 'countries', 'gallery', 'hotels', 'packages'));
     }
@@ -60,31 +62,35 @@ class HomeController extends Controller {
     public function make_your_umrah() {
         $categories = Category::all();
         $rooms = Room::all();
+        $meals = \App\Meal::all();
         $services = Programservice::all();
-        return view("front.make_your_umrah.index", compact('categories', 'rooms', 'services'));
+        return view("front.make_your_umrah.index", compact('meals', 'categories', 'rooms', 'services'));
     }
 
     public function make_your_umrah_group() {
         $categories = Category::all();
         $rooms = Room::all();
+        $meals = \App\Meal::all();
         $services = Programservice::all();
-        return view("front.make_your_umrah_group.index", compact('categories', 'rooms', 'services'));
+        return view("front.make_your_umrah_group.index", compact('meals', 'categories', 'rooms', 'services'));
     }
 
     public function send_make_your_umrah(Request $request) {
         $make_your_umrah = new \App\MakeUmrah();
         $make_your_umrah->season_id = $request->season_id;
-        $make_your_umrah->trip_date = $request->trip_date;
         $make_your_umrah->makka_hotel = $request->makka_hotel;
         $make_your_umrah->makka_nights = $request->makka_nights;
+        $make_your_umrah->makka_arrive = $request->makka_arrive;
         $make_your_umrah->madina_hotel = $request->madina_hotel;
         $make_your_umrah->madina_nights = $request->madina_nights;
+        $make_your_umrah->madina_arrive = $request->madina_arrive;
         $make_your_umrah->services = json_encode($request->services);
         $make_your_umrah->rooms = json_encode($request->rooms);
         $make_your_umrah->number_of_rooms = json_encode($request->number_of_rooms);
         $make_your_umrah->number_of_adults = json_encode($request->number_of_adults);
         $make_your_umrah->number_of_children = json_encode($request->number_of_children);
         $make_your_umrah->number_of_infants = json_encode($request->number_of_infants);
+        $make_your_umrah->meals = json_encode($request->meals);
         $make_your_umrah->name = $request->name;
         $make_your_umrah->email = $request->email;
         $make_your_umrah->phone = $request->phone;
@@ -102,8 +108,9 @@ class HomeController extends Controller {
 
     public function get_more_make() {
         $lang = $_GET['lang'];
-        $rooms = Room::pluck("title_$lang", "id");
-        echo json_encode($rooms);
+        $data['rooms'] = Room::pluck("title_$lang", "id");
+        $data['meals'] = \App\Meal::pluck("title_$lang", "id");
+        echo json_encode($data);
         die();
     }
 

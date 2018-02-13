@@ -44,12 +44,20 @@
                         <td>{{ $details->makka_nights }}</td>
                     </tr>
                     <tr>
+                        <th class="all">تاريخ دخول مكة</th>
+                        <td>{{ $details->makka_arrive }}</td>
+                    </tr>
+                    <tr>
                         <th class="all">فندق المدينة</th>
                         <td>{{ $details->madina_hotel }}</td>
                     </tr>
                     <tr>
                         <th class="all">عدد ليالي المدينة</th>
                         <td>{{ $details->madina_nights }}</td>
+                    </tr>
+                    <tr>
+                        <th class="all">تاريخ دخول المدينة</th>
+                        <td>{{ $details->madina_arrive }}</td>
                     </tr>
                     <tr>
                         <th class="all">الخدمات</th>
@@ -66,12 +74,12 @@
                         <td>
                             @foreach($rooms_data as $key => $value)
                             <div class="col-md-12">
-                                <div class="col-md-3">
-                                    <div class="col-md-6">نوع الغرفة</div>
+                                <div class="col-md-2">
+                                    <div class="col-md-6">النوع </div>
                                     <div class="col-md-6" style="color: #0070a3;">{{ $value['room'] }}</div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="col-md-7">عدد الغرف</div>
+                                <div class="col-md-2">
+                                    <div class="col-md-7">العدد</div>
                                     <div class="col-md-5" style="color: #0070a3;">{{ $value['number'] }}</div>
                                 </div>
                                 <div class="col-md-2">
@@ -98,7 +106,15 @@
                                         @endif
                                     </div>
                                 </div>
+                                @if($value['meals'] != null)
+                                <div class="col-md-2">
+                                    <div class="col-md-6">الوجبات</div>
+                                    @php($meal_id = $value['meals'])
+                                    <div class="col-md-6" style="color: #0070a3;">{{ \App\Meal::where("id", $meal_id)->first()->title_ar }}</div>
+                                </div>
+                                @endif
                             </div>
+                            <hr />
                             @endforeach
                         </td>
                     </tr>

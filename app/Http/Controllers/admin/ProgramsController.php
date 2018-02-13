@@ -170,17 +170,25 @@ class ProgramsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $programs = Program::destroy((int) $id);
-        $data = null;
-        if ($programs) {
+        $programs_slider_count = \App\Programslider::where("program_id", $id)->count();
+        $program_dates_count = \App\Programdate::where("program_id", $id)->count();
+        $program_reservation_count = \App\Programreservation::where("program_id", $id)->count();
+        $count_array = array(
+            $programs_slider_count => "سلايدر",
+            $program_dates_count => "أسعار برامج",
+            $program_reservation_count => "حجز برامج",
+        );
+        $data = $this->checkAvailabilityToDelete($count_array);
+        if ($data) {
+            echo json_encode($data);
+            die();
+        } else {
+            Program::destroy((int) $id);
             $data['type'] = "success";
             $data['message'] = "تم الحذف بنجاح";
-        } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            echo json_encode($data);
+            die();
         }
-        echo json_encode($data);
-        die();
     }
 
     public function getCitiesByCountry($country_id) {
@@ -258,6 +266,7 @@ class ProgramsController extends Controller {
         $number_of_adults_decoded = json_decode($details->number_of_adults);
         $number_of_children_decoded = json_decode($details->number_of_children);
         $number_of_infants_decoded = json_decode($details->number_of_infants);
+        $number_of_meals_decoded = json_decode($details->meals);
         $rooms_data = null;
         foreach ($rooms as $key => $one) {
             $data = array(
@@ -265,7 +274,8 @@ class ProgramsController extends Controller {
                 "number" => $number_of_rooms_decoded[$key],
                 "adults" => $number_of_adults_decoded[$key],
                 "children" => $number_of_children_decoded[$key],
-                "infants" => $number_of_infants_decoded[$key]
+                "infants" => $number_of_infants_decoded[$key],
+                "meals" => $number_of_meals_decoded[$key],
             );
             $rooms_data[] = $data;
         }
@@ -285,6 +295,7 @@ class ProgramsController extends Controller {
         $number_of_adults_decoded = json_decode($details->adults);
         $number_of_children_decoded = json_decode($details->children);
         $number_of_infants_decoded = json_decode($details->infants);
+        $number_of_meals_decoded = json_decode($details->meals);
         $rooms_data = null;
         foreach ($rooms as $key => $one) {
             $data = array(
@@ -292,7 +303,8 @@ class ProgramsController extends Controller {
                 "number" => $number_of_rooms_decoded[$key],
                 "adults" => $number_of_adults_decoded[$key],
                 "children" => $number_of_children_decoded[$key],
-                "infants" => $number_of_infants_decoded[$key]
+                "infants" => $number_of_infants_decoded[$key],
+                "meals" => $number_of_meals_decoded[$key],
             );
             $rooms_data[] = $data;
         }

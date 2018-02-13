@@ -444,6 +444,17 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> Why us
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <textarea class="form-control" rows='5' name="why_us_ar">{{ str_replace('<br />', '', $settings->why_us_ar) }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="panel panel-default">
@@ -490,6 +501,7 @@
                                                 </div>
 
 
+
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label"> Goal
                                                         <span class="required"> * </span>
@@ -498,6 +510,17 @@
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
                                                             <textarea class="form-control" rows='5' name="goal_en">{{ str_replace('<br />', '', $settings->goal_en) }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> Why us
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <textarea class="form-control" rows='5' name="why_us_en">{{ str_replace('<br />', '', $settings->why_us_en) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -555,6 +578,18 @@
                                                         <div class="input-icon right">
                                                             <i class="fa"></i>
                                                             <textarea class="form-control" rows='5' name="goal_ur">{{ str_replace('<br />', '', $settings->goal_ur) }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> Why us
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <textarea class="form-control" rows='5' name="why_us_ur">{{ str_replace('<br />', '', $settings->why_us_ur) }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>

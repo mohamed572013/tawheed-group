@@ -112,17 +112,31 @@ class ProgramservicesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $programservices = Programservice::destroy((int) $id);
-        $data = null;
-        if ($programservices) {
+        $meals_programs = \App\Program::pluck("services");
+        $meals_programs_make = \App\MakeUmrah::pluck("services");
+
+        $meals = $this->decodeCities($meals_programs, $id);
+        $meals_programs_ee = $this->decodeCities($meals_programs_make, $id);
+        if ($meals && $meals_programs_ee) {
+            Programservice::destroy((int) $id);
             $data['type'] = "success";
             $data['message'] = "تم الحذف بنجاح";
+            echo json_encode($data);
+            die();
         } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            if (!$meals) {
+                $data['type'] = "خطأ";
+                $data['message'] = "لا يمكن الحذف لوجود  برامج متعلقة به";
+                echo json_encode($data);
+                die();
+            }
+            if (!$meals_programs_ee) {
+                $data['type'] = "خطأ";
+                $data['message'] = "لا يمكن الحذف لوجود حجز صمم عمرتك متعلقة به";
+                echo json_encode($data);
+                die();
+            }
         }
-        echo json_encode($data);
-        die();
     }
 
 }

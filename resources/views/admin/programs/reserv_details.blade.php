@@ -38,11 +38,7 @@
                     <tr>
                         <th class="all">رقم التليفون</th>
                         <td>{{ $details->phone }}</td>
-                    </tr>
-                    <tr>
-                        <th class="all">رقم التليفون</th>
-                        <td>{{ $details->phone }}</td>
-                    </tr>
+                    </tr> 
                     <tr>
                         <th class="all">الغرف </th>
                         <td>
@@ -72,6 +68,13 @@
                                         {{ $value['infants'] }}
                                     </div>
                                 </div>
+                                @if($value['meals'] != null)
+                                <div class="col-md-2">
+                                    <div class="col-md-6">الوجبات</div>
+                                    @php($meal_id = $value['meals'])
+                                    <div class="col-md-6" style="color: #0070a3;">{{ \App\Meal::where("id", $meal_id)->first()->title_ar }}</div>
+                                </div>
+                                @endif
                             </div>
                             @endforeach
                         </td>

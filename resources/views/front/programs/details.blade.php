@@ -107,7 +107,8 @@
                                         </figure>
                                         <div class="details">
                                             <h4 class="box-title"><a href="{{ url('/'.$lang.'/destinations/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">{{ $one->{$slug->title} }}</a></h4>
-                                            <p> {{ mb_substr($one->{$slug->content}, 0, 300) }} <a href="{{ url('/'.$lang.'/destinations/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">[ ... ]</a> </p>
+
+                                            <p> {{ mb_substr(str_replace('<br />', '',$one->{$slug->content}), 0, 300) }} <a href="{{ url('/'.$lang.'/destinations/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">[ ... ]</a> </p>
                                         </div>
                                     </article>
                                     <hr>
@@ -138,7 +139,8 @@
                                                 </dl>
                                             </div>
                                             <hr class="hidden-xs">
-                                            <p> {{ mb_substr($one->{$slug->content}, 0, 300) }} <a href="{{ url('/'.$lang.'/hotels/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">[ ... ]</a> </p>
+
+                                            <p> {{ mb_substr(str_replace('<br />', '',$one->{$slug->content}), 0, 300) }} <a href="{{ url('/'.$lang.'/hotels/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">[ ... ]</a> </p>
                                         </div>
                                     </div>
                                     @endforeach
@@ -157,9 +159,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                                        {{ trans("lang.price_start_with") }}
-                                    </div>
+
                                 </h4>
                                 <form action="#" id="book_program_form" method="post">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -222,23 +222,36 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-2 form-group pull-left">
-                                                <label class="control-label">{{ trans("lang.number_of_rooms") }}</label>
-                                                <input type="number" name="number_of_rooms[]" class="input-text full-width required_field">
+                                            <div class="col-sm-12 col-md-2 col-lg-2 col-xs-12  form-group pull-left">
+                                                <label class="control-label">{{ trans("lang.meals") }}</label>
+                                                <div class="selector">
+                                                    <select name="meals[]" class="full-width required_field">
+                                                        @foreach($meals as $one)
+                                                        <option value="{{ $one->id }}">{{ $one->{$slug->title} }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
 
-                                            <div class="col-sm-2 form-group pull-left">
-                                                <label class="control-label">{{ trans("lang.adults") }}</label>
-                                                <input type="number" name="adults[]" class="input-text full-width required_field">
-                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="col-sm-12  col-md-3  form-group pull-left">
+                                                    <label class="control-label">{{ trans("lang.rooms") }}</label>
+                                                    <input type="number" name="number_of_rooms[]" class="input-text full-width required_field">
+                                                </div>
+                                                <div class="col-sm-12  col-md-3  form-group pull-left">
+                                                    <label class="control-label">{{ trans("lang.adults") }}</label>
+                                                    <input type="number" name="adults[]" class="input-text full-width required_field">
+                                                </div>
 
-                                            <div class="col-sm-2 form-group pull-left">
-                                                <label class="control-label">{{ trans("lang.children") }}</label>
-                                                <input type="number" value="0" name="children[]" class="input-text full-width ">
-                                            </div>
-                                            <div class="col-sm-2 form-group pull-left">
-                                                <label class="control-label">{{ trans("lang.infants") }}</label>
-                                                <input type="number" value="0"  name="infants[]" class="input-text full-width ">
+                                                <div class="col-sm-12  col-md-3 form-group pull-left">
+                                                    <label class="control-label">{{ trans("lang.children") }}</label>
+                                                    <input type="number" value="0" name="children[]" class="input-text full-width ">
+                                                </div>
+                                                <div class="col-sm-12 col-md-3 form-group pull-left">
+                                                    <label class="control-label">{{ trans("lang.infants") }}</label>
+                                                    <input type="number" value="0"  name="infants[]" class="input-text full-width ">
+                                                </div>
+
                                             </div>
                                             <div class="col-sm-1 form-group pull-left">
                                                 <label class="control-label"></label>
@@ -290,13 +303,13 @@
 
                             </div>
                         </div>
-                        <p class="description">
-                            @foreach($hotels as $key => $one)
-                            - {{ $one->{$slug->title} }} - {{ $one->city->{$slug->title} }} - 5 - {{ trans("lang.nights") }}
-                            <br>
-                            @endforeach
-                        </p>
-                        <a class="button yellow full-width uppercase btn-small">{{ trans("lang.book_now") }}</a>
+                        <h2 class="box-title">{{ trans("lang.hotels") }} : </h2>
+                        @foreach($hotels as $key => $one)
+                        <div data-placement="top" data-toggle="tooltip" title="(  {{ $one->city->{$slug->title} }} ) - ( {{ $nights[$key] }} {{ trans("lang.nights") }} )" data-original-title="( {{ $one->city->{$slug->title} }}) - ( 5 {{ trans("lang.nights") }} )">
+                            <i class="fa fa-location-arrow"></i>  {{ $one->{$slug->title} }}
+                        </div>
+                        @endforeach
+                        <!--<a class="button yellow full-width uppercase btn-small">{{ trans("lang.book_now") }}</a>-->
                     </div>
                 </article>
 
@@ -327,9 +340,16 @@
 
                 <div class="travelo-box contact-box">
                     <h4 class="box-title">{{ trans("lang.need_help") }}</h4>
-                    <p>{{ mb_substr($settings->{$slug->about_us}, 0, 100) }}</p>
+                    <p>{{ mb_substr(str_replace('<br />', '', $settings->{$slug->about_us}), 0, 100) }}
+                        <a href="{{ url('/'.$lang.'/about') }}"> [ ... ]</a>
+                    </p>
                     <address class="contact-details">
-                        <span class="contact-phone"><i class="soap-icon-phone"></i> {{ $settings->site_phone }}
+                        <span class="contact-phone">
+                            @php($phone_array = explode('/', $settings->site_phone))
+                            @foreach($phone_array as $one)
+                            <i class="soap-icon-phone"></i>
+                            {{ $one }} <br />
+                            @endforeach
                         </span>
                         <br />
                         <a href="javascript:;" class="contact-email">{{ $settings->site_email }}</a>

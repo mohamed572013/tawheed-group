@@ -90,17 +90,23 @@ class CurrenciesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $currencies = Currency::destroy((int) $id);
-        $data = null;
-        if ($currencies) {
+        $hotel_rooms_count = \App\Hotel_Room::where("currency_id", $id)->count();
+        $program_dates_count = \App\Programdate::where("currency_id", $id)->count();
+        $count_array = array(
+            $hotel_rooms_count => "أسعار غرف بفنادق",
+            $program_dates_count => "أسعار برامج",
+        );
+        $data = $this->checkAvailabilityToDelete($count_array);
+        if ($data) {
+            echo json_encode($data);
+            die();
+        } else {
+            Currency::destroy((int) $id);
             $data['type'] = "success";
             $data['message'] = "تم الحذف بنجاح";
-        } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            echo json_encode($data);
+            die();
         }
-        echo json_encode($data);
-        die();
     }
 
 }

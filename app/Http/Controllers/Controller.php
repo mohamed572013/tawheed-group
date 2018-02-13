@@ -57,7 +57,7 @@ class Controller extends BaseController {
         $data['vision'] = "vision_" . $this->_lang;
         $data['mission'] = "mission_" . $this->_lang;
         $data['why_us'] = "why_us_" . $this->_lang;
-        $data['what_we_do'] = "what_we_do_" . $this->_lang;
+        $data['goal'] = "goal_" . $this->_lang;
         $data['content'] = "content_" . $this->_lang;
         $data['site_title'] = "site_title_" . $this->_lang;
         $data['site_address'] = "site_address_" . $this->_lang;
@@ -68,4 +68,29 @@ class Controller extends BaseController {
         $this->slug = (Object) $data;
     }
 
+    // uncascading delete admin area
+    public function checkAvailabilityToDelete($array_data) {
+        foreach ($array_data as $key => $one) {
+            // if table has this id
+            if ($key > 0) {
+                $data['type'] = "خطأ";
+                $data['message'] = "لا يمكن الحذف لوجود $one متعلقة به";
+                return $data;
+            }
+        }
+        // if not
+        return FALSE;
+    }
+
+    public function decodeCities($data, $city_id) {
+        foreach ($data as $one) {
+            $currentValue = json_decode($one);
+            if (in_array($city_id, $currentValue)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // end uncascading delete
 }

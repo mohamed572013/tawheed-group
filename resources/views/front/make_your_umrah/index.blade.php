@@ -3,14 +3,14 @@
 {{ trans("lang.make_your_umrah") }}
 @stop
 @section('meta')
-<meta name="keywords" content="{{ $settings->{$slug->site_keywords} }}" />
-<meta name="description" content="{{ $settings->{$slug->site_description} }}" />
+<meta name="keywords" content="{!! str_replace('<br />', '', $settings->{$slug->site_keywords}) !!}" />
+<meta name="description" content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <!-- sharing data  -->
 <!--facebook-->
 <meta property="og:url"                content="{{ url('/'.$lang.'/make_your_umrah') }}" />
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="{{ trans("lang.make_your_umrah") }}" />
-<meta property="og:description"        content="{{ $settings->{$slug->site_description} }}" />
+<meta property="og:description"        content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <meta property="og:image"              content="{{ asset($settings->site_logo) }}" />
 <meta property="og:image:width"        content="600">
 <meta property="og:image:height"       content="315">
@@ -44,7 +44,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="type" value="0">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
                                 <div class="form-group">
                                     <label>{{ trans("lang.season") }}</label>
                                     <select name="season_id" class="form-control required_field">
@@ -55,13 +55,6 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <label>{{ trans("lang.trip_date") }}</label>
-                                    <input type="date" name="trip_date" class="form-control datepicker required_field" placeholder="" >
-                                </div>
-                            </div>
-
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
@@ -74,7 +67,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>{{ trans("lang.numer_of_nights") }}</label>
                                     <div class="input-group">
@@ -85,8 +78,17 @@
                                     </div>
                                 </div>
                             </div>
-
-
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>{{ trans("lang.makka_arrive") }}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-info"></i>
+                                        </span>
+                                        <input type="date" name="makka_arrive" class="form-control required_field datetime" placeholder="{{ trans("lang.makka_arrive") }}">
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -100,7 +102,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>{{ trans("lang.numer_of_nights") }}</label>
                                     <div class="input-group">
@@ -108,6 +110,17 @@
                                             <i class="fa fa-info"></i>
                                         </span>
                                         <input type="number" name="madina_nights" class="form-control required_field" placeholder="{{ trans("lang.numer_of_nights") }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label>{{ trans("lang.madina_arrive") }}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-info"></i>
+                                        </span>
+                                        <input type="date" name="madina_arrive" class="form-control required_field datetime" placeholder="{{ trans("lang.madina_arrive") }}">
                                     </div>
                                 </div>
                             </div>
@@ -162,27 +175,40 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <label>{{ trans("lang.number_of_adults") }}</label>
-                                        <div class="input-group">
-                                            <input type="number"  name="number_of_adults[]" class="form-control required_field" placeholder="{{ trans("lang.number_of_adults") }}">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>{{ trans("lang.adults") }}</label>
+                                            <div class="input-group">
+                                                <input type="number"  name="number_of_adults[]" class="form-control required_field" placeholder="{{ trans("lang.adults") }}">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <label>{{ trans("lang.number_of_children") }}</label>
-                                        <div class="input-group">
-                                            <input type="number" value="0" name="number_of_children[]" class="form-control" placeholder="{{ trans("lang.number_of_children") }}">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>{{ trans("lang.children") }}</label>
+                                            <div class="input-group">
+                                                <input type="number" value="0" name="number_of_children[]" class="form-control" placeholder="{{ trans("lang.number_of_children") }}">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <label>{{ trans("lang.number_of_infants") }}</label>
-                                        <div class="input-group">
-                                            <input type="number" value="0" name="number_of_infants[]" class="form-control" placeholder="{{ trans("lang.number_of_infants") }}">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>{{ trans("lang.infants") }}</label>
+                                            <div class="input-group">
+                                                <input type="number" value="0" name="number_of_infants[]" class="form-control" placeholder="{{ trans("lang.number_of_infants") }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label>{{ trans("lang.meals") }}</label>
+                                            <select name="meals[]" class="form-control meals required_field">
+                                                <option value="">{{ trans("lang.select_meal") }}</option>
+                                                @foreach($meals as $one)
+                                                <option value="{{ $one->id }}">{{ $one->{$slug->title} }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

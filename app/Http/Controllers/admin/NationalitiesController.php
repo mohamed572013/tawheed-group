@@ -86,17 +86,23 @@ class NationalitiesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $nationalities = Nationality::destroy((int) $id);
-        $data = null;
-        if ($nationalities) {
+        $program_dates_count = \App\Programdate::where("nationality_id", $id)->count();
+        $program_reservation_count = \App\Programreservation::where("nationality_id", $id)->count();
+        $count_array = array(
+            $program_dates_count => "أسعار برامج",
+            $program_reservation_count => "حجز برامج",
+        );
+        $data = $this->checkAvailabilityToDelete($count_array);
+        if ($data) {
+            echo json_encode($data);
+            die();
+        } else {
+            Nationality::destroy((int) $id);
             $data['type'] = "success";
             $data['message'] = "تم الحذف بنجاح";
-        } else {
-            $data['type'] = "error";
-            $data['message'] = "لم يتم الحذف";
+            echo json_encode($data);
+            die();
         }
-        echo json_encode($data);
-        die();
     }
 
 }

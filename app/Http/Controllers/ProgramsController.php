@@ -159,6 +159,7 @@ class ProgramsController extends Controller {
         $services = json_decode($details->services);
         $city_ids = json_decode($details->city_id);
         $hotel_ids = json_decode($details->hotel_id);
+        $nights = json_decode($details->nights);
         $services_array = Programservice::whereIn("id", $services)->get();
         $cities = City::whereIn("id", $city_ids)->get();
         $hotels = Hotel::whereIn("id", $hotel_ids)->get();
@@ -182,8 +183,9 @@ class ProgramsController extends Controller {
             $new_dates_array[] = $one;
         }
         $rooms = Room::all();
+        $meals = \App\Meal::all();
         $similar_programs = $this->getSimilarPrograms($id);
-        return view("front.programs.details", compact('id', 'nationalities', 'rooms', 'new_dates_array', 'details', 'services_array', 'cities', 'hotels', 'similar_programs'));
+        return view("front.programs.details", compact('nights', 'meals', 'id', 'nationalities', 'rooms', 'new_dates_array', 'details', 'services_array', 'cities', 'hotels', 'similar_programs'));
     }
 
     public function getNationalitiesOfDate($id, $lang) {
@@ -235,6 +237,7 @@ class ProgramsController extends Controller {
         $reservation->phone = $request->phone;
         $reservation->notes = $request->program_details;
         $reservation->room_type = json_encode($request->room_type);
+        $reservation->meals = json_encode($request->meals);
         $reservation->number_of_rooms = json_encode($request->number_of_rooms);
         $reservation->adults = json_encode($request->adults);
         $reservation->children = json_encode($request->children);

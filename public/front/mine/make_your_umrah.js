@@ -52,12 +52,12 @@ var Make_your_umrah = function () {
                 data: {lang: config.current_lang},
                 success: function (msg) {
                     var html = "";
-                    var rooms = JSON.parse(msg);
+                    var result = JSON.parse(msg);
                     html += '<div class="remove_row"><div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 "><div class="form-group">';
                     html += '<label>' + lang.rooms + '</label><select name="rooms[]" class="form-control rooms required_field">';
                     html += '<option value="">' + lang.select_room + '</option>';
-                    for (var i in rooms) {
-                        html += '<option value="' + i + '">' + rooms[i] + '</option>';
+                    for (var i in result.rooms) {
+                        html += '<option value="' + i + '">' + result.rooms[i] + '</option>';
                     }
                     html += '</select></div></div>';
                     html += '<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">'
@@ -66,17 +66,24 @@ var Make_your_umrah = function () {
                             + '<div class="input-group">'
                             + '<input type="text" name="number_of_rooms[]" class="form-control required_field" placeholder="' + lang.number_of_rooms + '">'
                             + '</div></div></div>'
-                            + '<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">'
-                            + '<div class="form-group"><label>' + lang.number_of_adults + '</label><div class="input-group">'
+                            + '<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">'
+                            + '<div class="form-group"><label>' + lang.adults + '</label><div class="input-group">'
                             + '<input type="text"  name="number_of_adults[]" class="form-control required_field" placeholder="' + lang.number_of_adults + '">'
-                            + '</div></div></div><div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">'
-                            + '<div class="form-group"><label>' + lang.number_of_children + '</label><div class="input-group">'
+                            + '</div></div></div><div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">'
+                            + '<div class="form-group"><label>' + lang.children + '</label><div class="input-group">'
                             + '<input type="text" value="0" name="number_of_children[]" class="form-control" placeholder="' + lang.number_of_children + '">'
-                            + '</div></div></div><div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">'
-                            + '<div class="form-group"><label>' + lang.number_of_infants + '</label><div class="input-group">'
+                            + '</div></div></div><div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">'
+                            + '<div class="form-group"><label>' + lang.infants + '</label><div class="input-group">'
                             + '<input type="text" value="0" name="number_of_infants[]" class="form-control" placeholder="' + lang.number_of_infants + '">'
-                            + '</div></div></div><div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">'
-                            + '<div class="form-group"><label></label><div class="input-group">'
+                            + '</div></div></div>';
+                    html += '<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12"><div class="form-group">';
+                    html += '<label>' + lang.meals + '</label><select name="meals[]" class="form-control rooms required_field">';
+                    html += '<option value="">' + lang.select_meal + '</option>';
+                    for (var i in result.meals) {
+                        html += '<option value="' + i + '">' + result.meals[i] + '</option>';
+                    }
+                    html += '</select></div></div>';
+                    html += '</div><div class="col-lg-2 col-md-2 col-sm-12 col-xs-12"><div class="form-group"><label></label><div class="input-group">'
                             + '<a href="" class="btn btn-danger remove"  >' + lang.remove + '</a></div></div></div></div>';
                     $(".rooms_block").append(html);
                 }
