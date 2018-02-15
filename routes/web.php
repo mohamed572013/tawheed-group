@@ -81,13 +81,23 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('admin/partners/update/{id}', "admin\PartnersController@update");
     Route::get('admin/partners/delete/{id}', "admin\PartnersController@destroy");
 
-// agents admin
+// gallery admin
     Route::get('admin/gallery', "admin\GalleryController@index")->name("admin_gallery");
     Route::get('admin/gallery/add', "admin\GalleryController@create");
     Route::post('admin/gallery/store', "admin\GalleryController@store");
     Route::get('admin/gallery/edit/{id}', "admin\GalleryController@edit");
     Route::post('admin/gallery/update/{id}', "admin\GalleryController@update");
     Route::get('admin/gallery/delete/{id}', "admin\GalleryController@destroy");
+
+// special offers admin
+    Route::get('admin/special', "admin\SpecialController@index")->name("admin_special");
+    Route::get('admin/special_book', "admin\SpecialController@book");
+    Route::get('admin/special/reserv_details/{id}', "admin\SpecialController@reserv_details");
+    Route::get('admin/special/add', "admin\SpecialController@create");
+    Route::post('admin/special/store', "admin\SpecialController@store");
+    Route::get('admin/special/edit/{id}', "admin\SpecialController@edit");
+    Route::post('admin/special/update/{id}', "admin\SpecialController@update");
+    Route::get('admin/special/delete/{id}', "admin\SpecialController@destroy");
 
 
 // countries admin
@@ -254,8 +264,11 @@ Route::group([
 //    Route::get('/hotels/one_hotel/{id}/{rel}', 'HotelsController@one_hotel');
 
     Route::get(LaravelLocalization::transRoute('/programs'), "ProgramsController@index");
+    Route::get(LaravelLocalization::transRoute('/special_offers'), "ProgramsController@special_offers");
+    Route::get(LaravelLocalization::transRoute('/programs/special_details/{id}'), "ProgramsController@special_details");
     Route::get(LaravelLocalization::transRoute('/programs/details/{id}/{title}'), "ProgramsController@details");
     Route::post('/programs/book_now', 'ProgramsController@book_now');
+    Route::post('/special_offers/book', 'ProgramsController@special_offers_book');
     Route::post('/programs/handleFilter', 'ProgramsController@handleFilter');
     Route::get('/programs/getNationalitiesOfDate/{date_id}/{lang}', 'ProgramsController@getNationalitiesOfDate');
     Route::get('/programs/getPriceByNationality/{program_id}/{nationality_id}/{date_of_trip}', 'ProgramsController@getPriceByNationality');

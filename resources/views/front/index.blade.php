@@ -112,7 +112,7 @@
     </div>
     <div class="section container">
         <div class="row">
-            <h2 class="pull-left">{{ trans("lang.special_offers") }}</h2>
+            <h2 class="pull-left">{{ trans("lang.umrah_packages") }}</h2>
             <div class="col-md-2 buttn mb10 pull-right">
                 <button  onclick="window.location = config.site_url + '/make_umrah'" class="full-width btn-large">{{ trans("lang.groups_book") }}</button>
             </div>

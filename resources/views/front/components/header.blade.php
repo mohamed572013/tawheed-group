@@ -18,8 +18,8 @@
             <div class="tg-addnavcartsearch">
                 <nav class="tg-addnav">
                     <ul>
-                        <li><a href="{{ url('/'.$lang.'/contact') }}">{{ trans('lang.contact_us') }}</a></li>
-                        <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.about_us') }}</a></li>
+                        <li><a href="{{ url('/'.$lang.'/special_offers') }}">{{ trans('lang.special_offers') }}</a></li>
+
                     </ul>
                 </nav>
 

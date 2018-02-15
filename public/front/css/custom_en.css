@@ -1348,3 +1348,7 @@ textarea {
     border-right: 1px dotted #cac8c8;
     min-height: 270px;
 }
+.Specialoffimg figure a img{
+    width: 100%;
+    border: 5px solid #fff;
+}

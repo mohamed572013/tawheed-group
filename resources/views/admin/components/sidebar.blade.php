@@ -207,6 +207,16 @@
                 </a>
             </li>
             <li class="nav-item  ">
+                <a href="{!! url('admin/special') !!}" class="nav-link ">
+                    <span class="title">عروض خاصة</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="{!! url('admin/special_book') !!}" class="nav-link ">
+                    <span class="title">حجز عروض خاصة</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
                 <a href="{!! url('admin/programs/reservations') !!}" class="nav-link ">
                     <span class="title">الحجز</span>
                 </a>

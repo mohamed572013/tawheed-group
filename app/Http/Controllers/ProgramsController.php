@@ -8,6 +8,7 @@ use App\Program;
 use App\Programservice;
 use App\Hotel;
 use App\City;
+use App\Special;
 use App\Room;
 use App\Programdate;
 use App\Programreservation;
@@ -250,6 +251,35 @@ class ProgramsController extends Controller {
             echo 0;
             die();
         }
+    }
+
+    public function special_offers(Request $request) {
+        $special_count = Special::where("active", 1)->get()->count();
+        $special = Special::where("active", 1)->orderBy("id", "desc")->limit(12)->get();
+        if ($request->ajax()) {
+            $offset = $request->offset;
+            $special = Special::where("active", 1)->orderBy("id", "desc")->limit(12)->offset($offset)->get();
+            $view = view("front.programs.special_render", compact('special'))->render();
+            echo $view;
+            die();
+        }
+        $other_special = Special::where("active", 1)->orderBy("id", "asc")->limit(12)->get();
+        return view("front.programs.special", compact('special', 'special_count', 'other_special'));
+    }
+
+    public function special_details($id) {
+        $details = Special::find($id);
+        return view("front.programs.special_details", compact('details', 'id'));
+    }
+
+    public function special_offers_book(Request $request) {
+        $special = new \App\Specialbook();
+        $special->special_id = $request->id;
+        $special->name = $request->name;
+        $special->email = $request->email;
+        $special->phone = $request->subject;
+        $special->message = $request->message;
+        $special->save();
     }
 
 }

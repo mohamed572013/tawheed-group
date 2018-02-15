@@ -22,6 +22,8 @@
                         <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/partners') }}">{{ trans("lang.partners") }}</a></li>
                         <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/news') }}">{{ trans("lang.news") }}</a></li>
                         <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/make_your_umrah') }}">{{ trans("lang.make_your_umrah") }}</a></li>
+                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/contact') }}">{{ trans('lang.contact_us') }}</a></li>
+                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.about_us') }}</a></li>
                     </ul>
                     <br />
                     <ul class="social-icons clearfix ">
