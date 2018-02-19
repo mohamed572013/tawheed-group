@@ -1363,3 +1363,8 @@ textarea {
 .bkorange:hover{
     color: #fff!important; 
 }
+/***********************************************************************/
+.newsdetailsimg{
+   width: 870px;
+   height: 484px; 
+}

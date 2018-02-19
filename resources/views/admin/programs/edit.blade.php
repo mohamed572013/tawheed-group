@@ -333,9 +333,11 @@
                     <div class="input-icon right">
                         <i class="fa"></i>
                         <select name="hotel_id[]" id="first_hotel" class="form-control hotels">
+                            @if($second_hotel)
                             @foreach($second_hotel as $one)
                             <option value="{{ $one->id }}">{{ $one->title_ar }}</option>
                             @endforeach
+                            @endif
                         </select>
                     </div>
                 </div>

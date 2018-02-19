@@ -20,7 +20,7 @@
 <div class="page-title-container">
     <div class="container">
         <div class="page-title pull-left">
-            <h2 class="entry-title">{{ trans("lang.abou_us") }}</h2>
+            <h2 class="entry-title">{{ trans("lang.about_us") }}</h2>
         </div>
         <ul class="breadcrumbs pull-right">
             <li><a href="{{ url('/'.$lang.'/') }}">{{ trans("lang.home") }}</a></li>

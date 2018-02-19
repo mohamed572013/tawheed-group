@@ -37,7 +37,7 @@
             <input type="hidden" id="min_price" value="{{ $minPrice }}" />
             <input type="hidden" id="max_price" value="{{ $maxPrice }}" />
             <div class="row">
-                <div class="col-sm-4 col-md-3 pull-left">
+                <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3 pull-left">
                     <h4 class="search-results-title">{{ trans("lang.filter") }}</h4>
                     <div class="toggle-container filters-container">
                         <div class="panel style1 arrow-right">
@@ -166,11 +166,11 @@
 
                     </div>
                 </div>
-                <div class="col-sm-8 col-md-9 pull-left">
+                <div class="col-sm-12 col-xs-12 col-md-9 col-lg-9 pull-left">
                     <div class="hotel-list">
                         <div class="row image-box hotel listing-style1 programs-block">
                             @foreach($programs as $one)
-                            <div class="col-sm-6 col-md-4 pull-left program-item">
+                            <div class="col-sm-6 col-xs-12 col-md-4  program-item">
                                 <article class="box">
                                     <figure class="animated" data-animation-type="fadeInDown" data-animation-delay="0">
                                         <a class="hover-effect" href="{{ url('/'.$lang.'/programs/details/'.$one->id."/".str_replace(' ', '-', $one->{$slug->title})) }}" title="{{ $one->{$slug->title} }}">

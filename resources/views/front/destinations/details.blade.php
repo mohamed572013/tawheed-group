@@ -19,9 +19,7 @@
 @section('content')
 <div class="page-title-container">
     <div class="container">
-        <div class="page-title pull-left">
-            <h2 class="entry-title">{{ $details->{$slug->title} }}</h2>
-        </div>
+
         <ul class="breadcrumbs pull-right">
             <li><a href="{{ url('/'.$lang.'/') }}">{{ trans("lang.home") }}</a></li>
             <li><a href="{{ url('/'.$lang.'/destinations') }}">{{ trans("lang.destinations") }}</a></li>

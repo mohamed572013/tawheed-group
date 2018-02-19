@@ -31,18 +31,18 @@
 <section id="content">
     <div class="container">
         <div class="row">
-            <div id="main" class="col-sm-8 col-md-9 pull-left">
+            <div id="main" class="col-sm-12 col-xs-12 col-md-9 ">
                 <div class="page">
                     <input type="hidden" id="news_count" value="{{ $news_count }}" />
                     <div class="post-content">
                         <div class="blog-infinite news-block">
 
                             @foreach($news as $one)
-                            <div class="post col-md-6 news-item">
+                            <div class="post col-md-6 col-sm-6 col-xs-12 news-item"> <!-- col-md-6 col-sm-6 col-xs-12 -->
                                 <div class="post-content-wrapper">
                                     <figure class="image-container">
                                         <a href="{{ url('/'.$lang.'/news/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}" class="hover-effect">
-                                            <img style="width: 400px;height: 160px;" src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}" />
+                                            <img style="width: 100%;height: 260px;" src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}" />
                                         </a>
                                     </figure>
                                     <div class="details">
@@ -64,7 +64,7 @@
 
 
 
-            <div class="sidebar col-sm-12 col-md-3 col-xs-12 pull-left">
+            <div class="sidebar col-sm-12 col-md-3 col-xs-12 ">
                 @if(!$other_news->isEmpty())
                 <div class="travelo-box">
                     <h4>{{ trans("lang.other_news") }}</h4>

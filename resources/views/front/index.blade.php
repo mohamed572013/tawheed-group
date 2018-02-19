@@ -246,10 +246,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-8 col-xs-12 pull-left" id="agents_block">
+                <div class="col-md-8 col-sm-12 col-xs-12 pull-left" id="agents_block">
 
                     @foreach($agents as $one)
-                    <div class="col-md-3 col-xs-6 wkyle">
+                    <div class="col-md-3 col-sm-12 col-xs-12 wkyle">
                         <a href="{{ $one->url }}" target="_blank">
                             <img style="height: 58px;width: 153px;" src="{{ asset($one->image) }}" alt="{{ $one->title }}"  title="{{ $one->title }}">
                         </a>

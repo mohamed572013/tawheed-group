@@ -10,6 +10,7 @@ return [
     'main_menu' => 'Main menu',
     'about_us' => 'About us',
     'home' => 'Home',
+    'other_services' => 'Other services',
     'similar_programs' => 'Similar programs',
     'vision' => 'Vision',
     'date' => 'Date',

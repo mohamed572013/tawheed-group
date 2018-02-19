@@ -2,7 +2,7 @@
     <div class="footer-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-3  pull-left bordered">
+                <div class="col-sm-12 col-md-3  col-lg-3  pull-left bordered">
 
                     <h2>{{ trans("lang.about_us") }}</h2>
                     <a href="{{ url('/'.$lang.'/') }}" title="{{ $settings->site_title_en }}">
@@ -11,9 +11,7 @@
                     <p> {{ mb_substr(str_replace('<br />', '', $settings->{$slug->about_us}), 0, 100) }} <a href='{{ url('/' . $lang . '/about') }}'>[ ... ]</a></p>
 
                 </div>
-
-
-                <div class="col-sm-6 col-md-3 pull-left bordered">
+                <div class="col-sm-12 col-md-3 col-lg-3 pull-left bordered">
                     <h2>{{ trans("lang.important_links") }}</h2>
                     <ul class="discover triangle hover row">
                         <li class="active col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/') }}">{{ trans("lang.home") }}</a></li>
@@ -72,7 +70,7 @@
 
                     </ul>
                 </div>
-                <div class="col-sm-6 col-md-3  pull-left bordered">
+                <div class="col-sm-12 col-md-3 col-lg-3  pull-left bordered">
                     <h2>{{ trans("lang.latest_news") }}</h2>
                     <ul class="travel-news">
                         @foreach($latest_news as $one)
@@ -94,7 +92,7 @@
 
                     </ul>
                 </div>
-                <div class="col-sm-6 col-md-3  pull-left">
+                <div class="col-sm-12 col-md-3 col-lg-3  pull-left">
                     <h2>{{ trans("lang.newsletter") }}</h2>
                     <p>{{ trans("lang.Subscribe_with_us_and_get_all_new_e-mail") }}</p>
                     <br />
@@ -119,8 +117,6 @@
                         <a href="javascript:;" class="contact-email">{{ $settings->site_email }}</a>
                     </address>
                 </div>
-
-
             </div>
         </div>
     </div>

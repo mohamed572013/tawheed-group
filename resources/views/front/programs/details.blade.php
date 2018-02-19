@@ -19,9 +19,7 @@
 @section('content')
 <div class="page-title-container">
     <div class="container">
-        <div class="page-title pull-left">
-            <h2 class="entry-title">{{ $details->{$slug->title} }}</h2>
-        </div>
+
         <ul class="breadcrumbs pull-right">
             <li><a href="{{ url('/'.$lang.'/') }}">{{ trans("lang.home") }}</a></li>
             <li><a href="{{ url('/'.$lang.'/programs') }}">{{ trans("lang.umrah_packages") }}</a></li>
@@ -35,7 +33,7 @@
 <section id="content">
     <div class="container">
         <div class="row">
-            <div id="main" class="col-md-9 pull-left">
+            <div id="main" class="col-md-9 col-lg-9 col-xs-12 col-sm-12 pull-left">
                 <div class="tab-container style1" id="cruise-main-content">
 
                     <div class="tab-content">

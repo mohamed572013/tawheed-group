@@ -21,7 +21,7 @@
     <div class="container">
         <ul class="breadcrumbs pull-right">
             <li><a href="{{ url('/'.$lang.'/') }}">{{ trans("lang.home") }}</a></li>
-            <li><a href="{{ url('/'.$lang.'/programs') }}">{{ trans("lang.umrah_packages") }}</a></li>
+            <li><a href="{{ url('/'.$lang.'/hotels') }}">{{ trans("lang.hotels") }}</a></li>
             <li class="active">
                 {{ $details->{$slug->title} }}
             </li>

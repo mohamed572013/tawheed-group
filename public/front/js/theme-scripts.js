@@ -532,7 +532,7 @@ function displayImageCarousel($item) {
         slideshow: dataSlideshow,
         itemWidth: dataItemWidth,
         itemMargin: dataItemMargin,
-        minItems: 2,
+        minItems: 1,
         pauseOnHover: true,
         asNavFor: dataSync,
         start: function (slider) {

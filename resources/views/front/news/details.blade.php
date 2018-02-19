@@ -39,7 +39,7 @@
                             <li>
                                 <article class="box">
                                     <figure>
-                                        <img style="width: 870px;height: 484px;"  src="{{ asset($details->image) }}" alt="{{ $details->{$slug->title} }}">
+                                        <img  class="newsdetailsimg"  src="{{ asset($details->image) }}" alt="{{ $details->{$slug->title} }}">
                                     </figure>
 
                                 </article>
