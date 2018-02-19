@@ -9,7 +9,7 @@
 <!--facebook-->
 <meta property="og:url"                content="{{ url('/'.$lang.'/hotels') }}" />
 <meta property="og:type"               content="article" />
-<meta property="og:title"              content="{{ trans("lang.hotels") }}" /> 
+<meta property="og:title"              content="{{ trans("lang.hotels") }}" />
 <meta property="og:description"        content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <meta property="og:image"              content="{{ asset($settings->site_logo) }}" />
 <meta property="og:image:width"        content="600">
@@ -200,7 +200,9 @@
 
 
                     </div>
+                    @if($count > 9)
                     <a href="#" class="uppercase full-width button btn-large" style="display: none;" id="show_more_hotels">{{ trans("lang.more") }}</a>
+                    @endif
                 </div>
             </div>
         </div>

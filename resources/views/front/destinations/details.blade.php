@@ -33,7 +33,7 @@
 <section id="content">
     <div class="container">
         <div class="row">
-            <div id="main" class="col-sm-12 col-md-9 col-xs-12 pull-left">
+            <div id="main" class="col-sm-12 col-md-8 col-xs-12 pull-left">
                 <div class="post">
                     <div class="flexslider photo-gallery style4 block" data-fix-control-nav-pos="1">
                         <ul class="slides image-box style9">
@@ -61,7 +61,7 @@
 
                 </div>
             </div>
-            <div class="sidebar col-sm-12 col-md-3 col-xs-12 pull-left">
+            <div class="sidebar col-sm-12 col-md-4 col-xs-12 pull-left">
                 @if(!$details->sighseeing->isEmpty())
                 <div class="travelo-box">
                     <h4>{{ trans("lang.sightseeing") }}</h4>

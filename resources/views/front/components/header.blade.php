@@ -10,7 +10,7 @@
                     </li>
                     <li>
                         <i><img src="{{asset('front/images/icons/icon-02.png')}}" alt="image destinations"></i>
-                        <span>{{ trans('lang.groups_book') }}
+                        <span> 
                             <a href="{{ url('/'.$lang.'/make_umrah') }}">{{ trans('lang.send_request_now') }}</a></span>
                     </li>
                 </ul>

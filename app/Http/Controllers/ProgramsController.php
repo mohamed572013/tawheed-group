@@ -156,7 +156,8 @@ class ProgramsController extends Controller {
 
     public function details($id) {
         $today = date("Y-m-d");
-        $details = Program::with("country")->with("slider")->with("dates")->find($id);
+        $details = Program::with("country")->with("slider")->with("dates")->with("transport")->find($id);
+//        dd($details);
         $services = json_decode($details->services);
         $city_ids = json_decode($details->city_id);
         $hotel_ids = json_decode($details->hotel_id);

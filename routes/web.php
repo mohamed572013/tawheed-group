@@ -25,13 +25,22 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('admin/sliders/store_slider', "admin\SlidersController@store_slider");
     Route::get('admin/sliders/deleteslider/{id}', "admin\SlidersController@deleteslider");
 
-// categories admin
+// currencies admin
     Route::get('admin/currencies', "admin\CurrenciesController@index")->name("admin_currencies");
     Route::get('admin/currencies/add', "admin\CurrenciesController@create");
     Route::post('admin/currencies/store', "admin\CurrenciesController@store");
     Route::get('admin/currencies/edit/{id}', "admin\CurrenciesController@edit");
     Route::post('admin/currencies/update/{id}', "admin\CurrenciesController@update");
     Route::get('admin/currencies/delete/{id}', "admin\CurrenciesController@destroy");
+
+
+// transportations admin
+    Route::get('admin/transportations', "admin\TransportationsController@index")->name("admin_transportations");
+    Route::get('admin/transportations/add', "admin\TransportationsController@create");
+    Route::post('admin/transportations/store', "admin\TransportationsController@store");
+    Route::get('admin/transportations/edit/{id}', "admin\TransportationsController@edit");
+    Route::post('admin/transportations/update/{id}', "admin\TransportationsController@update");
+    Route::get('admin/transportations/delete/{id}', "admin\TransportationsController@destroy");
 
 // services admin
     Route::get('admin/services', "admin\ServicesController@index")->name("admin_services");

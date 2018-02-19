@@ -250,13 +250,13 @@
                         @foreach($similar_hotels as $one)
                         <article class="box">
                             <figure>
-                                <a href="{{ url('/'.$lang.'/programs/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">
+                                <a href="{{ url('/'.$lang.'/hotels/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">
                                     <img src="{{ asset($one->image) }}" style="width: 63px;height: 69px;" alt="{{ $one->{$slug->title} }}">
                                 </a>
                             </figure>
                             <div class="details">
                                 <h5 class="box-title">
-                                    <a href="{{ url('/'.$lang.'/programs/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">{{ $one->{$slug->title} }}</a>
+                                    <a href="{{ url('/'.$lang.'/hotels/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">{{ $one->{$slug->title} }}</a>
                                 </h5>
                             </div>
                         </article>
@@ -268,9 +268,16 @@
 
                 <div class="travelo-box contact-box">
                     <h4 class="box-title">{{ trans("lang.need_help") }}</h4>
-                    <p>{{ mb_substr($settings->{$slug->about_us}, 0, 100) }}</p>
+                    <p>{{ mb_substr(str_replace('<br />', '', $settings->{$slug->about_us}), 0, 100) }}
+                        <a href="{{ url('/'.$lang.'/about') }}"> [ ... ]</a>
+                    </p>
                     <address class="contact-details">
-                        <span class="contact-phone"><i class="soap-icon-phone"></i> {{ $settings->site_phone }}
+                        <span class="contact-phone">
+                            @php($phone_array = explode('/', $settings->site_phone))
+                            @foreach($phone_array as $one)
+                            <i class="soap-icon-phone"></i>
+                            {{ $one }} <br />
+                            @endforeach
                         </span>
                         <br />
                         <a href="javascript:;" class="contact-email">{{ $settings->site_email }}</a>

@@ -137,6 +137,11 @@
                                                 <dl>
                                                     <dt>{{ $one->city->{$slug->title} }}</dt>
                                                 </dl>
+                                                @if($one->distance_from_the_haram != "" && $one->distance_from_the_haram != NULL)
+                                                <dl>
+                                                    <dt>{{ $one->distance_from_the_haram }}</dt>
+                                                </dl>
+                                                @endif
                                             </div>
                                             <hr class="hidden-xs">
 
@@ -309,7 +314,14 @@
                             <i class="fa fa-location-arrow"></i>  {{ $one->{$slug->title} }}
                         </div>
                         @endforeach
-                        <!--<a class="button yellow full-width uppercase btn-small">{{ trans("lang.book_now") }}</a>-->
+
+
+                        <h2 class="box-title">{{ trans("lang.transportation") }} : </h2>
+                        <div data-placement="top" data-toggle="tooltip" title="( {{ $details->transport->{$slug->title} }} )" data-original-title="( {{ $details->transport->{$slug->title} }} )">
+                            <i class="fa fa-location-arrow"></i>  {{ $details->transport->{$slug->title} }}
+                        </div>
+
+
                     </div>
                 </article>
 

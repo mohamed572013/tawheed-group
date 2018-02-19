@@ -47,7 +47,7 @@
                         <ul class="tabs full-width">
                             <li class="active"><a href="#unlimited-layouts" data-toggle="tab">{{ trans("lang.vision") }}</a></li>
                             <li><a href="#design-inovation" data-toggle="tab">{{ trans("lang.mission") }}</a></li>
-                            <li><a href="#8-sliders" data-toggle="tab">{{ trans("lang.target") }}</a></li>
+                            <li><a href="#8-sliders" data-toggle="tab">{{ trans("lang.goal") }}</a></li>
                             <li><a href="#best-support" data-toggle="tab">{{ trans("lang.why_us") }}</a></li>
 
                         </ul>
@@ -66,7 +66,7 @@
 
                             </div>
                             <div class="tab-pane fade" id="8-sliders">
-                                <h4>{{ trans("lang.target") }}</h4>
+                                <h4>{{ trans("lang.goal") }}</h4>
                                 <p>  {!! $settings->{$slug->goal} !!} </p>
 
                             </div>
@@ -223,7 +223,7 @@
             <div class="row text-center description block">
                 <h1>{{ trans('lang.our_agents_around_the_world') }}</h1>
                 <p>
-                    {{ trans('lang.Know_with_our_agents_around_the_world_to_know_the_agents_in_your_country_choose_the_Bad') }}
+                    {{ trans('lang.Know_with_our_agents_around_the_world_to_know_the_agents_in_your_country') }}
                 </p>
             </div>
 

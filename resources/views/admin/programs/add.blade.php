@@ -243,6 +243,22 @@
                 </div>
             </div>
             <div class="form-group  margin-top-20">
+                <label class="control-label col-md-2"> وسيلة المواصلات
+                    <span class="required"> * </span>
+                </label>
+                <div class="col-md-4">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
+                        <select name="transportation_id" id="transportation" class="form-control">
+                            <option value="" selected disabled>اختر وسيلة المواصلات</option>
+                            @foreach($transports as $one)
+                            <option value="{{ $one->id }}">{{ $one->title_ar }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group  margin-top-20">
                 <label class="control-label col-md-2"> الدولة
                     <span class="required"> * </span>
                 </label>

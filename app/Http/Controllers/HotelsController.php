@@ -18,16 +18,33 @@ use App\Hotelreservation;
  */
 class HotelsController extends Controller {
 
-    public function index(Request $request) {
+    public function index() {
         $hotels_count = Hotel::get()->count();
-        $hotels = Hotel::
-                orderBy("id", "desc")
+        $rooms2 = Room::pluck("id");    // default rooms id is all id of rooms
+        $end_date = $this->getTheLatestDate();  // default end date is the latest date in table
+        $start_date = date("Y-m-d");   // default start date is today
+        $hotels = Hotel::orderBy("id", "desc")
                 ->with("hotel_rooms")
+                ->whereHas("hotel_rooms", function($query) use($start_date, $end_date, $rooms2) {    // get hotels only have rooms
+                    $query->where("start_date", ">=", $start_date);
+                    $query->where("end_date", "<", $end_date);
+                    $query->whereIn("room_id", $rooms2);
+                })
                 ->limit(9)
                 ->get();
+        $count = Hotel::with("hotel_rooms")   // get with the rooms of the hotel
+                ->whereHas("hotel_rooms", function($query) use($start_date, $end_date, $rooms2) {    // get hotels only have rooms
+                    $query->where("start_date", ">=", $start_date);
+                    $query->where("end_date", "<", $end_date);
+                    $query->whereIn("room_id", $rooms2);
+                })
+                ->orderBy("id", "desc")
+                ->get()
+                ->count();
+
         $cities = City::all();
         $rooms = Room::all();
-        return view("front.hotels.index", compact('hotels', 'hotels_count', 'cities', 'rooms'));
+        return view("front.hotels.index", compact('hotels', 'hotels_count', 'cities', 'rooms', 'count'));
     }
 
     public function details($id, $title) {

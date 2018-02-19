@@ -40,6 +40,10 @@ var FormValidation = function () {
                     required: true,
                     number: true
                 },
+                transportation_id: {
+                    required: true,
+                    number: true
+                },
                 hotel_id: {
                     required: true,
                     number: true
@@ -118,6 +122,10 @@ var FormValidation = function () {
                     number: true
                 },
                 category_id: {
+                    required: true,
+                    number: true
+                },
+                transportation_id: {
                     required: true,
                     number: true
                 },
@@ -217,6 +225,8 @@ var FormValidation = function () {
         $("select[name='category_id']").val(country_id);
         var stars = $("#stars").val();
         $("select[name='stars']").val(stars);
+        var transport = $("#transport").val();
+        $("select[name='transportation_id']").val(transport);
     };
 
     var handleSetCitiesAndNights = function () {

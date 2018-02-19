@@ -44,7 +44,7 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="type" value="0">
                         <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
                                 <div class="form-group">
                                     <label>{{ trans("lang.season") }}</label>
                                     <select name="season_id" class="form-control required_field">

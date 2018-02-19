@@ -22,6 +22,7 @@
         <form class="form-horizontal form-row-seperated" method="post" action="{!! url('admin/programs/update/'.$id) !!}" enctype="multipart/form-data" id="program_form">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" value="edit" id="form_type" />
+            <input type="hidden" value="{{ $edit->transportation_id }}" id="transport" />
             <input type="hidden" value="{{ $edit->country_id }}" id="country_id" />
             <input type="hidden" value="{{ $edit->category_id }}" id="category_id" />
             <input type="hidden" value="{{ $edit->city_id }}" id="city_id" />
@@ -243,6 +244,22 @@
                         <select name="category_id" id="category" class="form-control">
                             <option value="" selected disabled>اختر الموسم</option>
                             @foreach($categories as $one)
+                            <option value="{{ $one->id }}">{{ $one->title_ar }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group  margin-top-20">
+                <label class="control-label col-md-2"> وسيلة المواصلات
+                    <span class="required"> * </span>
+                </label>
+                <div class="col-md-4">
+                    <div class="input-icon right">
+                        <i class="fa"></i>
+                        <select name="transportation_id" class="form-control">
+                            <option value="" selected disabled>اختر وسيلة المواصلات</option>
+                            @foreach($transports as $one)
                             <option value="{{ $one->id }}">{{ $one->title_ar }}</option>
                             @endforeach
                         </select>

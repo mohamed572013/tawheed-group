@@ -31,6 +31,11 @@
                 </a>
             </li>
             <li class="nav-item  ">
+                <a href="{!! url('admin/transportations') !!}" class="nav-link ">
+                    <span class="title">وسائل المواصلات</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
                 <a href="{!! url('admin/nationalities') !!}" class="nav-link ">
                     <span class="title">الجنسيات</span>
                 </a>

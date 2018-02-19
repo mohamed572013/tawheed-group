@@ -1161,6 +1161,7 @@ article.detailed-logo h2.box-title {
     padding: 15px;
     border-right: 3px solid #fb7405;
     margin-bottom: 40px;
+    margin-top: -45px;
 }
 .des-checkbox-inline .des-checkbox ,.des-radio-inline .des-radio{
     display: inline-block;
@@ -1303,4 +1304,14 @@ textarea {
 .Specialoffimg figure a img{
     width: 100%;
     border: 5px solid #fff;
+}
+.bkorange{
+    background-color: #fe7600!important;
+    color: #fff!important;
+}
+.bkorange a,.bkorange a:hover{
+    color: #fff!important;
+}
+.bkorange:hover{
+    color: #fff!important; 
 }

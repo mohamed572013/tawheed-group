@@ -34,7 +34,8 @@
 @endif
 <!-- Responsive Styles -->
 {!! HTML::style('front/css/responsive.css') !!}
-
+<!-- media Styles -->
+{!! HTML::style('front/css/media.css') !!}
 <!-- CSS for IE -->
 <!--[if lte IE 9]>
     <link rel="stylesheet" type="text/css" href="css/ie.css" />

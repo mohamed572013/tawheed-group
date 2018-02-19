@@ -38,11 +38,12 @@ class ProgramsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
+        $transports = \App\Transportation::all();
         $countries = Country::all();
         $services = Programservice::all();
         $hotels = \App\Hotel::all();
         $categories = Category::all();
-        return view('admin.programs.add', compact('countries', 'services', 'hotels', 'categories'));
+        return view('admin.programs.add', compact("transports", 'countries', 'services', 'hotels', 'categories'));
     }
 
     /**
@@ -74,6 +75,7 @@ class ProgramsController extends Controller {
         $programs->country_id = $request->country_id;
         $programs->stars = $request->stars;
         $programs->category_id = $request->category_id;
+        $programs->transportation_id = $request->transportation_id;
         $programs->nights = json_encode($request->nights);
         $programs->city_id = json_encode($request->city_id);
         $programs->hotel_id = json_encode($request->hotel_id);
@@ -99,6 +101,7 @@ class ProgramsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+        $transports = \App\Transportation::all();
         $services = Programservice::all();
         $edit = Program::find($id);
         $categories = Category::all();
@@ -114,7 +117,7 @@ class ProgramsController extends Controller {
         if (count($city_id) > 1) {
             $second_hotel = Hotel::where("city_id", $city_id[1])->get();
         }
-        return view('admin.programs.edit', compact("nights", "categories", "id", 'edit', 'cities', 'countries', 'services', 'selected_services', 'first_hotel', 'second_hotel'));
+        return view('admin.programs.edit', compact("transports", "nights", "categories", "id", 'edit', 'cities', 'countries', 'services', 'selected_services', 'first_hotel', 'second_hotel'));
     }
 
     /**
@@ -145,6 +148,7 @@ class ProgramsController extends Controller {
         $programs->description_en = $request->description_en;
         $programs->description_ur = $request->description_ur;
         $programs->country_id = $request->country_id;
+        $programs->transportation_id = $request->transportation_id;
         $programs->stars = $request->stars;
         $programs->nights = json_encode($request->nights);
         $programs->category_id = $request->category_id;

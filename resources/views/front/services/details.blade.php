@@ -31,7 +31,7 @@
 <section id="content">
     <div class="container">
         <div class="row">
-            <div id="main" class="col-md-12 pull-left">
+            <div id="main" class="col-md-8 col-lg-8  col-sm-12 col-xs-12 pull-left">
                 <div class="tab-container style1" id="cruise-main-content">
                     <div class="serviceimg"><img src="{{asset($details->image)}}" alt="{{ $details->{$slug->title} }}" /></div>
                 </div>
@@ -46,13 +46,63 @@
 
                             <div class="long-description">
                                 <h2>{{ $details->{$slug->title} }}</h2>
-                                <p>{{ $details->{$slug->content} }}</p>
+                                <p>{!! $details->{$slug->content} !!}</p>
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
+            <div class="sidebar col-md-4 col-sm-12 col-md-4 col-xs-12 pull-left">
+                <div class="travelo-box">
+                    <h4>{{ trans("lang.other_services") }}</h4>
+                    <div class="image-box style14">
+
+
+                        @foreach($other_services as $one)
+                        <article class="box">
+                            <figure>
+                                <a href="{{ url('/'.$lang.'/services/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">
+                                    <img src="{{ asset($one->image) }}" style="width: 63px;height: 69px;" alt="{{ $one->{$slug->title} }}">
+                                </a>
+                            </figure>
+                            <div class="details">
+                                <h5 class="box-title">
+                                    <a href="{{ url('/'.$lang.'/services/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">{{ $one->{$slug->title} }}</a>
+                                </h5>
+                                <p>{{ mb_substr(str_replace('<br />', '', $one->{$slug->content}), 0, 80) }}</p>
+                            </div>
+                        </article>
+                        @endforeach
+
+
+
+                    </div>
+                </div>
+
+
+                <div class="travelo-box contact-box">
+                    <h4 class="box-title">{{ trans("lang.need_help") }}</h4>
+                    <p>{{ mb_substr(str_replace('<br />', '', $settings->{$slug->about_us}), 0, 100) }}
+                        <a href="{{ url('/'.$lang.'/about') }}"> [ ... ]</a>
+                    </p>
+                    <address class="contact-details">
+                        <span class="contact-phone">
+                            @php($phone_array = explode('/', $settings->site_phone))
+                            @foreach($phone_array as $one)
+                            <i class="soap-icon-phone"></i>
+                            {{ $one }} <br />
+                            @endforeach
+                        </span>
+                        <br />
+                        <a href="javascript:;" class="contact-email">{{ $settings->site_email }}</a>
+                    </address>
+                </div>
+
+
+
+            </div>
+
 
         </div>
     </div>

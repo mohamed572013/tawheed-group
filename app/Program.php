@@ -28,4 +28,8 @@ class Program extends Model {
         return $this->hasMany("App\Programdate", "program_id");
     }
 
+    public function transport() {
+        return $this->belongsTo("App\Transportation", "transportation_id");
+    }
+
 }

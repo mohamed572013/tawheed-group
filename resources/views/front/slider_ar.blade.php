@@ -29,7 +29,7 @@
 
     @if($one->url != "")
     <!-- LAYER NR. 2 -->
-    <div class="tp-caption largewhitebg_button1   tp-resizeme slidetxt"
+    <div class="tp-caption largewhitebg_button1  bkorange tp-resizeme slidetxt"
          id="slide-21-layer-2"
          data-x="1100"
          data-y="342"
@@ -374,7 +374,7 @@
     </div>
     @if($one->url != "")
     <!-- LAYER NR. 9 -->
-    <div class="tp-caption largewhitebg_button1   tp-resizeme slidetxt"
+    <div class="tp-caption largewhitebg_button1 bkorange  tp-resizeme slidetxt"
          id="slide-20-layer-9"
          data-x="1100"
          data-y="342"

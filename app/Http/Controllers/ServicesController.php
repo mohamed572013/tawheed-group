@@ -17,8 +17,9 @@ class ServicesController extends Controller {
     }
 
     public function details($id) {
+        $other_services = Service::where("id", "!=", $id)->limit(3)->get();
         $details = Service::find($id);
-        return view("front.services.details", compact('details'));
+        return view("front.services.details", compact('details', 'other_services'));
     }
 
 }
