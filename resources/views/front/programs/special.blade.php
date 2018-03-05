@@ -53,8 +53,9 @@
 
 
                     </div>
+                    @if(count($special) > 12)
                     <a href="#" id="show_more_offers" class="uppercase full-width button btn-large">{{ trans("lang.more") }}</a>
-
+                    @endif
 
                 </div>
             </div>

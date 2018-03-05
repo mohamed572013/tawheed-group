@@ -180,7 +180,7 @@
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                     <div class="tour-packages row image-box listing-style2 add-clearfix hotels-block">
                         @foreach($hotels as $one)
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-xs-12 pull-left hotel-item">
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-xs-12 pull-left hotel-item">
                             <article class="box animated styledbox" data-animation-type="fadeInDown">
                                 <figure>
                                     <a href="{{ url('/'.$lang.'/hotels/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">

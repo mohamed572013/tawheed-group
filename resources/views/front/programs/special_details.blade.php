@@ -75,6 +75,7 @@
                 </div>
             </div>
             <!-- *******************425px**************************************************** -->
+
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                 <article class="box animated Specialoffimg" data-animation-type="fadeInDown">
                     <figure>

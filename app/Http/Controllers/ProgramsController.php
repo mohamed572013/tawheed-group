@@ -265,6 +265,7 @@ class ProgramsController extends Controller {
             die();
         }
         $other_special = Special::where("active", 1)->orderBy("id", "asc")->limit(12)->get();
+//        dd(count($other_special));
         return view("front.programs.special", compact('special', 'special_count', 'other_special'));
     }
 

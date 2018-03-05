@@ -15,7 +15,7 @@
                     <h2>{{ trans("lang.important_links") }}</h2>
                     <ul class="discover triangle hover row">
                         <li class="active col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/') }}">{{ trans("lang.home") }}</a></li>
-                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/sightseeing') }}">{{ trans("lang.sightseeing") }}</a></li>
+                        <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/destinations') }}">{{ trans("lang.destinations") }}</a></li>
                         <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/services') }}">{{ trans("lang.services") }}</a></li>
                         <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/partners') }}">{{ trans("lang.partners") }}</a></li>
                         <li class="col-xs-6 pull-left"><a href="{{ url('/'.$lang.'/news') }}">{{ trans("lang.news") }}</a></li>

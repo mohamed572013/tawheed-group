@@ -101,8 +101,8 @@
                     <li class="hvr-pulse menu-item-has-children"><a href="javascript:void(0);">{{ trans('lang.book_for_me') }}</a>
 
                         <ul>
-                            <li><a href="#">World Hotels</a></li>
-                            <li><a href="#">Umroh Plus</a></li>
+                            <li><a href="javascript:;">World Hotels</a></li>
+                            <li><a href="javascript:;">Umroh Plus</a></li>
 
                         </ul>
 
@@ -124,14 +124,19 @@
                     <ul>
                         <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.vision') }}</a></li>
                         <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.mission') }}</a></li>
-                        <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.target') }}</a></li>
+                        <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.goal') }}</a></li>
 
                     </ul>
                 </li>
-                <li class="hvr-pulse menu-item-has-children"><a href="javascript:void(0);">{{ trans('lang.sightseeing') }}</a>
+                <li class="hvr-pulse menu-item-has-children"><a href="{{ url('/'.$lang.'/destinations') }}">{{ trans('lang.cities') }}</a>
                     <ul>
-                        <li><a href="?page=citys_en">Makkah</a></li>
-                        <li><a href="?page=citys_en">Madina El Monawara</a></li>
+                        @foreach($destinations as $one)
+                        <li>
+                            <a href="{{ url('/'.$lang.'/destinations/details/'.$one->id.'/'.str_replace(' ','-', $one->{$slug->title})) }}">
+                                {{ $one->{$slug->title} }}
+                            </a>
+                        </li>
+                        @endforeach
                     </ul>
                 </li>
                 <li class="hvr-pulse"><a href="{{ url('/'.$lang.'/services') }}">{{ trans('lang.services') }}</a></li>
@@ -142,8 +147,8 @@
                 <li class="hvr-pulse menu-item-has-children"><a href="javascript:void(0);">{{ trans('lang.ehgezly') }}</a>
 
                     <ul>
-                        <li><a href="#">World Hotels</a></li>
-                        <li><a href="#">Umroh Plus</a></li>
+                        <li><a href="javascript:;">World Hotels</a></li>
+                        <li><a href="javascript:;">Umroh Plus</a></li>
 
                     </ul>
 
@@ -154,17 +159,19 @@
             </ul>
 
             <ul class="mobile-topnav container">
-                <li><a href="#">{{ trans('lang.my_account') }}</a></li>
                 <li class="ribbon language menu-color-skin">
-                    <a href="#" data-toggle="collapse">العربية</a>
+                    <a href="javascript:;" data-toggle="collapse">{{ LaravelLocalization::getCurrentLocaleName() }}</a>
                     <ul class="menu mini">
-                        <li><a href="?page=index_en" title=" ">ENGLISH</a></li>
-                        <li><a href="#" title="">الأردية </a></li>
-
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        @if(LaravelLocalization::getCurrentLocaleName() != $properties['native'])
+                        <li>
+                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"> {{ $properties['native'] }}</a>
+                        </li>
+                        @endif
+                        @endforeach
                     </ul>
                 </li>
-                <li><a href="#" class="soap-popupbox">الدخول</a></li>
-                <li><a href="#" class="soap-popupbox">تسجيل جديد</a></li>
+
 
             </ul>
         </nav>
