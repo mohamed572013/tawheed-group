@@ -43,8 +43,8 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-globe" aria-hidden="true"></i>
                                             </div>
-                                            <select class="form-control" id="city_selected">
-                                                <option selected="selected" value="">{{ trans("lang.all_cities") }}</option>
+                                            <select class="form-control required_field" id="city_selected">
+                                                <option selected="selected" value="">{{ trans("lang.choose_city") }}</option>
                                                 @foreach($cities as $one)
                                                 <option data-id="{{ $one->id }}" class="city" value="{{ $one->id }}">{{ $one->{$slug->title} }}</option>
                                                 @endforeach
@@ -63,11 +63,11 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                                 </div>
-                                                <select id="check_in_day" class="form-control">
+                                                <select id="check_in_day" class="form-control required_field">
                                                     <option selected="selected" value="">{{ trans("lang.choose_day") }}</option>
                                                     @for($i = 1; $i <= 31; $i++)
                                                     @if($i < 10)
-                                                    <option value="0{{ $i }}">{{ $i }}</option>
+                                                    <option value="0{{ $i }}">0{{ $i }}</option>
                                                     @else
                                                     <option value="{{ $i }}">{{ $i }}</option>
                                                     @endif
@@ -83,11 +83,11 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                                 </div>
-                                                <select id="check_in_month" class="form-control">
+                                                <select id="check_in_month" class="form-control required_field">
                                                     <option selected="selected" value="">{{ trans("lang.choose_month") }}</option>
                                                     @for($i = 1; $i <= 12; $i++)
                                                     @if($i < 10)
-                                                    <option value="0{{ $i }}">{{ $i }}</option>
+                                                    <option value="0{{ $i }}">0{{ $i }}</option>
                                                     @else
                                                     <option value="{{ $i }}">{{ $i }}</option>
                                                     @endif
@@ -108,11 +108,11 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                                 </div>
-                                                <select id="check_out_day" class="form-control">
+                                                <select id="check_out_day" class="form-control required_field">
                                                     <option selected="selected" value="">{{ trans("lang.choose_day") }}</option>
                                                     @for($i = 1; $i <= 31; $i++)
                                                     @if($i < 10)
-                                                    <option value="0{{ $i }}">{{ $i }}</option>
+                                                    <option value="0{{ $i }}">0{{ $i }}</option>
                                                     @else
                                                     <option value="{{ $i }}">{{ $i }}</option>
                                                     @endif
@@ -128,11 +128,11 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                                 </div>
-                                                <select id="check_out_month" class="form-control">
+                                                <select id="check_out_month" class="form-control required_field">
                                                     <option selected="selected" value="">{{ trans("lang.choose_month") }}</option>
                                                     @for($i = 1; $i <= 12; $i++)
                                                     @if($i < 10)
-                                                    <option value="0{{ $i }}">{{ $i }}</option>
+                                                    <option value="0{{ $i }}">0{{ $i }}</option>
                                                     @else
                                                     <option value="{{ $i }}">{{ $i }}</option>
                                                     @endif
@@ -153,7 +153,7 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-check-square" aria-hidden="true"></i>
                                                 </div>
-                                                <select  class="form-control rooms">
+                                                <select  class="form-control rooms required_field">
                                                     <option selected="selected" value="">{{ trans("lang.select_room") }}</option>
                                                     @foreach($rooms as $one)
                                                     <option value="{{ $one->id }}">{{ $one->{$slug->title} }}</option>

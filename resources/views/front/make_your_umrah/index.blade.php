@@ -44,8 +44,8 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="type" value="0">
                         <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
-                                <div class="form-group">
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 seasonselect">
+                                <div class="form-group ">
                                     <label>{{ trans("lang.season") }}</label>
                                     <select name="season_id" class="form-control required_field">
                                         <option value="">{{ trans("lang.select_season") }}</option>

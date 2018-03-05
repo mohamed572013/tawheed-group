@@ -481,6 +481,7 @@ function displayPhotoGallery($item) {
         animationLoop: true,
         slideshow: true,
         pauseOnHover: true,
+        minItems: 1,
         sync: dataSync,
         start: function (slider) {
             if (typeof dataFixPos != "undefined" && dataFixPos == "1") {

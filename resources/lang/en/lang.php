@@ -9,6 +9,7 @@ return [
     'contact_us' => 'Contact us',
     'main_menu' => 'Main menu',
     'about_us' => 'About us',
+    'book_for_me' => 'Book for me',
     'home' => 'Home',
     'other_services' => 'Other services',
     'similar_programs' => 'Similar programs',

@@ -229,7 +229,7 @@
 
 
             <div class="row">
-                <div class="col-md-4 pull-left">
+                <div class="col-md-4 col-sm-12 col-xs-12">
                     <div class="col-xs-6 col-md-12">
 
                         <div class="selector mb20">
@@ -246,12 +246,12 @@
                     </div>
                 </div>
 
-                <div class="col-md-8 col-sm-12 col-xs-12 pull-left" id="agents_block">
+                <div class="col-md-8 col-sm-12 col-xs-12" id="agents_block">
 
                     @foreach($agents as $one)
-                    <div class="col-md-3 col-sm-12 col-xs-12 wkyle">
+                    <div class="col-md-3 col-sm-6 col-xs-6 wkyle">
                         <a href="{{ $one->url }}" target="_blank">
-                            <img style="height: 58px;width: 153px;" src="{{ asset($one->image) }}" alt="{{ $one->title }}"  title="{{ $one->title }}">
+                            <img style="height: 100px;width: 100%;" src="{{ asset($one->image) }}" alt="{{ $one->title }}"  title="{{ $one->title }}">
                         </a>
                     </div>
                     @endforeach

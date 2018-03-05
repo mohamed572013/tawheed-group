@@ -10,6 +10,7 @@ return [
     'main_menu' => 'مین مینو',
     'about_us' => 'ہمارے بارے میں',
     'home' => 'گھر',
+    'book_for_me' => 'میرے لئے کتاب',
     'other_services' => 'دیگر خدمات',
     'similar_programs' => 'اسی طرح کے پروگرام',
     'vision' => 'ویژن',

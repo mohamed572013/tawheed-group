@@ -10,7 +10,7 @@
                     </li>
                     <li>
                         <i><img src="{{asset('front/images/icons/icon-02.png')}}" alt="image destinations"></i>
-                        <span> 
+                        <span>
                             <a href="{{ url('/'.$lang.'/make_umrah') }}">{{ trans('lang.send_request_now') }}</a></span>
                     </li>
                 </ul>
@@ -73,15 +73,7 @@
             <nav id="main-menu" role="navigation">
                 <ul class="menu">
                     <li class="current-menu-item hvr-pulse"><a href="{{ url('/'.LaravelLocalization::getCurrentLocale().'/') }}">{{ trans('lang.home') }}</a></li>
-                    <!--                    <li class="hvr-pulse"><a href="{{ url('/'.LaravelLocalization::getCurrentLocale().'/about') }}">{{ trans('lang.about_us') }}</a>
 
-                                            <ul>
-                                                <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.vision') }}</a></li>
-                                                <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.mission') }}</a></li>
-                                                <li><a href="{{ url('/'.$lang.'/about') }}">{{ trans('lang.target') }}</a></li>
-
-                                            </ul>
-                                        </li>-->
                     <li class="hvr-pulse menu-item-has-children">
                         <a href="{{ url('/'.$lang.'/destinations') }}">
                             {{ trans('lang.cities') }}
@@ -106,7 +98,7 @@
                     <li class="hvr-pulse"><a href="{{ url('/'.LaravelLocalization::getCurrentLocale().'/make_your_umrah') }}">{{ trans('lang.make_your_umrah') }}</a></li>
                     <li class="hvr-pulse"><a href="{{ url('/'.LaravelLocalization::getCurrentLocale().'/hotels') }}">{{ trans('lang.hotels') }}</a></li>
                     <li class="hvr-pulse"><a href="{{ url('/'.LaravelLocalization::getCurrentLocale().'/programs') }}">{{ trans('lang.umrah_packages') }}</a></li>
-                    <li class="hvr-pulse menu-item-has-children"><a href="javascript:void(0);">{{ trans('lang.ehgezly') }}</a>
+                    <li class="hvr-pulse menu-item-has-children"><a href="javascript:void(0);">{{ trans('lang.book_for_me') }}</a>
 
                         <ul>
                             <li><a href="#">World Hotels</a></li>

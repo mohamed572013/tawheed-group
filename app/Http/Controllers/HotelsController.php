@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use DB;
 use Illuminate\Http\Request;
 use App\Hotel;
@@ -20,35 +21,40 @@ class HotelsController extends Controller {
 
     public function index() {
         $hotels_count = Hotel::get()->count();
-        $rooms2 = Room::pluck("id");    // default rooms id is all id of rooms
-        $end_date = $this->getTheLatestDate();  // default end date is the latest date in table
         $start_date = date("Y-m-d");   // default start date is today
         $hotels = Hotel::orderBy("id", "desc")
                 ->with("hotel_rooms")
-                ->whereHas("hotel_rooms", function($query) use($start_date, $end_date, $rooms2) {    // get hotels only have rooms
-                    $query->where("start_date", ">=", $start_date);
-                    $query->where("end_date", "<", $end_date);
-                    $query->whereIn("room_id", $rooms2);
+                ->whereHas("hotel_rooms", function($query) use($start_date) {    // get hotels only have rooms
+                    $query->where("start_date", ">", $start_date);
+                    $query->where("currency_id", Session::get("currency_id"));
                 })
                 ->limit(9)
                 ->get();
         $count = Hotel::with("hotel_rooms")   // get with the rooms of the hotel
-                ->whereHas("hotel_rooms", function($query) use($start_date, $end_date, $rooms2) {    // get hotels only have rooms
+                ->whereHas("hotel_rooms", function($query) use($start_date) {    // get hotels only have rooms
                     $query->where("start_date", ">=", $start_date);
-                    $query->where("end_date", "<", $end_date);
-                    $query->whereIn("room_id", $rooms2);
+                    $query->where("currency_id", Session::get("currency_id"));
                 })
                 ->orderBy("id", "desc")
                 ->get()
                 ->count();
-
         $cities = City::all();
         $rooms = Room::all();
         return view("front.hotels.index", compact('hotels', 'hotels_count', 'cities', 'rooms', 'count'));
     }
 
     public function details($id, $title) {
-        $details = Hotel::with("country")->with("city")->with("slider")->find($id);
+        $start_date = date("Y-m-d");   // default start date is today
+        $details = Hotel::orderBy("id", "desc")
+                ->with("hotel_rooms")
+                ->whereHas("hotel_rooms", function($query) use($start_date) {    // get hotels only have rooms
+                    $query->where("start_date", ">", $start_date);
+                    $query->where("currency_id", Session::get("currency_id"));
+                })
+                ->with("country")
+                ->with("city")
+                ->with("slider")
+                ->find($id);
         $features = json_decode($details->features);
         $rooms = Room::all();
         $features_array = Feature::whereIn("id", $features)->get();
@@ -110,6 +116,7 @@ class HotelsController extends Controller {
                     $query->where("start_date", ">=", $start_date);
                     $query->where("end_date", "<", $end_date);
                     $query->whereIn("room_id", $rooms);
+                    $query->where("currency_id", Session::get("currency_id"));
                 })
                 ->orderBy("id", "desc")
                 ->limit(9)
@@ -121,6 +128,7 @@ class HotelsController extends Controller {
                     $query->where("start_date", ">=", $start_date);
                     $query->where("end_date", "<", $end_date);
                     $query->whereIn("room_id", $rooms);
+                    $query->where("currency_id", Session::get("currency_id"));
                 })
                 ->orderBy("id", "desc")
                 ->get()

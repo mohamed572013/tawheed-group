@@ -15,6 +15,9 @@
 <meta property="og:image"              content="{{ asset($details->image) }}" />
 <meta property="og:image:width"        content="600">
 <meta property="og:image:height"       content="315">
+
+<link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
 @stop
 @section('content')
 <div class="page-title-container">
@@ -41,7 +44,7 @@
                                 <ul class="slides">
                                     @foreach($details->slider as $one)
                                     <li>
-                                        <img src="{{ asset($one->image) }}" style="width: 870px;height: 484px;" alt="" />
+                                        <img src="{{ asset($one->image) }}" class="hotelslideimg" alt="" />
                                     </li>
                                     @endforeach
                                 </ul>
@@ -59,7 +62,7 @@
                             <div class="photo-gallery style1 ltr" data-animation="slide" data-sync="#photos-tab .image-carousel">
                                 <ul class="slides">
                                     <li>
-                                        <img src="{{ asset($details->image) }}" style="width: 870px;height: 484px;" alt="" />
+                                        <img src="{{ asset($details->image) }}" class="hotelslideimg"  alt="" />
                                     </li>
                                 </ul>
                             </div>
@@ -155,7 +158,7 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12  form-group pull-left">
                                             <label class="control-label"> {{ trans("lang.start_date") }}</label>
                                             <div class="selector">
-                                                <input type="date" class="input-text full-width required_field datetime" name="start_date" />
+                                                <input type='text' class="form-control required_field" name="start_date" id='datetimepicker4' />
                                             </div>
                                         </div>
 
@@ -163,7 +166,7 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12  form-group pull-left">
                                             <label class="control-label"> {{ trans("lang.end_date") }}</label>
                                             <div class="selector">
-                                                <input type="date" class="input-text full-width required_field datetime" name="end_date" />
+                                                <input type='text' class="form-control required_field" name="end_date" id='datetimepicker5' />
                                             </div>
                                         </div>
 
@@ -212,8 +215,6 @@
                                     </div>
                                 </form>
                             </div>
-
-
                         </div>
                     </div>
 
@@ -283,8 +284,6 @@
                         <a href="javascript:;" class="contact-email">{{ $settings->site_email }}</a>
                     </address>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -293,4 +292,17 @@
 @section('libraries_scripts')
 {!! HTML::script('assets/global/plugins/jquery.min.js') !!}
 {!! HTML::script('front/mine/hotels_booking.js') !!}
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript">
+$(function () {
+    $('#datetimepicker4').datetimepicker({
+        format: 'DD/MM/YYYY'
+    });
+    $('#datetimepicker5').datetimepicker({
+        format: 'DD/MM/YYYY'
+    });
+});
+</script>
 @stop

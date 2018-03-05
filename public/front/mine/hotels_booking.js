@@ -87,11 +87,24 @@ var Hotels_booking = function () {
             flag = true;
         });
     };
+
+    var setDataBySearch = function () {
+        var now = new Date();
+        var destination = localStorage.getItem("destination");
+        var check_in_day = localStorage.getItem("check_in_day");
+        var check_in_month = localStorage.getItem("check_in_month");
+        var check_out_day = localStorage.getItem("check_out_day");
+        var check_out_month = localStorage.getItem("check_out_month");
+        $("input[name='start_date']").val(check_in_day + "/" + check_in_month + "/" + now.getFullYear());
+        $("input[name='end_date']").val(check_out_day + "/" + check_out_month + "/" + now.getFullYear());
+    };
+
     return {
         init: function () {
             sendRequest();
             loadMoreRooms();
             removeRow();
+            setDataBySearch();
         }
     };
 }();
