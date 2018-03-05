@@ -167,7 +167,7 @@
         <div class="container">
             <div class="table-wrapper hidden-table-sm">
                 <div class="col-md-6 description section table-cell">
-                    <h1>{{ trans('lang.ehgezly_website') }}</h1>
+                    <h1>{{ trans('lang.book_for_me') }}</h1>
 
                     <br>
 
@@ -176,7 +176,11 @@
                     <a class="button btn-extra blue"><i class="soap-icon-insurance"></i><span><em>{{ trans('lang.umrah_plus') }}</em></span></a>
                 </div>
                 <div class="col-md-6 image-wrapper table-cell hidden-sm">
+                    @if($lang == "en")
                     <img src="{{ asset('front/images/travelo_site.png') }}" alt="" class="animated" data-animation-type="fadeInUp">
+                    @else
+                    <img src="{{ asset('front/images/travelo_site_ar.png') }}" alt="" class="animated" data-animation-type="fadeInUp">
+                    @endif
                 </div>
             </div>
         </div>

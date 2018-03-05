@@ -603,13 +603,13 @@ tjq(window).load(function () {
     tjq(".mobile-menu ul.menu > li.menu-item-has-children").each(function (index) {
         var menuItemId = "mobile-menu-submenu-item-" + index;
         tjq('<button class="dropdown-toggle collapsed" data-toggle="collapse" data-target="#' + menuItemId + '"></button>').insertAfter(tjq(this).children("a"));
-        /*tjq(this).children(".dropdown-toggle").click(function(e) {
+        tjq(this).children(".dropdown-toggle").click(function(e) {
          if (tjq(this).hasClass("collapsed")) {
          tjq(this).parent().addClass("open");
          } else {
          tjq(this).parent().removeClass("open");
          }
-         });*/
+         });
         tjq(this).children("ul").prop("id", menuItemId);
         tjq(this).children("ul").addClass("collapse");
 
@@ -1227,7 +1227,7 @@ function fixPositionMegaMenu(parentObj) {
         if (typeof tjq(this).children(".megamenu-wrapper").data("items-per-column") != "undefined") {
             megamenu_items_per_column = parseInt(tjq(this).children(".megamenu-wrapper").data("items-per-column"), 10);
         }
-        //tjq(this).children(".megamenu-wrapper").show();
+        tjq(this).children(".megamenu-wrapper").show();
         var columns_arr = new Array();
         var sum_columns = 0;
         tjq(this).find(".megamenu > li").each(function () {

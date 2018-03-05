@@ -1329,3 +1329,9 @@ textarea {
     height: 500px;
     background-size: contain;
 }
+/**************************************************************************************/
+.page-title-container .page-title .entry-title {
+    line-height: 56px;
+    color: #fff;
+    margin-right: 200px;
+}

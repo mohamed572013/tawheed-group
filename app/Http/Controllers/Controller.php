@@ -11,7 +11,6 @@ use App\News;
 use App\City;
 use App\Currency;
 use Session;
-use Illuminate\Http\Request;
 
 class Controller extends BaseController {
 

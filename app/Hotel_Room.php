@@ -9,7 +9,7 @@ class Hotel_Room extends Model {
     public $table = "hotels_rooms";
 
     public function rooms() {
-        return $this->belongsToMany("App\Room");
+        return $this->belongsTo("App\Room", "room_id");
     }
 
     public function hotels() {

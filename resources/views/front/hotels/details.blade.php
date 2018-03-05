@@ -15,9 +15,10 @@
 <meta property="og:image"              content="{{ asset($details->image) }}" />
 <meta property="og:image:width"        content="600">
 <meta property="og:image:height"       content="315">
-
 <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
-
+@stop
+@section('head')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
 @section('content')
 <div class="page-title-container">
@@ -78,6 +79,7 @@
                         <li><a href="#cruise-amenities" data-toggle="tab">{{ trans("lang.features") }}</a></li>
                         <li><a href="#cruise-reviews" data-toggle="tab">{{ trans("lang.city") }}</a></li>
                         <li><a href="#cruise-availability" data-toggle="tab"> {{ trans("lang.reservation") }}</a></li>
+                        <li><a href="#cruise-pricelist" data-toggle="tab"> {{ trans("lang.pricelist") }}</a></li>
                     </ul>
                     <div class="tab-content">
 
@@ -89,6 +91,7 @@
                                 </p>
                             </div>
                         </div>
+                        <!-- ********************************************************************* -->
                         <div class="tab-pane fade" id="cruise-amenities">
                             <h2> {{ trans("lang.features") }} </h2>
 
@@ -100,10 +103,7 @@
                                 @endforeach
                             </ul>
                         </div>
-
-
-
-
+                        <!-- ********************************************************************* -->
                         <div class="tab-pane fade" id="cruise-reviews">
                             <div class="border-box travelo-box clearfix">
                                 <div class="image-box style12">
@@ -124,11 +124,11 @@
                                 </div>
                             </div>
                         </div>
-
-
+                        <!-- ********************************************************************* -->
                         <div class="tab-pane fade" id="cruise-availability">
                             <div class="border-box travelo-box clearfix">
-                                <h4 class="title col-xs-12"> {{ trans("lang.reservation") }}</h4>
+                                <h4 class="title col-xs-12"> {{ trans("lang.reservation") }} <span class="pull-right" id="currenct_price"></span></h4>
+
                                 <form action="#" id="book_hotel_form" method="post">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" id="hotel_id" name="hotel_id" value="{{ $id }}" />
@@ -175,7 +175,7 @@
                                             <div class="col-sm-12 col-md-2 col-lg-2 col-xs-12  form-group pull-left">
                                                 <label class="control-label">{{ trans("lang.room_type") }}</label>
                                                 <div class="selector">
-                                                    <select name="room_type[]" class="full-width required_field">
+                                                    <select name="room_type[]" class="full-width required_field room_type">
                                                         @foreach($rooms as $one)
                                                         <option value="{{ $one->id }}">{{ $one->{$slug->title} }}</option>
                                                         @endforeach
@@ -184,12 +184,12 @@
                                             </div>
                                             <div class="col-sm-2 form-group pull-left">
                                                 <label class="control-label">{{ trans("lang.number_of_rooms") }}</label>
-                                                <input type="number" name="number_of_rooms[]" class="input-text full-width required_field">
+                                                <input type="number" name="number_of_rooms[]" value="1" min="1"  class="input-text full-width required_field number_of_rooms">
                                             </div>
 
                                             <div class="col-sm-2 form-group pull-left">
                                                 <label class="control-label">{{ trans("lang.adults") }}</label>
-                                                <input type="number" name="adults[]" class="input-text full-width required_field">
+                                                <input type="number" value="1" min="1" name="adults[]" class="input-text full-width required_field">
                                             </div>
 
                                             <div class="col-sm-2 form-group pull-left">
@@ -216,6 +216,38 @@
                                 </form>
                             </div>
                         </div>
+                        <!-- ********************************************************************* -->
+                        <div class="tab-pane fade" id="cruise-pricelist">
+                            <div class="border-box travelo-box clearfix">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ trans("lang.room_type") }}</th>
+                                                <th>{{ trans("lang.check_in_date") }}</th>
+                                                <th>{{ trans("lang.check_out_date") }}</th>
+                                                <th>{{ trans("lang.price") }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(!$details->hotel_rooms->isEmpty())
+                                            @foreach($details->hotel_rooms as $one)
+                                            @if($one->currency_id == Session::get("currency_id"))
+                                            <tr>
+                                                <td>{{ $one->rooms->{$slug->title} }}</td>
+                                                <td>{{ $one->start_date }}</td>
+                                                <td>{{ $one->end_date }}</td>
+                                                <td>{{ $one->price }}  {{ $one->currency->sign }}</td>
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ********************************************************************* -->
                     </div>
 
                 </div>

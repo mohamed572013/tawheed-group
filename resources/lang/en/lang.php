@@ -11,6 +11,7 @@ return [
     'about_us' => 'About us',
     'book_for_me' => 'Book for me',
     'home' => 'Home',
+    'pricelist' => 'Pricelist',
     'other_services' => 'Other services',
     'similar_programs' => 'Similar programs',
     'vision' => 'Vision',

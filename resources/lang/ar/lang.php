@@ -10,6 +10,7 @@ return [
     'main_menu' => 'القائمة الرئيسية',
     'about_us' => 'عن الشركة',
     'home' => 'الرئيسية',
+    'pricelist' => 'قائمة الأسعار',
     'book_for_me' => 'إحجزلى',
     'other_services' => 'خدمات أخرى',
     'meals' => 'الوجبة',

@@ -59,14 +59,14 @@ var Hotels = function () {
                 data: {lang: config.current_lang},
                 success: function (msg) {
                     var html = "";
-                    var rooms = JSON.parse(msg);
+                    var data = JSON.parse(msg);
                     html += '<div class="row remove_this" ><div class="col-md-6 col-sm-6 col-xs-12"><div class="form-group">';
                     html += '<label>' + lang.rooms + '</label><div class="input-group"><div class="input-group-addon">';
                     html += '<i class="fa fa-check-square" aria-hidden="true"></i></div>';
                     html += '<select class="form-control rooms required_field">';
                     html += '<option selected="selected" value="">' + lang.select_room + '</option>';
-                    for (var i in rooms) {
-                        html += '<option value="' + i + '">' + rooms[i] + '</option>';
+                    for (var i in data.rooms) {
+                        html += '<option value="' + i + '">' + data.rooms[i] + '</option>';
                     }
                     html += '</select> </div></div></div>';
                     html += '<div class="col-md-6 col-sm-6 col-xs-12">';

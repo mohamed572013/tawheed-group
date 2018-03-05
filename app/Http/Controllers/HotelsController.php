@@ -62,8 +62,37 @@ class HotelsController extends Controller {
         return view("front.hotels.details", compact('details', 'features_array', 'similar_hotels', 'rooms', 'id'));
     }
 
+    public function calculatePrice(Request $request) {
+        $data = json_decode($request->data);
+        $start_date_decoded = $data->start_date;
+        $end_date_decoded = $data->end_date;
+        // get number of days between 2 dates
+        $start_date = explode("/", $data->start_date);
+        $end_date = explode("/", $data->end_date);
+        $new_start_date = strtotime($start_date[2] . "-" . $start_date[1] . "-" . $start_date[0]);
+        $new_end_date = strtotime($end_date[2] . "-" . $end_date[1] . "-" . $end_date[0]);
+        $datediff = $new_end_date - $new_start_date;
+        $days = round($datediff / (60 * 60 * 24));
+        // end days
+        $rooms = $data->room_type;
+        $rooms_count = $data->rooms_count;
+        $current_price = 0;
+        foreach ($rooms as $key => $one) {
+            // get price of one day + room + currency
+            $price_of_one = Hotel_Room::where("start_date", ">=", $start_date_decoded)
+                    ->where("end_date", ">=", $end_date_decoded)
+                    ->where("room_id", $one)
+                    ->where("currency_id", Session::get("currency_id"))
+                    ->pluck("price");
+            // get number of rooms
+            $count_of_one = $rooms_count[$key];
+            $current_price = $price_of_one[0] * $count_of_one * $days;
+        }
+        echo $current_price . " " . Session::get("currency_sign");
+        die();
+    }
+
     public function book_now(Request $request) {
-//        dd($request->all());
         $reservation = new Hotelreservation();
         $reservation->hotel_id = $request->hotel_id;
         $reservation->start_date = $request->start_date;
@@ -88,6 +117,7 @@ class HotelsController extends Controller {
     }
 
     public function filter(Request $request) {
+
         $filter = json_decode($request->filter);  // decode the filter object from JSON to be object
         $city_id = City::pluck("id");  // default cities id is all id of cities
         $rooms = Room::pluck("id");    // default rooms id is all id of rooms
@@ -114,7 +144,7 @@ class HotelsController extends Controller {
                 ->with("hotel_rooms")   // get with the rooms of the hotel
                 ->whereHas("hotel_rooms", function($query) use($start_date, $end_date, $rooms) {    // get hotels only have rooms
                     $query->where("start_date", ">=", $start_date);
-                    $query->where("end_date", "<", $end_date);
+                    $query->where("end_date", ">", $end_date);
                     $query->whereIn("room_id", $rooms);
                     $query->where("currency_id", Session::get("currency_id"));
                 })
@@ -126,7 +156,7 @@ class HotelsController extends Controller {
                 ->with("hotel_rooms")   // get with the rooms of the hotel
                 ->whereHas("hotel_rooms", function($query) use($start_date, $end_date, $rooms) {    // get hotels only have rooms
                     $query->where("start_date", ">=", $start_date);
-                    $query->where("end_date", "<", $end_date);
+                    $query->where("end_date", ">", $end_date);
                     $query->whereIn("room_id", $rooms);
                     $query->where("currency_id", Session::get("currency_id"));
                 })

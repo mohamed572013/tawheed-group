@@ -1,5 +1,4 @@
 var Hotels_booking = function () {
-
     var flag = true;
     var sendRequest = function () {
         var form = $("#book_hotel_form");
@@ -14,7 +13,6 @@ var Hotels_booking = function () {
                     type: "post",
                     data: $form,
                     success: function (msg) {
-//                        console.log(msg);
                         if (msg == 1) {
                             $("#submit_btn").html(lang.complete_request);
                             $("#submit_btn").attr("disabled", "disabled");
@@ -53,7 +51,7 @@ var Hotels_booking = function () {
                     console.log(result.rooms);
                     html += '<div class="remove_row"><div class="col-sm-12 col-md-2 col-lg-2 col-xs-12  form-group pull-left">'
                     html += '<label class="control-label">' + lang.room_type + '</label>';
-                    html += '<div class="selector"><select name="room_type[]" class="full-width required_field">';
+                    html += '<div class="selector"><select name="room_type[]" class="full-width required_field room_type">';
                     for (var i in result.rooms) {
                         html += '<option value="' + i + '">' + result.rooms[i] + '</option>';
                     }
@@ -61,10 +59,10 @@ var Hotels_booking = function () {
                     html += '</select><span class="custom-select full-width">' + first_element + '</span></div></div>';
                     html += '<div class="col-sm-2 form-group pull-left">';
                     html += '<label class="control-label">' + lang.number_of_rooms + '</label>';
-                    html += '<input type="number" name="number_of_rooms[]" class="input-text full-width"></div>';
+                    html += '<input type="number" name="number_of_rooms[]" value="1" min="1"  class="input-text full-width number_of_rooms"></div>';
                     html += '<div class="col-sm-2 form-group pull-left">';
                     html += '<label class="control-label">' + lang.number_of_adults + '</label>';
-                    html += '<input type="number" name="adults[]" class="input-text full-width"></div>';
+                    html += '<input type="number" name="adults[]" value="1" min="1"  class="input-text full-width"></div>';
                     html += '<div class="col-sm-2 form-group pull-left">';
                     html += '<label class="control-label">' + lang.number_of_children + '</label>';
                     html += '<input type="number" value="0"  name="children[]" class="input-text full-width">';
@@ -99,12 +97,60 @@ var Hotels_booking = function () {
         $("input[name='end_date']").val(check_out_day + "/" + check_out_month + "/" + now.getFullYear());
     };
 
+    var calculatePrice = function () {
+        $(document).on("blur keyup", ".number_of_rooms", function () {
+            performPrice();
+        });
+        $(document).on("blur change", "input[name='end_date']", function () {
+            performPrice();
+        });
+        $(document).on("blur change", "input[name='start_date']", function () {
+            performPrice();
+        });
+        $(document).on("change", ".room_type", function () {
+            performPrice();
+        });
+    };
+
+    var performPrice = function () {
+        var rooms = new Array();
+        var rooms_count = new Array();
+        $(".room_type").each(function () {
+            var $this = $(this).val();
+            rooms.push($this);
+        });
+        $(".number_of_rooms").each(function () {
+            var $this = $(this).val();
+            rooms_count.push($this);
+        });
+        var start_date = $("input[name='start_date']").val();
+        var end_date = $("input[name='end_date']").val();
+        var data = {};
+        data['room_type'] = rooms;
+        data['rooms_count'] = rooms_count;
+        data['start_date'] = start_date;
+        data['end_date'] = end_date;
+        var data_encoded = JSON.stringify(data);
+        $.ajax({
+            url: config.base_url + "/hotels/calculatePrice",
+            type: "post",
+            data: {data: data_encoded},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (msg) {
+                $("#currenct_price").html(msg);
+            }
+        });
+    };
+
     return {
         init: function () {
             sendRequest();
             loadMoreRooms();
             removeRow();
             setDataBySearch();
+            calculatePrice();
         }
     };
 }();

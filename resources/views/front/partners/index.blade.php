@@ -35,7 +35,7 @@
                 <div class="col-sm-12 col-md-12 pull-left">
                     <div class="tour-packages row image-box listing-style2 add-clearfix partnerss">
                         @foreach($partners as $one)
-                        <div class="col-sm-9 col-md-3 pull-left">
+                        <div class="col-sm-6 col-xs-6 col-md-3  col-lg-3 pull-left">
                             <article class="box">
                                 <figure>
                                     <img src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}" style="width: 270px;height: 180px;" >
