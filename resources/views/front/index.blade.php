@@ -190,7 +190,7 @@
         <div class="container">
             <div class="text-center description block">
                 <h1>{{ trans('lang.hotels') }}</h1>
-                <p>{{ trans('lang.know_with_us_the_most_important_and_best_hotels_in_Saudi_Arabia') }}</p>
+                <p>{{ trans('lang.best_hotels_in_saudi_arabia') }}</p>
             </div>
 
 
@@ -227,7 +227,7 @@
             <div class="row text-center description block">
                 <h1>{{ trans('lang.our_agents_around_the_world') }}</h1>
                 <p>
-                    {{ trans('lang.Know_with_our_agents_around_the_world_to_know_the_agents_in_your_country') }}
+                    {{ trans('lang.choose_the_agent_in_your_country') }}
                 </p>
             </div>
 
@@ -271,7 +271,7 @@
             <div class="text-center description block">
                 <h1>{{ trans('lang.the_most_important_sightseeing') }}</h1>
                 <p>
-                    {{ trans('lang.Know_with_us_the_most_important_and_best_religious_and_holy_shrines_in_the_Kingdom_of_Saudi_Arabia') }}
+                    {{ trans('lang.the_most_important_and_best_religious_and_holy_shrines_in_the_Kingdom_of_Saudi_Arabia') }}
                 </p>
 
             </div>

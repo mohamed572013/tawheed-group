@@ -35,11 +35,11 @@
                 <div class="col-sm-12 col-md-12 pull-left">
                     <div class="tour-packages row image-box listing-style2 add-clearfix destinations-block">
                         @foreach($destinations as $one)
-                        <div class="col-sms-6 col-sm-4 col-md-3 col-xs-12 pull-left destination-item">
+                        <div class="col-sm-6 col-xs-12 col-md-3  pull-left destination-item">
                             <article class="box animated" data-animation-type="fadeInDown">
                                 <figure>
                                     <a href="{{ url('/'.$lang.'/destinations/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">
-                                        <img style="width: 270px;height: 161px;" src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}">
+                                        <img style="width: 100%; height: 170px;" src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}">
                                     </a>
                                     <figcaption>
                                         <h2 class="caption-title">

@@ -4,13 +4,16 @@ return [
 // generals
     'loading' => 'لوڈنگ',
     //
+    'choose_the_agent_in_your_country' => 'اپنے ملک میں ایجنٹ کا انتخاب کریں',
+    'best_hotels_in_saudi_arabia' => 'سعودی عرب میں بہترین ہوٹل',
     'groups_book' => 'گروپ بکنگ',
     'send_request_now' => 'اب درخواست بھیجیں',
     'contact_us' => 'ہم سے رابطہ کریں',
     'main_menu' => 'مین مینو',
+    'meal' => 'کھانا',
     'about_us' => 'ہمارے بارے میں',
     'home' => 'گھر',
-    'pricelist' => 'قیمتوں کی فہرست',
+    'pricelist' => 'قیمتیں دکھائیں',
     'book_for_me' => 'میرے لئے کتاب',
     'other_services' => 'دیگر خدمات',
     'similar_programs' => 'اسی طرح کے پروگرام',
@@ -62,7 +65,7 @@ return [
     'all_countries' => 'تمام ممالک',
     'search_for_agents' => 'ایجنٹوں کی تلاش کریں',
     'the_most_important_sightseeing' => 'سب سے اہم سیاحت',
-    'Know_with_us_the_most_important_and_best_religious_and_holy_shrines_in_the_Kingdom_of_Saudi_Arabia' => 'ہمارے ساتھ جانیں کہ سعودی عرب کی سلطنت میں سب سے اہم اور سب سے اہم مذہبی اور مقدس مزاریں',
+    'the_most_important_and_best_religious_and_holy_shrines_in_the_Kingdom_of_Saudi_Arabia' => 'ہمارے ساتھ جانیں کہ سعودی عرب کی سلطنت میں سب سے اہم اور سب سے اہم مذہبی اور مقدس مزاریں',
     'testimonials' => 'تعریف',
     'photo_gallery' => 'تصویر گیلری، نگارخانہ',
     // start footer

@@ -4,14 +4,17 @@ return [
     // generals
     'loading' => 'Loading',
     //
+    'choose_the_agent_in_your_country' => 'Choose the agent in your country',
+    'best_hotels_in_saudi_arabia' => 'Best hotels in Saudi Arabia',
     'groups_book' => 'Group booking',
     'send_request_now' => 'Send request now',
     'contact_us' => 'Contact us',
+    'meal' => 'Meal',
     'main_menu' => 'Main menu',
     'about_us' => 'About us',
     'book_for_me' => 'Book for me',
     'home' => 'Home',
-    'pricelist' => 'Pricelist',
+    'pricelist' => 'Show prices',
     'other_services' => 'Other services',
     'similar_programs' => 'Similar programs',
     'vision' => 'Vision',
@@ -54,7 +57,7 @@ return [
     'all_countries' => 'All countries',
     'search_for_agents' => 'Search for agents',
     'the_most_important_sightseeing' => 'The most important sightseeing',
-    'Know_with_us_the_most_important_and_best_religious_and_holy_shrines_in_the_Kingdom_of_Saudi_Arabia' => 'Know with us the most important and best religious and holy shrines in the Kingdom of Saudi Arabia',
+    'the_most_important_and_best_religious_and_holy_shrines_in_the_Kingdom_of_Saudi_Arabia' => 'The most important and best religious and holy shrines in the Kingdom of Saudi Arabia',
     'testimonials' => 'Testimonials',
     'photo_gallery' => 'Photo gallery',
     // start footer

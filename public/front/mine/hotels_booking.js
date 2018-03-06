@@ -41,35 +41,36 @@ var Hotels_booking = function () {
     var loadMoreRooms = function () {
         $(document).on("click", "#add_more", function (e) {
             e.preventDefault();
+            var hotel_id = $("#hotel_id").val();
             $.ajax({
-                url: config.base_url + "/home/get_more_make",
+                url: config.base_url + "/hotels/getHotelRooms" + "/" + hotel_id,
                 type: "get",
                 data: {lang: config.current_lang},
                 success: function (msg) {
                     var html = "";
                     var result = JSON.parse(msg);
-                    console.log(result.rooms);
-                    html += '<div class="remove_row"><div class="col-sm-12 col-md-2 col-lg-2 col-xs-12  form-group pull-left">'
+                    console.log(result);
+                    html += '<div class="remove_row"><div class="col-sm-12 col-md-3 col-lg-3 col-xs-12  form-group pull-left">'
                     html += '<label class="control-label">' + lang.room_type + '</label>';
                     html += '<div class="selector"><select name="room_type[]" class="full-width required_field room_type">';
-                    for (var i in result.rooms) {
-                        html += '<option value="' + i + '">' + result.rooms[i] + '</option>';
+                    for (var i in result) {
+                        html += '<option value="' + i + '">' + result[i] + '</option>';
                     }
-                    var first_element = result.rooms[Object.keys(result.rooms)[0]]; //returns first element in array
+                    var first_element = result[Object.keys(result)[0]]; //returns first element in array
                     html += '</select><span class="custom-select full-width">' + first_element + '</span></div></div>';
                     html += '<div class="col-sm-2 form-group pull-left">';
                     html += '<label class="control-label">' + lang.number_of_rooms + '</label>';
                     html += '<input type="number" name="number_of_rooms[]" value="1" min="1"  class="input-text full-width number_of_rooms"></div>';
-                    html += '<div class="col-sm-2 form-group pull-left">';
-                    html += '<label class="control-label">' + lang.number_of_adults + '</label>';
+                    html += '<div class="col-md-5"><div class="col-sm-4 form-group pull-left">';
+                    html += '<label class="control-label">' + lang.adults + '</label>';
                     html += '<input type="number" name="adults[]" value="1" min="1"  class="input-text full-width"></div>';
-                    html += '<div class="col-sm-2 form-group pull-left">';
-                    html += '<label class="control-label">' + lang.number_of_children + '</label>';
+                    html += '<div class="col-sm-4 form-group pull-left">';
+                    html += '<label class="control-label">' + lang.children + '</label>';
                     html += '<input type="number" value="0"  name="children[]" class="input-text full-width">';
-                    html += '</div><div class="col-sm-2 form-group pull-left">';
-                    html += '<label class="control-label">' + lang.number_of_infants + '</label>';
+                    html += '</div><div class="col-sm-4 form-group pull-left">';
+                    html += '<label class="control-label">' + lang.infants + '</label>';
                     html += '<input type="number" value="0" name="infants[]" class="input-text full-width">';
-                    html += '</div><div class="col-sm-1 form-group pull-left">';
+                    html += '</div> </div><div class="col-sm-1 form-group pull-left">';
                     html += '<label class="control-label"></label>';
                     html += '<a href="" class="btn btn-danger remove"  >' + lang.remove + '</a>';
                     html += '</div></div>';
@@ -88,6 +89,9 @@ var Hotels_booking = function () {
 
     var setDataBySearch = function () {
         var now = new Date();
+//        var current_id = localStorage.getItem("current_id");
+//        var page_id = $("#current_id").val();
+//        if (current_id == page_id) {
         var destination = localStorage.getItem("destination");
         var check_in_day = localStorage.getItem("check_in_day");
         var check_in_month = localStorage.getItem("check_in_month");
@@ -95,9 +99,19 @@ var Hotels_booking = function () {
         var check_out_month = localStorage.getItem("check_out_month");
         $("input[name='start_date']").val(check_in_day + "/" + check_in_month + "/" + now.getFullYear());
         $("input[name='end_date']").val(check_out_day + "/" + check_out_month + "/" + now.getFullYear());
+//        }
     };
 
     var calculatePrice = function () {
+        $(document).on("click", "#reservation-link", function () {
+            performPrice();
+        });
+        $(document).on("click", "a.remove", function () {
+            performPrice();
+        });
+        $(document).on("click", "#add_more", function () {
+            performPrice();
+        });
         $(document).on("blur keyup", ".number_of_rooms", function () {
             performPrice();
         });
@@ -125,23 +139,25 @@ var Hotels_booking = function () {
         });
         var start_date = $("input[name='start_date']").val();
         var end_date = $("input[name='end_date']").val();
-        var data = {};
-        data['room_type'] = rooms;
-        data['rooms_count'] = rooms_count;
-        data['start_date'] = start_date;
-        data['end_date'] = end_date;
-        var data_encoded = JSON.stringify(data);
-        $.ajax({
-            url: config.base_url + "/hotels/calculatePrice",
-            type: "post",
-            data: {data: data_encoded},
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function (msg) {
-                $("#currenct_price").html(msg);
-            }
-        });
+        if (start_date != "" && start_date != "undefined" && start_date != null) {
+            var data = {};
+            data['room_type'] = rooms;
+            data['rooms_count'] = rooms_count;
+            data['start_date'] = start_date;
+            data['end_date'] = end_date;
+            var data_encoded = JSON.stringify(data);
+            $.ajax({
+                url: config.base_url + "/hotels/calculatePrice",
+                type: "post",
+                data: {data: data_encoded},
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (msg) {
+                    $("#currenct_price").html(msg);
+                }
+            });
+        }
     };
 
     return {

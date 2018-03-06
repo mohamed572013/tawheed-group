@@ -9,7 +9,7 @@
 <!--facebook-->
 <meta property="og:url"                content="{{ url('/'.$lang.'/news') }}" />
 <meta property="og:type"               content="article" />
-<meta property="og:title"              content="{{ trans("lang.news") }}" /> 
+<meta property="og:title"              content="{{ trans("lang.news") }}" />
 <meta property="og:description"        content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
 <meta property="og:image"              content="{{ asset($settings->site_logo) }}" />
 <meta property="og:image:width"        content="600">
@@ -18,9 +18,9 @@
 @section('content')
 <div class="page-title-container">
     <div class="container">
-        <div class="page-title pull-left">
-            <h2 class="entry-title">{{ trans("lang.news") }}</h2>
-        </div>
+        <!--        <div class="page-title pull-left">
+                    <h2 class="entry-title">{{ trans("lang.news") }}</h2>
+                </div>-->
         <ul class="breadcrumbs pull-right">
             <li><a href="{{ url('/'.$lang.'/') }}">{{ trans("lang.home") }}</a></li>
             <li class="active">{{ trans("lang.news") }}</li>
@@ -29,6 +29,14 @@
 </div>
 
 <section id="content">
+    <div class="overlaylooading">
+        <div class="sk-folding-cube">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div id="main" class="col-sm-12 col-xs-12 col-md-9 ">
@@ -60,10 +68,7 @@
                     </div>
                 </div>
             </div>
-
-
-
-
+            <!-- *********************************************************** -->
             <div class="sidebar col-sm-12 col-md-3 col-xs-12 ">
                 @if(!$other_news->isEmpty())
                 <div class="travelo-box">

@@ -55,7 +55,8 @@
                                     </select>
                                 </div>
                             </div>
-
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>{{ trans("lang.makka_hotel") }}</label>
@@ -89,8 +90,8 @@
                                     </div>
                                 </div>
                             </div>
-
-
+                        </div>
+                        <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>{{ trans("lang.madina_hotel") }}</label>
@@ -124,11 +125,8 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
+                        </div>
+                        <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group borderinputted">
                                     <label class="col-md-3 control-label">{{ trans("lang.services") }}</label>
@@ -147,13 +145,8 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
+                        </div>
+                        <div class="row">
                             <div class="rooms_block">
                                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                     <div class="form-group">
@@ -221,10 +214,8 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
+                        </div>
+                        <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>{{ trans("lang.name") }}</label>
@@ -258,6 +249,8 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label>{{ trans("lang.notes") }}</label>
@@ -269,7 +262,8 @@
                                     </div>
                                 </div>
                             </div>
-
+                        </div>
+                        <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 col-lg-offset-5 col-md-offset-5">
                                 <div class="form-group">
                                     <label></label>
@@ -278,8 +272,8 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+                       
                     </form>
                 </div>
             </div>

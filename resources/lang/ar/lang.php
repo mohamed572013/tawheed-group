@@ -4,9 +4,12 @@ return [
 // generals
     'loading' => 'جارى التحميل',
 // header
+    'choose_the_agent_in_your_country' => 'اختر وكيل بلدك',
+    'best_hotels_in_saudi_arabia' => 'أفضل فنادق المملكة العربية السعودية',
     'groups_book' => 'حجز المجموعات',
     'send_request_now' => 'أرسل طلبك الآن',
     'contact_us' => 'إتصل بنا',
+    'meal' => 'الوجبة',
     'main_menu' => 'القائمة الرئيسية',
     'about_us' => 'عن الشركة',
     'home' => 'الرئيسية',
@@ -55,7 +58,7 @@ return [
     'all_countries' => 'كل الدول',
     'search_for_agents' => 'بحث عن وكلاء',
     'the_most_important_sightseeing' => 'اهم المزارات',
-    'Know_with_us_the_most_important_and_best_religious_and_holy_shrines_in_the_Kingdom_of_Saudi_Arabia' => 'تعرف معنا على اهم وافضل المزارات الدينية و المقدسة فى المملكة العربية السعودية',
+    'the_most_important_and_best_religious_and_holy_shrines_in_the_Kingdom_of_Saudi_Arabia' => 'تعرف معنا على اهم وافضل المزارات الدينية و المقدسة فى المملكة العربية السعودية',
     'testimonials' => 'آراء العملاء',
     'photo_gallery' => 'معرض الصور',
     // end index
@@ -87,9 +90,9 @@ return [
     'choose_day' => 'اختر اليوم',
     'month' => 'الشهر',
     'choose_month' => 'اختر الشهر',
-    'check_out_date' => 'تاريخ المغادرة',
+    'check_out_date' => 'الفترة إلى',
     'search' => 'بحث',
-    'check_in_date' => 'تاريخ الوصول',
+    'check_in_date' => 'الفترة من',
     'add_room' => 'إضافة غرفة',
     'destination' => 'الوجهة',
     'choose_city' => 'اختر المدينة',

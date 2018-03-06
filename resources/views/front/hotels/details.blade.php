@@ -78,13 +78,12 @@
                         <li class="active"><a href="#cruise-description" data-toggle="tab">{{ trans("lang.overview") }}</a></li>
                         <li><a href="#cruise-amenities" data-toggle="tab">{{ trans("lang.features") }}</a></li>
                         <li><a href="#cruise-reviews" data-toggle="tab">{{ trans("lang.city") }}</a></li>
-                        <li><a href="#cruise-availability" data-toggle="tab"> {{ trans("lang.reservation") }}</a></li>
+                        <li><a href="#cruise-availability" id="reservation-link" data-toggle="tab"> {{ trans("lang.reservation") }}</a></li>
                         <li><a href="#cruise-pricelist" data-toggle="tab"> {{ trans("lang.pricelist") }}</a></li>
                     </ul>
                     <div class="tab-content">
 
                         <div class="tab-pane fade in active" id="cruise-description">
-
                             <div class="long-description">
                                 <h2>{{ $details->{$slug->title} }}</h2>
                                 <p> {!! $details->{$slug->content} !!}
@@ -172,34 +171,40 @@
 
 
                                         <div class="rooms_block">
-                                            <div class="col-sm-12 col-md-2 col-lg-2 col-xs-12  form-group pull-left">
+                                            <div class="col-sm-12 col-md-3 col-lg-3 col-xs-12  form-group pull-left">
                                                 <label class="control-label">{{ trans("lang.room_type") }}</label>
                                                 <div class="selector">
                                                     <select name="room_type[]" class="full-width required_field room_type">
-                                                        @foreach($rooms as $one)
-                                                        <option value="{{ $one->id }}">{{ $one->{$slug->title} }}</option>
+                                                        @foreach($details->hotel_rooms as $one)
+                                                        @if(in_array($one->id, $contained_array))
+                                                        <option value="{{ $one->id }}">{{ $one->rooms->{$slug->title} }} - {{ $one->meal->{$slug->title} }}</option>
+                                                        @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="col-sm-2 form-group pull-left">
                                                 <label class="control-label">{{ trans("lang.number_of_rooms") }}</label>
                                                 <input type="number" name="number_of_rooms[]" value="1" min="1"  class="input-text full-width required_field number_of_rooms">
                                             </div>
 
-                                            <div class="col-sm-2 form-group pull-left">
-                                                <label class="control-label">{{ trans("lang.adults") }}</label>
-                                                <input type="number" value="1" min="1" name="adults[]" class="input-text full-width required_field">
+                                            <div class="col-md-5">
+                                                <div class="col-sm-4 form-group pull-left">
+                                                    <label class="control-label">{{ trans("lang.adults") }}</label>
+                                                    <input type="number" value="1" min="1" name="adults[]" class="input-text full-width required_field">
+                                                </div>
+                                                <div class="col-sm-4 form-group pull-left">
+                                                    <label class="control-label">{{ trans("lang.children") }}</label>
+                                                    <input type="number" value="0" name="children[]" class="input-text full-width ">
+                                                </div>
+                                                <div class="col-sm-4 form-group pull-left">
+                                                    <label class="control-label">{{ trans("lang.infants") }}</label>
+                                                    <input type="number" value="0"  name="infants[]" class="input-text full-width ">
+                                                </div>
                                             </div>
 
-                                            <div class="col-sm-2 form-group pull-left">
-                                                <label class="control-label">{{ trans("lang.children") }}</label>
-                                                <input type="number" value="0" name="children[]" class="input-text full-width ">
-                                            </div>
-                                            <div class="col-sm-2 form-group pull-left">
-                                                <label class="control-label">{{ trans("lang.infants") }}</label>
-                                                <input type="number" value="0"  name="infants[]" class="input-text full-width ">
-                                            </div>
+
                                             <div class="col-sm-1 form-group pull-left">
                                                 <label class="control-label"></label>
                                                 <a href="" class="btn btn-info"  id="add_more" >{{ trans("lang.more") }}</a>
@@ -224,6 +229,7 @@
                                         <thead>
                                             <tr>
                                                 <th>{{ trans("lang.room_type") }}</th>
+                                                <th>{{ trans("lang.meal") }}</th>
                                                 <th>{{ trans("lang.check_in_date") }}</th>
                                                 <th>{{ trans("lang.check_out_date") }}</th>
                                                 <th>{{ trans("lang.price") }}</th>
@@ -235,6 +241,7 @@
                                             @if($one->currency_id == Session::get("currency_id"))
                                             <tr>
                                                 <td>{{ $one->rooms->{$slug->title} }}</td>
+                                                <td>{{ $one->meal->{$slug->title} }}</td>
                                                 <td>{{ $one->start_date }}</td>
                                                 <td>{{ $one->end_date }}</td>
                                                 <td>{{ $one->price }}  {{ $one->currency->sign }}</td>

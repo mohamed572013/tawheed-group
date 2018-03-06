@@ -115,6 +115,7 @@ var Hotels = function () {
         localStorage.setItem("check_in_month", data.check_in_month);
         localStorage.setItem("check_out_day", data.check_out_day);
         localStorage.setItem("check_out_month", data.check_out_month);
+//        localStorage.setItem("current_id", data.current_id);
     };
 
     var handleDataToBeFiltered = function () {
@@ -133,6 +134,7 @@ var Hotels = function () {
             if (flag) {
                 var data = {};
                 var destination = data['destination'] = jQuery("#city_selected").val();
+//                var current_id = data['current_id'] = jQuery("#current_id").val();
                 var check_in_day = data['check_in_day'] = jQuery("#check_in_day").val();
                 var check_in_month = data['check_in_month'] = jQuery("#check_in_month").val();
                 var check_out_day = data['check_out_day'] = jQuery("#check_out_day").val();
@@ -152,7 +154,7 @@ var Hotels = function () {
                 jQuery.ajax({
                     url: config.base_url + "/hotels/filter",
                     type: "post",
-                    data: {filter: filter_encoded},
+                    data: {filter: filter_encoded, lang: config.current_lang},
                     headers: {
                         'X-CSRF-TOKEN': tjq('meta[name="csrf-token"]').attr('content')
                     },

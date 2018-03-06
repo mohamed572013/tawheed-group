@@ -12,6 +12,10 @@ class Hotel_Room extends Model {
         return $this->belongsTo("App\Room", "room_id");
     }
 
+    public function meal() {
+        return $this->belongsTo("App\Meal", "meal_id");
+    }
+
     public function hotels() {
         return $this->belongsToMany("App\Hotel");
     }

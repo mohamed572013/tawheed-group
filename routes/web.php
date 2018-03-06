@@ -270,6 +270,7 @@ Route::group([
     Route::get(LaravelLocalization::transRoute('/hotels/details/{id}/{title}'), "HotelsController@details");
     Route::post('/hotels/book_now', 'HotelsController@book_now');
     Route::post('/hotels/filter', 'HotelsController@filter');
+    Route::get('/hotels/getHotelRooms/{hotel_id}', 'HotelsController@getHotelRooms');
     Route::post('/hotels/calculatePrice', 'HotelsController@calculatePrice');
 //    Route::get('/hotels/one_hotel/{id}/{rel}', 'HotelsController@one_hotel');
 

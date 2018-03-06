@@ -1335,3 +1335,8 @@ textarea {
     color: #fff;
     margin-right: 200px;
 }
+.travelo-box .table>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+    text-align: right;
+}
