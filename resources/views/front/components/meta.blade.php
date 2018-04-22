@@ -1,58 +1,41 @@
-<!-- Page Title -->
-<title>{{ $settings->{$slug->site_title} }} | @yield('page_title')</title>
-<!-- Meta Tags -->
-<meta charset="utf-8">
-@yield("meta")
-<meta name="author" content="Master Vision Integrated Solutions">
-@yield('head')
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="{{asset($settings->site_logo)}}" type="image/x-icon">
-<!-- Theme Styles -->
-{!! HTML::style('front/css/bootstrap.min.css') !!}
-{!! HTML::style('front/css/font-awesome.min.css') !!}
-{!! HTML::style('http://fonts.googleapis.com/css?family=Lato:300,400,700') !!}
-{!! HTML::style('front/css/animate.min.css') !!}
-{!! HTML::style('front/css/style.css') !!}
-{!! HTML::style('front/css/color.css') !!}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>التوحيد جروب</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{asset('front/emad//images/icon.png')}}">
+    <link rel="stylesheet" href="{{asset('front/emad//css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/normalize.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/icomoon.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/bootstrap-select.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/scrollbar.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/jquery.mmenu.all.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/prettyPhoto.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/transitions.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/form-wizard-blue.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/color.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/css/hover.css')}}">
+    <!-- Current Page Styles -->
+    <link rel="stylesheet" type="text/css" href="{{asset('front/emad/revolution_slider/css/settings.css')}}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{asset('front/emad/revolution_slider/css/style.css')}}" media="screen" />
+    <link rel="stylesheet" href="{{asset('front/emad/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('front/emad/WOW-master/css/libs/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('front/emad/css/bootstrap-slider.css')}}">
+    
+   <!-- depend on lang -->
+   @if($lang == "ar")
+    <link rel="stylesheet" href="{{asset('front/emad/css/customs_ar.css')}}">
+    @else
+      <link rel="stylesheet" href="{{asset('front/emad/css/customs_en.css')}}">
+    @endif
+    <script src="{{asset('front/emad/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('front/emad/css/mine.css')}}">
 
-<!-- Current Page Styles -->
-{!! HTML::style('front/js/revolution_slider/css/settings.css') !!}
-{!! HTML::style('front/js/revolution_slider/css/style.css') !!}
-{!! HTML::style('front/js/jquery.bxslider/jquery.bxslider.css') !!}
-{!! HTML::style('front/js/flexslider/flexslider.css') !!}
-{!! HTML::style('front/css/jquery.fancybox.css') !!}
-{!! HTML::style('front/css/jquery.fancybox-thumbs.css') !!}
-<!-- Main Style -->
-<!--<link id="main-style" rel="stylesheet" href="css/style.css">-->
-<!-- Updated Styles -->
-{!! HTML::style('front/css/updates.css') !!}
-<!-- Custom Styles -->
-@if(LaravelLocalization::getCurrentLocale() == "en")
-{!! HTML::style('front/css/custom_en.css') !!}
-@else
-{!! HTML::style('front/css/custom_ar.css') !!}
-@endif
-<!-- Responsive Styles -->
-{!! HTML::style('front/css/responsive.css') !!}
-<!-- media Styles -->
-{!! HTML::style('front/css/media.css') !!}
-<!-- CSS for IE -->
-<!--[if lte IE 9]>
-    <link rel="stylesheet" type="text/css" href="css/ie.css" />
-<![endif]-->
-
-
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script type='text/javascript' src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
-<![endif]-->
-
-<!-- Javascript Page Loader -->
-{!! HTML::script('front/js/pace.min.js') !!}
-
-<!--<script type="text/javascript" src="" data-pace-options='{ "ajax": false }'></script>-->
-
+    
 <script type="text/javascript">
     var config = {
         current_lang: "{{ $lang }}",
@@ -84,6 +67,4 @@
         successfully_subscribed: "{{ trans('lang.successfully_subscribed') }}",
     };
 </script>
-
-{!! HTML::script('front/js/page-loading.js') !!}
-
+</head>

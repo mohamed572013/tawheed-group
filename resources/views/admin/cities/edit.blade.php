@@ -36,6 +36,10 @@
                             <li>
                                 <a href="#tab_address" data-toggle="tab"> البيانات بالإنجليزية</a>
                             </li>
+                             <li>
+                                <a href="#tab_fr" data-toggle="tab"> البيانات بالفرنسية</a>
+                            </li>
+                            
                             <li>
                                 <a href="#tab_social" data-toggle="tab"> البيانات بالأردية</a>
                             </li>
@@ -151,6 +155,60 @@
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <textarea class="form-control" rows='5' name="description_en">{{ str_replace('<br />', '', $edit->description_en) }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                             <div class="tab-pane" id="tab_fr">
+                                <div class="form-body">
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> إسم المدينة
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" class="form-control" name="title_fr" value="{{ $edit->title_fr }}" placeholder="">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> معلومات عن المدينة
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea class="form-control" rows='5' name="content_fr">{{ str_replace('<br />', '', $edit->content_fr) }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> SEO keywords
+                                            <span class="required">  </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea class="form-control" rows='5' name="keywords_fr">{{ str_replace('<br />', '', $edit->keywords_fr) }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> SEO description
+                                            <span class="required">  </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea class="form-control" rows='5' name="description_fr">{{ str_replace('<br />', '', $edit->description_fr) }}</textarea>
                                             </div>
                                         </div>
                                     </div>

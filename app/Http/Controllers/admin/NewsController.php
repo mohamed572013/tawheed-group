@@ -49,14 +49,18 @@ class NewsController extends Controller {
         $news->title_ar = $request->title_ar;
         $news->title_en = $request->title_en;
         $news->title_ur = $request->title_ur;
+        $news->title_fr = $request->title_fr;
         $news->content_ar = nl2br($request->content_ar);
         $news->content_en = nl2br($request->content_en);
         $news->content_ur = nl2br($request->content_ur);
+        $news->content_fr = nl2br($request->content_fr);
         $news->keywords_ar = $request->keywords_ar;
         $news->keywords_en = $request->keywords_en;
+        $news->keywords_fr = $request->keywords_fr;
         $news->keywords_ur = $request->keywords_ur;
         $news->description_ar = $request->description_ar;
         $news->description_en = $request->description_en;
+         $news->description_fr = $request->description_fr;
         $news->description_ur = $request->description_ur;
 
         if (!empty($request->image)) {
@@ -101,14 +105,18 @@ class NewsController extends Controller {
         $news->title_ar = $request->title_ar;
         $news->title_en = $request->title_en;
         $news->title_ur = $request->title_ur;
+        $news->title_fr = $request->title_fr;
         $news->content_ar = nl2br($request->content_ar);
         $news->content_en = nl2br($request->content_en);
         $news->content_ur = nl2br($request->content_ur);
+        $news->content_fr = nl2br($request->content_fr);
         $news->keywords_ar = $request->keywords_ar;
         $news->keywords_en = $request->keywords_en;
+        $news->keywords_fr = $request->keywords_fr;
         $news->keywords_ur = $request->keywords_ur;
         $news->description_ar = $request->description_ar;
         $news->description_en = $request->description_en;
+         $news->description_fr = $request->description_fr;
         $news->description_ur = $request->description_ur;
         if (!empty($request->image)) {
             $file = $request->image;

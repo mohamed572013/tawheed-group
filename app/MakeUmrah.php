@@ -16,5 +16,8 @@ class MakeUmrah extends Model {
     public function season() {
         return $this->belongsTo("App\Category", "season_id");
     }
+//     public function makeUmrah() {
+//        return $this->belongsTo("App\MakeUmrah", "season_id");
+//    }
 
 }

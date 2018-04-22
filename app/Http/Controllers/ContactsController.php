@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Mail;
 use Illuminate\Http\Request;
 use App\Contact;
-
+use App\Setting;
 class ContactsController extends Controller {
 
     /**
@@ -14,7 +14,8 @@ class ContactsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view("front.contact.index");
+        $setting = Setting::all();
+        return view("front.main_content.contacts.index", compact('setting'));
     }
 
     public function send(Request $request) {

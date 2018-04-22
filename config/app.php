@@ -12,7 +12,7 @@ return [
       |
      */
 
-    'name' => env('APP_NAME', 'Tdamon'),
+    'name' => env('APP_NAME', 'Tawheed'),
     /*
       |--------------------------------------------------------------------------
       | Application Environment

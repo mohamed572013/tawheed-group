@@ -25,7 +25,8 @@ use AuthenticatesUsers;
      * @var string
      */
     protected $redirectTo = '/admin';
-
+       protected $brocker = 'web';
+    protected $guard = 'web'; 
     /**
      * Create a new controller instance.
      *

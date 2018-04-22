@@ -1,0 +1,11 @@
+.tg-widgetcontent ul li figure a img{
+    width: 100px;
+    height: 100px;
+}
+.owl-carousel {
+    z-index: 1; 
+     width: 100%;
+   display: block;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}

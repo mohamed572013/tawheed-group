@@ -68,6 +68,18 @@
                                 </div>
                             </div>
                         </div>
+                        
+                         <div class="form-group">
+                            <label class="col-md-2 control-label">رأى الشركة بالفرنسية
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <textarea class="form-control" rows='5' name="content_fr"></textarea>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">رأى الشركة باﻷردية
                                 <span class="required"> * </span>

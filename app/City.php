@@ -12,7 +12,7 @@ class City extends Model {
         return $this->belongsTo("App\Country", "country_id");
     }
 
-    public function sighseeing() {
+    public function sightseeing() {
         return $this->hasMany("App\Sightseeing", "city_id");
     }
 

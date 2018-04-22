@@ -16,6 +16,7 @@
 
 @section('content')
 <div class="row">
+    
     <div class="col-md-12">
         <form class="form-horizontal form-row-seperated" method="post" action="{!! url('admin/settings/update') !!}" enctype="multipart/form-data" id="settings_form">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -195,6 +196,54 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"> البيانات بالفرنسية </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseFour" class="panel-collapse collapse">
+                                                <br />
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> إسم الموقع
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="text" class="form-control" name="site_title_fr" value="{{ $settings->site_title_fr }}" placeholder="">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> وصف الموقع
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <textarea class="form-control" rows='5' name="site_description_fr">{{ str_replace('<br />', '', $settings->site_description_fr) }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> الكلمات الدلالية
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <textarea class="form-control" rows='5' name="site_keywords_fr">{{ str_replace('<br />', '', $settings->site_keywords_fr) }}</textarea>
+                                                            <!--<span class="help-block"> shown in product listing </span>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
@@ -241,6 +290,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        
                                     </div>
 
                                 </div>
@@ -292,6 +343,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                     <div class="form-group">
+                                        <label class="col-md-2 control-label"> مقر الشركة بالفرنسية
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea class="form-control" rows='5' name="site_address_fr">{{ str_replace('<br />', '', $settings->site_address_fr) }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="form-group">
                                         <label class="col-md-2 control-label"> مقر الشركة بالأردية
                                             <span class="required"> * </span>
@@ -526,6 +590,79 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        
+                                        
+                                         <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordionAbout" href="#AboutFour"> البيانات بالفرنسية </a>
+                                                </h4>
+                                            </div>
+                                            <div id="AboutFour" class="panel-collapse collapse">
+                                                <br />
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> عن الشركة
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <textarea class="form-control" rows='5' name="about_us_fr">{{ str_replace('<br />', '', $settings->about_us_fr) }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> Vision
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <textarea class="form-control" rows='5' name="vision_fr">{{ str_replace('<br />', '', $settings->vision_fr) }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> Mission
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <textarea class="form-control" rows='5' name="mission_fr">{{ str_replace('<br />', '', $settings->mission_fr) }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> Goal
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <textarea class="form-control" rows='5' name="goal_fr">{{ str_replace('<br />', '', $settings->goal_fr) }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label"> Why us
+                                                        <span class="required"> * </span>
+                                                    </label>
+                                                    <div class="col-md-9">
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <textarea class="form-control" rows='5' name="why_us_fr">{{ str_replace('<br />', '', $settings->why_us_fr) }}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">

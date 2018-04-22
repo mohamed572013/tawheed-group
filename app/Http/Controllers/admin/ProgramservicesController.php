@@ -50,6 +50,7 @@ class ProgramservicesController extends Controller {
 
         $programservices->title_ar = $request->title_ar;
         $programservices->title_en = $request->title_en;
+        $programservices->title_fr = $request->title_fr;
         $programservices->title_ur = $request->title_ur;
 
         if (!empty($request->image)) {
@@ -92,6 +93,7 @@ class ProgramservicesController extends Controller {
 
         $programservices->title_ar = $request->title_ar;
         $programservices->title_en = $request->title_en;
+        $programservices->title_fr = $request->title_fr;
         $programservices->title_ur = $request->title_ur;
 
         if (!empty($request->image)) {

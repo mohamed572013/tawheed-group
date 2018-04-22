@@ -1,371 +1,579 @@
-@extends('front.layout')
-@section('page_title')
-{{ trans("lang.home") }}
-@stop
-@section('meta')
-<meta name="keywords" content="{!! str_replace('<br />', '', $settings->{$slug->site_keywords}) !!}" />
-<meta name="description" content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
+            <!--************************************
+                            Home Slider Start
+            *************************************-->
+            @extends('front.layout')
+            @section('content')
+            <div id="slideshow" class="ltr">
+                <div class="fullwidthbanner-container">
+                    <div class="revolution-slider rev_slider" style="height: 0; overflow: hidden;">
+                        <ul>
+                            
+                            @foreach($sliders as $key => $one)
+                            @if($key % 2 == 0)
+                            <li data-index="rs-21" data-transition="cube" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="800"  data-thumb="{{asset('front/emad/images/slider/img-01.jpg')}}"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                <!-- MAIN IMAGE -->
+                                <img src="{{asset(str_replace('images/sliders/', 'images/sliders/thumb/l_', $one->image)) }}"  alt="" title="Slider1"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                <!-- LAYERS -->
 
-<!-- sharing data  -->
-<!--facebook-->
-<meta property="og:url"                content="{{ url('/'.$lang) }}" />
-<meta property="og:type"               content="article" />
-<meta property="og:title"              content="{{ trans("lang.home") }}" />
-<meta property="og:description"        content="{!! str_replace('<br />', '', $settings->{$slug->site_description}) !!}" />
-<meta property="og:image"              content="{{ asset($settings->site_logo) }}" />
-<meta property="og:image:width"        content="600">
-<meta property="og:image:height"       content="315">
-@stop
-@section('content')
-<div id="slideshow" class="ltr">
-    <div class="fullwidthbanner-container">
-        <div class="revolution-slider rev_slider" style="height: 0; overflow: hidden;">
-            <ul>
-                @if($lang == "en")
-                {!! view('front.slider_en', compact('sliders')) !!}
-                @else
-                {!! view('front.slider_ar', compact('sliders')) !!}
-                @endif
-            </ul>
-        </div>
-    </div>
-</div>
+                                <!-- LAYER NR. 1 -->
+                                <div class="tp-caption large_bold_white_med   tp-resizeme"
+                                     id="slide-21-layer-1"
+                                     data-x="center"
+                                     data-y="261"
+                                     data-width="['auto']"
+                                     data-height="['auto']"
+                                     data-transform_idle="o:1;"
 
-<section id="content" class="pt0">
-    <div class="global-map-area4 section">
-        <div class="container">
-            <div class="text-center description">
-                <h1>{{ trans("lang.who_we_are") }}</h1>
-                <p> {!! $settings->{$slug->about_us} !!} </p>
+                                     data-transform_in="x:left;s:1500;e:Power3.easeInOut;"
+                                     data-transform_out="x:-50px;opacity:0;s:300;s:300;"
+                                     data-start="1000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
 
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-8 col-xs-12 pull-left">
 
-                    <div class="tab-container style1">
-                        <ul class="tabs full-width">
-                            <li class="active"><a href="#unlimited-layouts" data-toggle="tab">{{ trans("lang.vision") }}</a></li>
-                            <li><a href="#design-inovation" data-toggle="tab">{{ trans("lang.mission") }}</a></li>
-                            <li><a href="#8-sliders" data-toggle="tab">{{ trans("lang.goal") }}</a></li>
-                            <li><a href="#best-support" data-toggle="tab">{{ trans("lang.why_us") }}</a></li>
+                                     style="z-index: 5;">{{ $one->{$slug->title} }}</div>
+
+                                <!-- LAYER NR. 2 -->
+                                <div class="tp-caption largewhitebg_button1   tp-resizeme"
+                                     id="slide-21-layer-2"
+                                     data-x="center"
+                                     data-y="442"
+                                     data-width="['auto']"
+                                     data-height="['auto']"
+                                     data-transform_idle="o:1;"
+
+                                     data-transform_in="x:-50px;opacity:0;s:1500;e:Power3.easeInOut;"
+                                     data-transform_out="x:-50px;opacity:0;s:300;s:300;"
+                                     data-start="1400"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+
+
+                                     s style="z-index: 6;"><a href="{{ $one->url }}" target="_blank"  class="samem">{{ trans("lang.more") }}</a> </div>
+
+
+                            </li>
+                            @endif
+
+                            <!-- SLIDE  -->
+                            <li data-index="rs-3" data-transition="parallaxtoleft" data-slotamount="default"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-rotate="0"  data-saveperformance="off"  data-title="HTML5 Video" data-description="">
+
+                                <!-- MAIN IMAGE -->
+                                <img src="{{asset(str_replace('images/sliders/', 'images/sliders/thumb/l_', $one->image)) }}" alt=""  width="1920" height="1280">
+
+                                <!-- BACKGROUND VIDEO LAYER -->
+                                <div class="rs-background-video-layer"
+                                     data-forcerewind="on"
+                                     data-volume="on"
+                                     data-videowidth="100%"
+                                     data-videoheight="100%"
+                                     data-videomp4="./assets/02.mp4"
+                                     data-videostartat="00:25"
+                                     data-videopreload="preload"
+                                     data-videoloop="none"
+                                     data-forceCover="1"
+                                     data-aspectratio="16:9"
+                                     data-autoplay="true"
+                                     data-autoplayonlyfirsttime="false"
+                                     data-nextslideatend="true"
+                                     
+                                     style="z-index: 5;">{{ $one->{$slug->title} }}
+                                    
+                                     style="z-index: 6;"><a href="{{ $one->url }}" target="_blank"  class="samem">{{ trans("lang.more") }}</a> </div>
+                                      
+                                <!-- LAYER NR. 1 -->
+
+
+                            </li>
+
+<!--                            <li data-index="rs-22" data-transition="cube" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="800"  data-thumb="{{asset('front/emad/images/slider/img-01.jpg')}}"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                                 MAIN IMAGE 
+                                <img src="{{asset('front/emad/images/slider/img-01.jpg')}}"  alt="" title="Slider1"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                                 LAYERS 
+
+                                 LAYER NR. 1 
+                                <div class="tp-caption large_bold_white_med   tp-resizeme"
+                                     id="slide-21-layer-1"
+                                     data-x="center"
+                                     data-y="261"
+                                     data-width="['auto']"
+                                     data-height="['auto']"
+                                     data-transform_idle="o:1;"
+
+                                     data-transform_in="x:left;s:1500;e:Power3.easeInOut;"
+                                     data-transform_out="x:-50px;opacity:0;s:300;s:300;"
+                                     data-start="1000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+
+
+                                     style="z-index: 5;">الان استمتع <strong>بالعمرة </strong> بسهولة و يسر<br>كل ما تحتاجة <strong>فى موقع واحد</strong> </div>
+
+                                 LAYER NR. 2 
+                                <div class="tp-caption largewhitebg_button1   tp-resizeme"
+                                     id="slide-21-layer-2"
+                                     data-x="center"
+                                     data-y="442"
+                                     data-width="['auto']"
+                                     data-height="['auto']"
+                                     data-transform_idle="o:1;"
+
+                                     data-transform_in="x:-50px;opacity:0;s:1500;e:Power3.easeInOut;"
+                                     data-transform_out="x:-50px;opacity:0;s:300;s:300;"
+                                     data-start="1400"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+
+
+                                     style="z-index: 6;"><a href="#">للمزيد ...</a> </div>
+
+
+                            </li>-->
+
+                              @endforeach
 
                         </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane fade in active" id="unlimited-layouts">
-                                <h4>{{ trans("lang.vision") }}</h4>
-                                <p>  </p>
-
-                                <p>{!! $settings->{$slug->vision} !!}                                </p>
-
-                                <a href="{{ url('/'.$lang.'/about') }}" class="button pull-right">{{ trans("lang.more") }}</a>
-                            </div>
-                            <div class="tab-pane fade" id="design-inovation">
-                                <h4>{{ trans("lang.mission") }}</h4>
-                                <p> {!! $settings->{$slug->mission} !!}</p>
-
-                            </div>
-                            <div class="tab-pane fade" id="8-sliders">
-                                <h4>{{ trans("lang.goal") }}</h4>
-                                <p>  {!! $settings->{$slug->goal} !!} </p>
-
-                            </div>
-                            <div class="tab-pane fade" id="best-support">
-                                <h4>{{ trans("lang.why_us") }}</h4>
-                                <p>  {!! $settings->{$slug->why_us} !!}</p>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-12 col-xs-12 pull-left">
-
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/{{ $settings->site_video }}" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div         class="global-map-area promo-box no-margin parallax" data-stellar-background-ratio="0.5">
-        <div class="container">
-            <div class="content-section description pull-right col-sm-8">
-                <div class="table-wrapper hidden-table-sm">
-                    <div class="table-cell">
-                        <h2 class="m-title">
-                            {{ trans("lang.select_the_flight,_hotels_and_date_required") }}
-                            <br />
-                            <em>
-                                {{ trans("lang.now_you_can_design_umrah_as_you_want") }}
-                            </em>
-                        </h2>
-                    </div>
-                    <div class="table-cell action-section col-md-4  pull-left animated" data-animation-type="fadeInUp">
-                        <button onclick="window.location = config.site_url + '/make_your_umrah'" class="full-width btn-large">{{ trans("lang.make_your_umrah") }}</button>
                     </div>
                 </div>
             </div>
-            <div class="image-container col-sm-4 pull-left">
-                <img src="{{ asset('front/images/flight/home/girl.png') }}" alt="" class="animated" data-animation-type="fadeInUp" />
-            </div>
-        </div>
-    </div>
-    <div class="section container">
-        <div class="row">
-            <h2 class="pull-left">{{ trans("lang.umrah_packages") }}</h2>
-            <div class="col-md-2 buttn mb10 pull-right">
-                <button  onclick="window.location = config.site_url + '/make_umrah'" class="full-width btn-large">{{ trans("lang.groups_book") }}</button>
-            </div>
-            <div class="col-md-2 pull-right">
-                <button onclick="window.location = config.site_url + '/programs'"  class="full-width btn-large">{{ trans("lang.umrah_packages") }}</button>
-            </div>
-        </div>
-        <div class="row image-box hotel listing-style1">
+            <!--************************************
+                            Home Slider End
+            *************************************-->           
+            <!--************************************
+                            Main Start
+            *************************************-->
+            <main id="tg-main" class="tg-main tg-haslayout">
+                <!--************************************
+                                Features Start
+                *************************************-->
+
+                <!--************************************
+                                Features End
+                *************************************-->
+
+                <!--************************************
+                                Our Destination Start
+                *************************************-->
+                <section class="tg-sectionspace tg-haslayout pb0">
+                    <div class="container wow bounceInRight " data-wow-duration="2s" data-wow-delay="1s">
+                        <div class="row">
+                            <div class="tg-ourdestination">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 tg-verticalmiddle">
+                                    <figure><img src="{{ asset('front/emad/images/placeholder/placeholder-01.png')}}" alt="image destinations"></figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 tg-verticalmiddle text-right">
+                                    <div class="tg-ourdestinationcontent">
+                                        <div class="tg-description"><p>
+
+                                               <p>{!! $settings->{$slug->vision} !!}  
+                                                 <a href="{{ url('/'.$lang.'/about') }}" class="button pull-right">{{ trans("lang.more") }}</a>
+                                            </p>
+
+                                        </div>
 
 
-
-            @foreach($packages as $one)
-            <div class="col-xs-12 col-sm-6 col-md-3 pull-left">
-                <article class="box">
-                    <figure class="animated" data-animation-type="fadeInDown" data-animation-delay="0">
-                        <a class="hover-effect" href="{{ url('/'.$lang.'/programs/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}" title="{{ $one->{$slug->title} }}">
-                            <img alt='{{ $one->{$slug->title} }}' title="{{ $one->{$slug->title} }}" style="width: 270px;height: 161px;" src="{{ asset($one->image) }}" >
-                        </a>
-                    </figure>
-                    <div class="details">
-                        <h4 class="box-title">{{ $one->{$slug->title} }}</h4>
-                        <div class="feedback">
-                            <span class="price">
-
-                                @php($money = $one->dates[0]->price)
-                                @php($currency_price = $one->dates[0]->currency->price)
-                                {{ view("front.currency.convert", compact('money', 'currency_price')) }}
-                            </span>
-                            <div title="{{ $one->stars }} {{ trans("lang.stars") }}" class="five-stars-container" data-toggle="tooltip" data-placement="bottom">
-                                @for($i = 0; $i < $one->stars; $i++)
-                                <span class="five-stars" style=""></span>
-                                @endfor
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <p class="description">
-                            {{ mb_substr(str_replace('<br />', '',$one->{$slug->content}), 0, 120) }}
-                        </p>
-                        <div class="action">
-                            <a href="{{ url('/'.$lang.'/programs/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}" class="button btn-small">{{ trans("lang.more") }}</a>
-                            <a href="{{ url('/'.$lang.'/programs/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}" class="button btn-small yellow">{{ trans("lang.book_now") }}</a>
-                        </div>
                     </div>
-                </article>
-            </div>
-            @endforeach
-        </div>
-    </div>
+                </section>
+                <!--************************************
+                                Our Destination End
+                *************************************-->
+                <!--************************************
+                                Destination Start
+                *************************************-->
 
+                <!--************************************
+                                Destination End
+                *************************************-->
+                <!--************************************
+                                Call To Action Start
+                *************************************-->
+                <section class="tg-parallax" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{asset('front/emad/images/parallax/bgparallax-02.jpg')}}">
+                    <div class="tg-sectionspace tg-haslayout">
+                        <div class="container wow bounceInLeft" data-wow-duration="2s" data-wow-delay="1s">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="tg-calltoaction">
 
+                                        <h2> {{ trans("lang.now_you_can_design_umrah_as_you_want") }}</h2>
+                                        <div class="tg-description"><p class="text-center">{{ trans("lang.ms") }} 
 
-    <div class="global-map-area2 mobile-section parallax" data-stellar-background-ratio="0.5">
-        <div class="container">
-            <div class="table-wrapper hidden-table-sm">
-                <div class="col-md-6 description section table-cell">
-                    <h1>{{ trans('lang.book_for_me') }}</h1>
-
-                    <br>
-
-
-                    <a class="button btn-extra blue"><i class="soap-icon-hotel-2"></i><span> <em>{{ trans('lang.world_hotels') }}</em></span></a>
-                    <a class="button btn-extra blue"><i class="soap-icon-insurance"></i><span><em>{{ trans('lang.umrah_plus') }}</em></span></a>
-                </div>
-                <div class="col-md-6 image-wrapper table-cell hidden-sm">
-                    @if($lang == "en")
-                    <img src="{{ asset('front/images/travelo_site.png') }}" alt="" class="animated" data-animation-type="fadeInUp">
-                    @else
-                    <img src="{{ asset('front/images/travelo_site_ar.png') }}" alt="" class="animated" data-animation-type="fadeInUp">
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="container">
-            <div class="text-center description block">
-                <h1>{{ trans('lang.hotels') }}</h1>
-                <p>{{ trans('lang.best_hotels_in_saudi_arabia') }}</p>
-            </div>
-
-
-            <div class="block image-carousel style2 flexslider" data-animation="slide" data-item-width="370" data-item-margin="30">
-                <ul class="slides image-box style1 tour-packages">
-                    @foreach($hotels as $one)
-                    <li>
-                        <article class="box">
-                            <figure>
-                                <a class="hover-effect" title="{{ $one->{$slug->title} }}" href="{{ url('/'.$lang.'/hotels/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">
-                                    <img  style="width: 370px;height: 220px;" alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}" src="{{ asset($one->image) }}" draggable="false">
-                                </a>
-                            </figure>
-                            <div class="details">
-                                <h4 class="box-title">{{ $one->{$slug->title} }}</h4>
+                                            </p></div>
+                                        <a class="tg-btn  wow bounceInUp " data-wow-duration="3s" data-wow-delay="1s"  href="{{ url('/'.$lang.'/make_your_umrah') }}"><span>  {{ trans("lang.make_your_umrah") }}</span></a>
+                                    </div>
+                                </div>
                             </div>
-                        </article>
-                    </li>
-                    @endforeach
-
-
-                </ul>
-            </div>
-
-
-
-        </div>
-    </div>
-
-
-
-    <section class="section  global-map-area2">
-        <div class="container">
-            <div class="row text-center description block">
-                <h1>{{ trans('lang.our_agents_around_the_world') }}</h1>
-                <p>
-                    {{ trans('lang.choose_the_agent_in_your_country') }}
-                </p>
-            </div>
-
-
-            <div class="row">
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                    <div class="col-xs-6 col-md-12">
-
-                        <div class="selector mb20">
-                            <select id="agent_country" class="full-width">
-                                <option value="0">{{ trans('lang.all_countries') }}</option>
-                                @foreach($countries as $one)
-                                <option value="{{ $one->id }}">{{ $one->{$slug->title} }}</option>
-                                @endforeach
-                            </select>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-md-12">
-                        <button id="search_agent_button" class="full-width btn-large">{{ trans('lang.search_for_agents') }}</button>
-                    </div>
-                </div>
+                </section>
+                <!--************************************
+                                Call To Action End
+                *************************************-->
+                <section class="tg-sectionspace tg-zerotoppadding tg-haslayout pb0">
+                    <div class="tg-sectionspace tg-haslayout">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="tg-sectiontitle tg-sectiontitleleft">
+                                        <h2>{{ trans("lang.special_offers") }}</h2>
+                                        <a class="tg-btnvtwo" href="{{ url('/'.$lang.'/make_your_umrah') }}">{{ trans("lang.groups_book") }}</a>  <a class="tg-btnvtwo" href="{{ url('/'.$lang.'/programs') }}">{{ trans("lang.umrah_packages") }}</a>
+                                    </div>
+                                    <div id="tg-populartoursslider" class="tg-populartoursslider tg-populartours owl-carousel ltr">
+                                         @foreach($packages as $one)
+                                        <div class="item tg-populartour">
+                                            <figure>
+                                                <a href="#"><img alt='{{ $one->{$slug->title} }}' title="{{ $one->{$slug->title} }}" src="{{ asset($one->image) }}"></a>
 
-                <div class="col-md-8 col-sm-12 col-xs-12" id="agents_block">
+                                            </figure>
+                                            <div class="tg-populartourcontent">
+                                                <div class="tg-populartourtitle">
+                                                    <h3><a href="{{ url('/'.$lang.'/programs/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">{{ $one->{$slug->title} }}</a></h3>
+                                                </div>
+                                                <div class="tg-description">
+                                                    <p>  {{ mb_substr(str_replace('<br />', '',$one->{$slug->content}), 0, 120) }}</p>
+                                                </div>
+                                                <div class="tg-populartourfoot">
+                                                    <div class="tg-durationrating">
+<!--                                                        <span class="tg-tourduration">15 يوم</span>-->
+                                                        <span class="tg-stars"><span></span></span>
 
-                    @foreach($agents as $one)
-                    <div class="col-md-3 col-sm-6 col-xs-6 wkyle">
-                        <a href="{{ $one->url }}" target="_blank">
-                            <img style="height: 100px;width: 100%;" src="{{ asset($one->image) }}" alt="{{ $one->title }}"  title="{{ $one->title }}">
-                        </a>
-                    </div>
-                    @endforeach
+                                                    </div>
+                                                    <div class="tg-pricearea">
 
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <div class="section">
-        <div class="container">
-            <div class="text-center description block">
-                <h1>{{ trans('lang.the_most_important_sightseeing') }}</h1>
-                <p>
-                    {{ trans('lang.the_most_important_and_best_religious_and_holy_shrines_in_the_Kingdom_of_Saudi_Arabia') }}
-                </p>
-
-            </div>
-
-
-            <div class="block image-carousel style2 flexslider ltr" data-animation="slide" data-item-width="370" data-item-margin="30">
-                <ul class="slides image-box style1 tour-packages">
-
-                    @foreach($sightseeing as $one)
-                    <li>
-                        <article class="box animated" data-animation-type="fadeInLeft">
-                            <figure>
-                                <a href="{{ url('/'.$lang.'/destinations/sightseeing/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">
-                                    <img style="width: 370px;height: 220px;" src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}">
-                                </a>
-                                <figcaption>
-                                    <h2 class="caption-title">{{ $one->{$slug->title} }}</h2>
-                                </figcaption>
-                            </figure>
-                        </article>
-                    </li>
-                    @endforeach
-
-
-
-                </ul>
-            </div>
-
-
-
-        </div>
-    </div>
-
-    <section>
-        <div class="container">
-            <div class="row">
-                <h1>{{ trans('lang.partners') }}</h1>
-                <div class="investor-slideshow image-carousel style2 investor-list ltr" data-animation="slide" data-item-width="170" data-item-margin="30">
-                    <ul class="slides">
-
-                        @foreach($partners as $one)
-                        <li>
-                            <div class="travelo-box animated" data-animation-type="fadeInUp">
-                                <a href="{{ $one->url }}" target="_blank"><img src="{{ asset($one->image) }}" alt="{{ $one->title }}" title="{{ $one->title }}"></a>
+                                                        <h4>{{$one->dates[0]->price}} {{ trans("lang.sr") }}</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         @endforeach
+                               
+                                    </div>
+                                </div>
                             </div>
-                        </li>
-                        @endforeach
-
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <div class="global-map-area section parallax" data-stellar-background-ratio="0.5">
-        <div class="container">
-            <h1 class="text-center white-color">{{trans('lang.testimonials')}}</h1>
-            <div class="testimonial style3">
-                <ul class="slides ">
-                    @foreach($reviews as $one)
-                    <li>
-                        <div class="author">
-                            <a href="javascript:;">
-                                <img src="{{ asset($one->image) }}" alt="" width="74" height="74" />
-                            </a>
                         </div>
-                        <blockquote class="description"> {!! $one->{$slug->content} !!} </blockquote>
-                        <h2 class="name">{{ $one->title }}</h2>
-                    </li>
-                    @endforeach
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="container section">
-        <h2>{{ trans('lang.photo_gallery') }}</h2>
-        <div class="flexslider image-carousel style2 row-2 ltr " data-animation="slide" data-item-width="170" data-item-margin="30">
-            <ul class="slides">
-                @foreach($gallery as $one)
-                <li>
-                    <a href="{{ asset($one->image) }}" class="hover-effect galleryimg" data-lightbox="example-set" data-title="{{ $one->{$slug->title} }}">
-                        <img src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}" style="width: 170px;height: 161px;" />
-                        <p class="caption">{{ $one->{$slug->title} }}</p>
-                    </a>
-                </li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
+                    </div>
+                </section>
 
 
-</section>
-@stop
+     
+
+
+                <section class="tg-sectionspace tg-zerotoppadding tg-haslayout ptb40">
+                    <div class="tg-haslayout">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="tg-sectionhead">
+                                        <div class="tg-sectiontitle">
+                                            <a href="{{ url('/'.$lang.'/hotels') }}"><h2>{{ trans('lang.hotels') }}</h2></a>
+                                        </div>
+                                        <div class="tg-description">
+                                            <p> {{ trans('lang.best_hotels_in_saudi_arabia') }}
+
+
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                    <div id="tg-populardestinationslider" class="tg-populardestinationslider tg-populardestinations owl-carousel ltr">
+                                        @foreach($hotels as $one)
+                                        
+                                      
+                                            <figure>
+                                                <div class="agents">
+                                                            <div class="box">
+                                                <a  title="{{ $one->{$slug->title} }}" href="{{ url('/'.$lang.'/hotels/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">
+                                                    <img alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}" src="{{ asset($one->image) }}"></a>
+                                                                 </div>
+                                                </div>
+                                                <div class="box-content">
+                                                    <h3><a href="{{ url('/'.$lang.'/hotels/details/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">{{ $one->{$slug->title} }}</a></h3>
+
+                                                </div>
+                                                          
+                                            </figure>
+                                       
+                                        @endforeach
+                              </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+                <section class="tg-parallax" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{asset('front/emad/images/parallax/bgparallax-01.jpg')}}">
+                    <div class="tg-sectionspace tg-haslayout">
+                        <div class="container wow bounceInLeft" data-wow-duration="2s" data-wow-delay="1s">
+                            <div class="row">
+                                <div class="tg-sectionhead text-center">
+                                    <div class="tg-sectiontitle">
+                                        <h2>{{ trans('lang.our_agents_around_the_world') }}</h2>
+                                    </div>
+                                    <div class="tg-description">
+                                        <p>   {{ trans('lang.choose_the_agent_in_your_country') }}
+
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="row">
+                                        <div class="col-md-4 pull-left">
+                                            <div class="col-xs-6 col-md-12">
+
+
+
+                                                <div class="selector mb20">
+                                                    <select class="full-width" id="agent_country">
+                                                           <option value="0">{{ trans('lang.all_countries') }}</option>
+                                                            @foreach($countries as $one)
+                                                            <option value="{{ $one->id }}">{{ $one->{$slug->title} }}</option>
+                                                            @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-md-12">
+                                                 <button id="search_agent_button" class="full-width btn-large">{{ trans('lang.search_for_agents') }}</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8 col-xs-12 pull-left" id="agents_block">
+                                            @foreach($agents as $one)
+                                                    <div class="col-md-3 col-sm-6 col-xs-6 wkyle">
+                                                        <a href="{{ url('/'.$lang.'/agents/details/'.$one->id) }}">
+                                                            <img style="" src="{{ asset($one->image) }}" alt="{{ $one->title }}"  title="{{ $one->title }}">
+                                                        </a>
+                                                    </div>
+                                            @endforeach
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--************************************
+                       Popular Tour Start
+       *************************************-->
+                <section class="tg-sectionspace tg-zerotoppadding tg-haslayout ptb40">
+                    <div class="container wow fadeInUp" data-wow-duration="3s" data-wow-delay="1s">
+                        <div class="row">
+                            <div class="tg-sectionhead">
+                                <div class="tg-sectiontitle">
+                                    <h2>{{ trans('lang.the_most_important_sightseeing') }}</h2>
+                                </div>
+                                <div class="tg-description">
+                                    <p> {{ trans('lang.the_most_important_and_best_religious_and_holy_shrines_in_the_Kingdom_of_Saudi_Arabia') }} </p>
+                                </div>
+                            </div>
+                            <div id="tg-destinationsslider" class="tg-destinationsslider tg-destinations owl-carousel ltr">
+                                
+                                 @foreach($sightseeing as $one)
+                                <div class="item tg-destination wow bounceInUp" data-wow-duration="2s" data-wow-delay="1s">
+                                 
+                                    
+                                        
+                                        <a href="{{ url('/'.$lang.'/destinations/sightseeing/'.$one->id.'/'.str_replace(' ', '-', $one->{$slug->title})) }}">
+                                           <div class="agents">
+                                                            <div class="box">  <img class="hvr-wobble-vertical" src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}"></div></div></a>
+                                        
+                                           
+                                            <div class="tg-description">
+                                                <p>{{ $one->city->{$slug->title} }}</p>
+                                            </div>
+                                       
+                                                          
+                                     
+                                </div>
+                                 @endforeach
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--************************************
+                                Popular Tour End
+                *************************************-->
+
+                <!--************************************
+                                Our Guides Start
+                *************************************-->
+                <section class="tg-haslayout pb40">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="tg-sectionhead">
+                                    <div class="tg-sectiontitle">
+                                        <a href="{{ url('/'.$lang.'/partners')}}"><h2>{{ trans('lang.partners') }}</h2></a>
+                                    </div>
+                                    <div class="tg-description">
+<!--                                        <p>تعرف على اهم شركئنا فى النجاح </p>-->
+                                    </div>
+                                </div>
+                                <div id="tg-guidesslider" class="tg-guidesslider tg-guides owl-carousel ltr wow pulse" data-wow-duration="2s" data-wow-delay="1s">
+                                    
+                                     @foreach($partners as $one)
+                                    <div class="item tg-guide wow fadeIn hvr-float-shadow" data-wow-duration="2s" data-wow-delay="1s">
+                                        <figure>
+                                         <a href="{{ $one->url }}" target="_blank"><img src="{{ asset($one->image) }}" alt="{{ $one->title }}" title="{{ $one->title }}"></a> 
+                                        </figure>
+
+                                    </div>
+                                      @endforeach
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="tg-parallax" data-appear-top-offset="600" data-parallax="scroll" data-image-src="{{asset('front/emad/images/parallax/bgparallax-04.jpg')}}">
+                    <div class="tg-sectionspace tg-haslayout">
+                        <div class="container wow bounceInLeft" data-wow-duration="2s" data-wow-delay="1s">
+                            <div class="row">
+                                <div class="tg-sectionhead">
+                                    <div class="tg-sectiontitle">
+                                        <h2>{{trans('lang.testimonials')}} </h2>
+                                    </div>
+                                    <div class="tg-description">
+                                        <p> {{trans('lang.best_hotels_in_saudi_arabia')}}
+
+
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="container content">
+                                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                                <!-- Indicators -->
+                                                <ol class="carousel-indicators">
+                                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                                </ol>
+                                                <!-- Wrapper for slides -->
+                                                <div class="carousel-inner">
+                                                    @foreach($reviews as $key => $one)
+                                                    @if($key==0)
+                                                    <div class="item active">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="thumbnail adjust1">
+                                                                    <div class="col-md-2 col-sm-2 col-xs-12 pull-left"> <img class="media-object img-rounded img-responsive" src="{{ asset($one->image) }}"> </div>
+                                                                    <div class="col-md-10 col-sm-10 col-xs-12 pull-left">
+                                                                        <div class="caption">
+
+                                                                            <p><span class="glyphicon glyphicon-thumbs-up"></span> {!! $one->{$slug->content} !!}.</p>
+                                                                            <blockquote class="adjust2">
+                                                                                <p>{{ $one->{$slug->title} }}</p>   </blockquote>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @else
+                                                  
+                                                 <div class="item">
+                                                       <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="thumbnail adjust1">
+                                                                    <div class="col-md-2 col-sm-2 col-xs-12 pull-left"> <img class="media-object img-rounded img-responsive" src="{{ asset($one->image) }}"> </div>
+                                                                    <div class="col-md-10 col-sm-10 col-xs-12 pull-left">
+                                                                        <div class="caption">
+
+                                                                            <p><span class="glyphicon glyphicon-thumbs-up"></span> {!! $one->{$slug->content} !!}.</p>
+                                                                            <blockquote class="adjust2">
+                                                                                <p>{{ $one->{$slug->title} }}</p>   </blockquote>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                     @endif
+                                                     @endforeach
+
+                                                </div>
+                                                <!-- Controls -->
+                                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
+                                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--************************************
+                                Our Guides End
+                *************************************-->
+                <section class="tg-sectionspace tg-zerotoppadding tg-haslayout ptb40">
+                    <div class="container wow fadeInUp" data-wow-duration="3s" data-wow-delay="1s">
+                        <div class="row">
+                            <div class="tg-sectionhead">
+                                <div class="tg-sectiontitle">
+                                    <h2>{{ trans('lang.photo_gallery') }}</h2>
+                                </div>
+
+                            </div>
+                            <div class=" tg-haslayout">
+                                <div class="container wow bounceInLeft" data-wow-duration="2s" data-wow-delay="1s">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                                            <div class="tg-gallery">
+                                                <ul>
+                                                      @foreach($gallery as $one)
+                                                    <li>
+                                                        <figure>
+                                                            <div class="agents">
+                                                            <div class="box">
+                                                            <a href="{{ asset($one->image) }}" data-rel="prettyPhoto[instagram]">
+                                                                <img src="{{ asset($one->image) }}" alt="{{ $one->{$slug->title} }}" title="{{ $one->{$slug->title} }}">
+                                                            </a>
+                                                                <div class="box-content">
+                                                                    <h3 class="title"> {{ $one->{$slug->title} }}</h3></div>
+                                                            </div>
+                                                            </div>
+                                                        </figure>
+                                                    </li>
+                                                     @endforeach
+                                                  
+                                                </ul>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+            <!--************************************
+                            Main End
+            *************************************-->
+
+            @stop

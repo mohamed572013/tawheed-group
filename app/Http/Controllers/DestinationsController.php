@@ -23,17 +23,19 @@ class DestinationsController extends Controller {
             echo $view;
             die();
         }
-        return view("front.destinations.index", compact('destinations', 'destinations_count'));
+        return view("front.main_content.destinations.index", compact('destinations', 'destinations_count'));
     }
 
     public function details($id, $title) {
-        $details = City::with("sighseeing")->find($id);
-        return view("front.destinations.details", compact('details'));
+        $details_count = City::with("sightseeing")->get()->count();
+        $details = City::with("sightseeing")->find($id);
+        return view("front.main_content.destinations.details", compact('details','details_count'));
     }
 
     public function sightseeing($id, $title) {
+         $details_count = City::with("sightseeing")->get()->count();
         $details = Sightseeing::with("city")->find($id);
-        return view("front.destinations.sightseeing", compact('details'));
+        return view("front.main_content.destinations.details", compact('details','details_count'));
     }
 
 }

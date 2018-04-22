@@ -52,6 +52,7 @@ class SlidersController extends Controller {
 
         $slider->title_ar = $request->title_ar;
         $slider->title_en = $request->title_en;
+        $slider->title_fr = $request->title_fr;
         $slider->title_ur = $request->title_ur;
         $slider->url = $request->url;
 
@@ -108,6 +109,7 @@ class SlidersController extends Controller {
         $slider->title_ar = $request->title_ar;
         $slider->title_en = $request->title_en;
         $slider->title_ur = $request->title_ur;
+        $slider->title_fr = $request->title_fr;
         $slider->url = $request->url;
 
         if (!empty($request->image)) {

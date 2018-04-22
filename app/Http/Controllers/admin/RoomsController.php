@@ -43,6 +43,7 @@ class RoomsController extends Controller {
         $rooms = new Room;
         $rooms->title_ar = $request->title_ar;
         $rooms->title_en = $request->title_en;
+        $rooms->title_fr = $request->title_fr;
         $rooms->title_ur = $request->title_ur;
 
         $rooms->save();
@@ -74,6 +75,7 @@ class RoomsController extends Controller {
 
         $rooms->title_ar = $request->title_ar;
         $rooms->title_en = $request->title_en;
+         $rooms->title_fr = $request->title_fr;
         $rooms->title_ur = $request->title_ur;
         $rooms->save();
         return redirect()->route('admin_rooms');

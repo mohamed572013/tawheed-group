@@ -15,7 +15,7 @@ class LangMiddleware {
      * @param  \Closure  $next
      * @return mixed
      */
-    protected $languages = ['en', 'ar', 'ur'];
+    protected $languages = [ 'ar','en', 'ur','fr'];
 
     public function handle($request, Closure $next) {
         $lang = $request->route()->parameter('lang');
@@ -23,7 +23,7 @@ class LangMiddleware {
 //            App::setLocale($lang);
             app()->setLocale($lang);
         } else {
-            app()->setLocale("en");
+            app()->setLocale("ar");
 //            App::setLocale('en');
         }
         return $next($request);

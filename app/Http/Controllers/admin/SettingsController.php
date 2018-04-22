@@ -26,6 +26,7 @@ class SettingsController extends Controller {
 
     public function update(Request $request) {
         $rules['site_logo'] = 'image|mimes:jpeg,jpg,bmp,png|max:10000';
+        $rules['site_phone'] = 'required|numeric|regex:/[0-9]{7,}/';
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();

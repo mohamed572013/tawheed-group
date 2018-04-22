@@ -44,6 +44,7 @@ class CurrenciesController extends Controller {
         $currencies->title_ar = $request->title_ar;
         $currencies->title_en = $request->title_en;
         $currencies->title_ur = $request->title_ur;
+        $currencies->title_fr = $request->title_fr;
         $currencies->sign = $request->sign;
         $currencies->price = $request->price;
 
@@ -77,6 +78,7 @@ class CurrenciesController extends Controller {
         $currencies->title_ar = $request->title_ar;
         $currencies->title_en = $request->title_en;
         $currencies->title_ur = $request->title_ur;
+        $currencies->title_fr = $request->title_fr;
         $currencies->sign = $request->sign;
         $currencies->price = $request->price;
         $currencies->save();

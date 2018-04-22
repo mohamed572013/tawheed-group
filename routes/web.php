@@ -10,10 +10,14 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
+Route::get('/',  function () {
+    return redirect('/ar');
+});
+Route::get('/ar',  "HomeController@index");
 Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
 // Admin area
-    Route::get('admin', "admin\AdminController@index");
+    Route::get('admin', "admin\AdminController@index")->name('admin');
 // sliders  admin
     Route::get('admin/sliders', "admin\SlidersController@index")->name("admin_sliders");
     Route::get('admin/sliders/add', "admin\SlidersController@create");
@@ -226,7 +230,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('admin/programs/store_slider', "admin\ProgramsController@store_slider");
     Route::get('admin/programs/deleteslider/{id}', "admin\ProgramsController@deleteslider");
 
-
+    //visa
+    
+    Route::get('admin/visa_types', "admin\ProgramsController@index");
+    Route::get('admin/visa_periods', "admin\ProgramsController@reservations");
+    Route::get('admin/visa_jobs', "admin\ProgramsController@index");
+    Route::get('admin/visa_documents', "admin\ProgramsController@reservations");
+    Route::get('admin/visa_create', "admin\ProgramsController@index");
+    Route::get('admin/visas_reservation', "admin\ProgramsController@reservations");
+    
 
 // settings
     Route::get('admin/settings', "admin\SettingsController@index")->name("admin_settings");
@@ -241,14 +253,21 @@ Route::group(['middleware' => 'auth'], function () {
 
 #######################################################################################################
 // front area
-
-Route::group([
-    'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['localize'] // Route translate middleware
-        ], function() {
+    Route::post('/contact/send', 'ContactsController@send');
+     Route::post('/programs/book_now', 'ProgramsController@book_now');
+     Route::post('/home/send_make_your_umrah', 'HomeController@send_make_your_umrah');
+   
+    // Route::any('/programs/handleDates', 'ProgramsController@handleDates');
+     Route::post('/special_offers/book', 'ProgramsController@special_offers_book');
+Route::group(
+[
+	'prefix' => LaravelLocalization::setLocale(),
+	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ,'localize']
+], function() {
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP * */
-    Route::get(LaravelLocalization::transRoute('/'), "HomeController@index");
-
+   // Route::get(LaravelLocalization::transRoute('/'), "HomeController@index");
+      Route::get('/home/get_more_make', 'HomeController@get_more_make');
+   Route::post('/programs/handleFilter', 'ProgramsController@handleFilter');
     Route::get(LaravelLocalization::transRoute('/make_your_umrah'), "HomeController@make_your_umrah");
     Route::get(LaravelLocalization::transRoute('/make_umrah'), "HomeController@make_your_umrah_group");
 
@@ -261,9 +280,12 @@ Route::group([
     Route::get(LaravelLocalization::transRoute('/news/details/{id}/{title}'), "NewsController@details");
 
     Route::get(LaravelLocalization::transRoute('/partners'), "PartnersController@index");
+     Route::get(LaravelLocalization::transRoute('/agents'), "AgentsController@index");
+     Route::get(LaravelLocalization::transRoute('/agents/details/{id}'), "AgentsController@details");
+      Route::get(LaravelLocalization::transRoute('/gallery'), "HomeController@gallery");
 
     Route::get(LaravelLocalization::transRoute('/contact'), "ContactsController@index");
-    Route::post('/contact/send', 'ContactsController@send');
+
 
 
     Route::get(LaravelLocalization::transRoute('/hotels'), "HotelsController@index");
@@ -278,9 +300,10 @@ Route::group([
     Route::get(LaravelLocalization::transRoute('/special_offers'), "ProgramsController@special_offers");
     Route::get(LaravelLocalization::transRoute('/programs/special_details/{id}'), "ProgramsController@special_details");
     Route::get(LaravelLocalization::transRoute('/programs/details/{id}/{title}'), "ProgramsController@details");
-    Route::post('/programs/book_now', 'ProgramsController@book_now');
-    Route::post('/special_offers/book', 'ProgramsController@special_offers_book');
-    Route::post('/programs/handleFilter', 'ProgramsController@handleFilter');
+   
+   
+  
+   
     Route::get('/programs/getNationalitiesOfDate/{date_id}/{lang}', 'ProgramsController@getNationalitiesOfDate');
     Route::get('/programs/getPriceByNationality/{program_id}/{nationality_id}/{date_of_trip}', 'ProgramsController@getPriceByNationality');
 
@@ -289,9 +312,8 @@ Route::group([
     Route::get(LaravelLocalization::transRoute('/destinations/details/{id}/{title}'), "DestinationsController@details");
     Route::get(LaravelLocalization::transRoute('/destinations/sightseeing/{id}/{title}'), "DestinationsController@sightseeing");
 
-    Route::post('/home/send_make_your_umrah', 'HomeController@send_make_your_umrah');
     Route::post('/home/make_your_umrah_group', 'HomeController@send_make_your_umrah');
-    Route::get('/home/get_more_make', 'HomeController@get_more_make');
+    
     Route::get('/search_agent/{id}', 'HomeController@search_agent');
     Route::get('/home/subscribe/{email}', 'HomeController@subscribe');
     Route::get('/change_currency/{id}/{price}/{sign}', 'HomeController@change_currency');
@@ -299,7 +321,30 @@ Route::group([
 
     Route::get('/lang/{lang}', 'HomeController@lang')->name("lang");
     Route::get('/image', 'HomeController@image');
+    
+    
+    
+  
+  
+
+  
 //    Route::get('/image', function() {
 //
 //    });
 });
+
+
+//members login routes
+Route::get('member', 'Member\LoginController@showLoginForm')->name('member.login');
+Route::post('member', 'Member\LoginController@login')->name('member.dologin');
+Route::post('member/logout', 'Member\LoginController@logout')->name('member.logout');
+
+// Registration Routes...
+Route::get('member/register', 'Member\RegisterController@showRegistrationForm')->name('member.register');
+Route::post('member/register', 'Member\RegisterController@register')->name('member.doregister');
+
+//// Password Reset Routes...
+//Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+//Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+//Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+//Route::post('password/reset', 'Auth\ResetPasswordController@reset');

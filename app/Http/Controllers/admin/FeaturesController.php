@@ -50,6 +50,7 @@ class FeaturesController extends Controller {
 
         $features->title_ar = $request->title_ar;
         $features->title_en = $request->title_en;
+        $features->title_fr = $request->title_fr;
         $features->title_ur = $request->title_ur;
 
         if (!empty($request->image)) {
@@ -92,6 +93,7 @@ class FeaturesController extends Controller {
 
         $features->title_ar = $request->title_ar;
         $features->title_en = $request->title_en;
+         $features->title_fr = $request->title_fr;
         $features->title_ur = $request->title_ur;
 
         if (!empty($request->image)) {

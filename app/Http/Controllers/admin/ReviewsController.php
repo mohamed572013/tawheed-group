@@ -50,6 +50,7 @@ class ReviewsController extends Controller {
         $reviews->content_ar = nl2br($request->content_ar);
         $reviews->content_en = nl2br($request->content_en);
         $reviews->content_ur = nl2br($request->content_ur);
+        $reviews->content_fr = nl2br($request->content_fr);
 
 
         if (!empty($request->image)) {
@@ -94,6 +95,7 @@ class ReviewsController extends Controller {
         $reviews->content_ar = nl2br($request->content_ar);
         $reviews->content_en = nl2br($request->content_en);
         $reviews->content_ur = nl2br($request->content_ur);
+        $reviews->content_fr = nl2br($request->content_fr);
 
 
         if (!empty($request->image)) {

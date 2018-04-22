@@ -13,13 +13,13 @@ class ServicesController extends Controller {
      */
     public function index() {
         $services = Service::all();
-        return view("front.services.index", compact('services'));
+        return view("front.main_content.services.index", compact('services'));
     }
 
     public function details($id) {
         $other_services = Service::where("id", "!=", $id)->limit(3)->get();
         $details = Service::find($id);
-        return view("front.services.details", compact('details', 'other_services'));
+        return view("front.main_content.services.details", compact('details', 'other_services'));
     }
 
 }

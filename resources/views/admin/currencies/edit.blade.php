@@ -54,6 +54,16 @@
                                     <input type="text" class="form-control" name="title_en" value="{{ $edit->title_en }}" /> </div>
                             </div>
                         </div>
+                         <div class="form-group  margin-top-20">
+                            <label class="control-label col-md-2">الإسم بالفرنسية
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-9">
+                                <div class="input-icon right">
+                                    <i class="fa"></i>
+                                    <input type="text" class="form-control" name="title_fr" value="{{ $edit->title_fr }}" /> </div>
+                            </div>
+                        </div>
                         <div class="form-group  margin-top-20">
                             <label class="control-label col-md-2">الإسم بالأردية
                                 <span class="required"> * </span>

@@ -13,7 +13,7 @@ class PartnersController extends Controller {
      */
     public function index() {
         $partners = Partner::all();
-        return view("front.partners.index", compact('partners'));
+        return view("front.main_content.partners.index", compact('partners'));
     }
 
 }

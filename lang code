@@ -1,0 +1,12 @@
+      <li class="ribbon langandcurrency">
+                            <a href="javascript:;" data-toggle="collapse">{{ LaravelLocalization::getCurrentLocaleName() }}</a>
+                            <ul class="menu mini">
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                @if(LaravelLocalization::getCurrentLocaleName() != $properties['native'])
+                                <li>
+                                    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"> {{ $properties['native'] }}</a>
+                                </li>
+                                @endif
+                                @endforeach
+                            </ul>
+                                        </li>

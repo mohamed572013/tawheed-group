@@ -37,6 +37,9 @@
                                 <a href="#tab_address" data-toggle="tab"> البيانات بالإنجليزية</a>
                             </li>
                             <li>
+                                <a href="#tab_fr" data-toggle="tab"> البيانات بالفرنسية</a>
+                            </li>
+                            <li>
                                 <a href="#tab_social" data-toggle="tab"> البيانات بالأردية</a>
                             </li>
 
@@ -51,7 +54,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="title_ar" placeholder="">
+                                                <input type="text" class="form-control" name="title_ar" placeholder="" required>
                                             </div>
 
                                         </div>
@@ -64,7 +67,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="content_ar"></textarea>
+                                                <textarea class="form-control" rows='5' name="content_ar" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +78,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="keywords_ar"></textarea>
+                                                <textarea class="form-control" rows='5' name="keywords_ar" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -86,7 +89,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="description_ar"></textarea>
+                                                <textarea class="form-control" rows='5' name="description_ar" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +118,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="title_en" placeholder="">
+                                                <input type="text" class="form-control" name="title_en" placeholder="" required>
                                             </div>
 
                                         </div>
@@ -128,7 +131,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="content_en"></textarea>
+                                                <textarea class="form-control" rows='5' name="content_en" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -139,7 +142,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="keywords_en"></textarea>
+                                                <textarea class="form-control" rows='5' name="keywords_en" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -150,7 +153,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="description_en"></textarea>
+                                                <textarea class="form-control" rows='5' name="description_en" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -158,7 +161,60 @@
                                 </div>
                             </div>
 
+                            
+                            <div class="tab-pane" id="tab_fr">
+                                <div class="form-body">
 
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> عنوان الخبر
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" class="form-control" name="title_fr" placeholder="" required>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> محتوى الخبر
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea class="form-control" rows='5' name="content_fr" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> SEO keywords
+                                            <span class="required">   </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea class="form-control" rows='5' name="keywords_fr" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> SEO description
+                                            <span class="required">  </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea class="form-control" rows='5' name="description_fr" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
 
 
 
@@ -172,7 +228,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="title_ur" placeholder="">
+                                                <input type="text" class="form-control" name="title_ur" placeholder="" required>
                                             </div>
 
                                         </div>
@@ -185,7 +241,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="content_ur"></textarea>
+                                                <textarea class="form-control" rows='5' name="content_ur" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +252,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="keywords_ur"></textarea>
+                                                <textarea class="form-control" rows='5' name="keywords_ur" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -207,7 +263,7 @@
                                         <div class="col-md-9">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <textarea class="form-control" rows='5' name="description_ur"></textarea>
+                                                <textarea class="form-control" rows='5' name="description_ur" required></textarea>
                                             </div>
                                         </div>
                                     </div>

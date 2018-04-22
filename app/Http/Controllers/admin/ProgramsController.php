@@ -62,15 +62,19 @@ class ProgramsController extends Controller {
         $programs = new Program;
         $programs->title_ar = $request->title_ar;
         $programs->title_en = $request->title_en;
+        $programs->title_fr = $request->title_fr;
         $programs->title_ur = $request->title_ur;
         $programs->content_ar = nl2br($request->content_ar);
         $programs->content_en = nl2br($request->content_en);
+        $programs->content_fr = nl2br($request->content_fr);
         $programs->content_ur = nl2br($request->content_ur);
         $programs->keywords_ar = $request->keywords_ar;
         $programs->keywords_en = $request->keywords_en;
+         $programs->keywords_fr = $request->keywords_fr;
         $programs->keywords_ur = $request->keywords_ur;
         $programs->description_ar = $request->description_ar;
         $programs->description_en = $request->description_en;
+        $programs->description_fr = $request->description_fr;
         $programs->description_ur = $request->description_ur;
         $programs->country_id = $request->country_id;
         $programs->stars = $request->stars;
@@ -114,7 +118,7 @@ class ProgramsController extends Controller {
         $nights = json_decode($edit->nights);
         $first_hotel = Hotel::where("city_id", $city_id[0])->get();
         $second_hotel = "";
-        if (count($city_id) > 1) {
+        if ($city_id ) {
             $second_hotel = Hotel::where("city_id", $city_id[1])->get();
         }
         return view('admin.programs.edit', compact("transports", "nights", "categories", "id", 'edit', 'cities', 'countries', 'services', 'selected_services', 'first_hotel', 'second_hotel'));
@@ -137,15 +141,19 @@ class ProgramsController extends Controller {
         $programs = Program::find((int) $id);
         $programs->title_ar = $request->title_ar;
         $programs->title_en = $request->title_en;
+        $programs->title_en = $request->title_fr;
         $programs->title_ur = $request->title_ur;
         $programs->content_ar = nl2br($request->content_ar);
         $programs->content_en = nl2br($request->content_en);
+        $programs->content_fr = nl2br($request->content_fr);
         $programs->content_ur = nl2br($request->content_ur);
         $programs->keywords_ar = $request->keywords_ar;
         $programs->keywords_en = $request->keywords_en;
+         $programs->keywords_fr = $request->keywords_fr;
         $programs->keywords_ur = $request->keywords_ur;
         $programs->description_ar = $request->description_ar;
         $programs->description_en = $request->description_en;
+        $programs->description_fr = $request->description_fr;
         $programs->description_ur = $request->description_ur;
         $programs->country_id = $request->country_id;
         $programs->transportation_id = $request->transportation_id;

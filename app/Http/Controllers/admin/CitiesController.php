@@ -48,15 +48,19 @@ class CitiesController extends Controller {
         $cities = new City;
         $cities->title_ar = $request->title_ar;
         $cities->title_en = $request->title_en;
+        $cities->title_fr = $request->title_fr;
         $cities->title_ur = $request->title_ur;
         $cities->content_ar = nl2br($request->content_ar);
         $cities->content_en = nl2br($request->content_en);
+        $cities->content_fr = nl2br($request->content_fr);
         $cities->content_ur = nl2br($request->content_ur);
         $cities->keywords_ar = $request->keywords_ar;
         $cities->keywords_en = $request->keywords_en;
+         $cities->keywords_fr = $request->keywords_fr;
         $cities->keywords_ur = $request->keywords_ur;
         $cities->description_ar = $request->description_ar;
         $cities->description_en = $request->description_en;
+         $cities->description_fr = $request->description_fr;
         $cities->description_ur = $request->description_ur;
         $cities->country_id = $request->country_id;
 
@@ -109,17 +113,21 @@ class CitiesController extends Controller {
 
         $cities = City::find((int) $id);
 
-        $cities->title_ar = $request->title_ar;
+       $cities->title_ar = $request->title_ar;
         $cities->title_en = $request->title_en;
+        $cities->title_fr = $request->title_fr;
         $cities->title_ur = $request->title_ur;
         $cities->content_ar = nl2br($request->content_ar);
         $cities->content_en = nl2br($request->content_en);
+        $cities->content_fr = nl2br($request->content_fr);
         $cities->content_ur = nl2br($request->content_ur);
         $cities->keywords_ar = $request->keywords_ar;
         $cities->keywords_en = $request->keywords_en;
+         $cities->keywords_fr = $request->keywords_fr;
         $cities->keywords_ur = $request->keywords_ur;
         $cities->description_ar = $request->description_ar;
         $cities->description_en = $request->description_en;
+         $cities->description_fr = $request->description_fr;
         $cities->description_ur = $request->description_ur;
         if (!empty($request->image)) {
             $file = $request->image;

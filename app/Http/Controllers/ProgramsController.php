@@ -25,15 +25,16 @@ class ProgramsController extends Controller {
     public $_dates;
     public $_max_price;
     public $_min_price;
+    public $from;
+    public $to;
 
     public function index(Request $request) {
-        $currency_id = Session::get("currency_id");
+        //$currency_id = Session::get("currency_id");
         $today = date("Y-m-d");
         // get all current programs
         $programs_count = Program::with("dates")
                         ->whereHas('dates', function ($query) {
                             $today = date("Y-m-d");
-                            $query->where("currency_id", Session::get("currency_id"));
                             $query->where("start_date", ">", $today);
                         })->get()->count();
 
@@ -41,11 +42,11 @@ class ProgramsController extends Controller {
         $programs = Program::with("dates")
                 ->whereHas('dates', function ($query) {
                     $today = date("Y-m-d");
-                    $query->where("currency_id", Session::get("currency_id"));
+                   
                     $query->where("start_date", ">", $today);
                 })
                 ->orderBy("id", "desc")
-                ->limit(9)
+                
                 ->get();
 
 
@@ -66,14 +67,14 @@ class ProgramsController extends Controller {
 // get all prices in one array
         $pricesArray = $this->makePricesArray($minMaxPriceArray);
         $minPrice = 0;
-        $maxPrice = 0;
+        $maxPrice = 2000;
         if (!empty($pricesArray)) {
             $minPrice = min($pricesArray);
             $maxPrice = max($pricesArray);
         }
         $current_sign = Session::get("currency_sign");
 
-        return view("front.programs.index", compact("today", "currency_id", "minPrice", "maxPrice", "current_sign", "new_dates_array", "hotels", 'programs', 'programs_count', 'categories', 'services'));
+        return view("front.main_content.programs.index", compact("today", "currency_id", "minPrice", "maxPrice", "current_sign", "new_dates_array", "hotels", 'programs', 'programs_count', 'categories', 'services'));
     }
 
     public function makePricesArray($data) {
@@ -88,11 +89,11 @@ class ProgramsController extends Controller {
     public function getMinMaxPrice($dates) {
         $prices = array();
         foreach ($dates as $one) {
-            if ($one->currency_id == Session::get("currency_id")) {
+            
                 $pricesConverted = $this->convertPrice($one->price, $one->currency->price);
                 $pricesConvertedArray = explode("-", $pricesConverted);
                 $prices[] = array($pricesConvertedArray[0], $pricesConvertedArray[1]);
-            }
+            
         }
         return $prices;
     }
@@ -107,39 +108,67 @@ class ProgramsController extends Controller {
     }
 
     public function handleFilter(Request $request) {
+        //echo $request->s;; die();
+        $filter = array();
         $currency_id = Session::get("currency_id");
         $today = date("Y-m-d");
-        $filterArray = json_decode($request->filter);
-        $stars = array(1, 2, 3, 4, 5);
+        $this->from=date("Y-m-d");
+         $filter['from']=  $this->from ;
+        $d=mktime(11, 14, 54, 8, 12, 2030);
+        
+        $this->to=date("Y-m-d", $d);
+        $filter['to']= $this->to ;
         $seasons = $this->getDefaultSeasons();
         $this->_dates = $this->getAllDates();
-        $this->_min_price = $filterArray->price[0];
-        $this->_max_price = $filterArray->price[1];
+       
+       $this->_min_price=0;
+       $this->_max_price=10000;
         $offset = 0;
-        if (isset($filterArray->season) && $filterArray->season != "") {
-            $seasons = $filterArray->season;
+         if (isset($request->fromdates) && $request->fromdates != "") {
+             $this->from = $request->fromdates;
+            $filter['from']= $this->from;
         }
-        if (isset($filterArray->star) && $filterArray->star != "") {
-            $stars = $filterArray->star;
+       
+        if (isset($request->todates) && $request->todates != "") {
+            $this->to = $request->todates;
+            $filter['to']= $this->to ;
+           
         }
-        if (isset($filterArray->date) && $filterArray->date != "") {
-            $this->_dates = $filterArray->date;
+        
+        if (isset($request->season) && $request->season != "") {
+            $seasons = $request->season;
+            $filter['s']=$seasons;
         }
-        if (isset($filterArray->offset) && $filterArray->offset != "") {
-            $offset = $filterArray->offset;
+       
+//        if (isset($request->dates) && $request->dates != "") {
+//            $this->_dates = $request->dates;
+//            $filter['d']= $this->_dates ;
+//            $dat=true;
+//        }
+        if (isset($request->price) && $request->price != "") {
+             $explode= explode(",",$request->price);
+             $this->_min_price = $explode['0'];
+              $this->_max_price = $explode['1'];
+             $filter['p']= $explode ;
         }
-        $programs = Program::whereIn("category_id", $seasons)
-                ->whereIn("stars", $stars)
-                ->whereHas("dates", function($query) {
-                    $query->where("currency_id", Session::get("currency_id"));
-                    $query->whereBetween('price', [$this->_min_price, $this->_max_price]);
-                    $query->whereIn("start_date", $this->_dates);
-                })
-                ->limit(9)
-                ->offset($offset)
-                ->orderBy("id", "desc")
-                ->get();
-        echo view("front.programs.render", compact('programs', 'currency_id', 'today'))->render();
+//       return json_encode($filter);
+//       die();
+        // $programs = Program::all();
+        
+        
+       $programs = Program::with("dates")
+                        ->whereHas('dates', function ($query) {
+                           
+                            $query->whereBetween('price', [$this->_min_price, $this->_max_price]);
+                            $query->whereBetween("start_date",[ $this->from,$this->to]);
+                            //$query->where("start_date", "=", $this->_dates);
+                            })
+                          ->whereIn("category_id",$seasons) ->limit(12)
+               ->offset($offset)
+                ->orderBy("id", "desc")->get();
+//          return json_encode($programs);
+//           die();
+        echo view("front.main_content.programs.render", compact('programs', 'currency_id', 'today'))->render();
         die();
     }
 
@@ -158,7 +187,7 @@ class ProgramsController extends Controller {
         $today = date("Y-m-d");
         $details = Program::with("country")->with("slider")->with("dates")->with("transport")->find($id);
 //        dd($details);
-        $services = json_decode($details->services);
+       $services = json_decode($details->services);
         $city_ids = json_decode($details->city_id);
         $hotel_ids = json_decode($details->hotel_id);
         $nights = json_decode($details->nights);
@@ -187,7 +216,7 @@ class ProgramsController extends Controller {
         $rooms = Room::all();
         $meals = \App\Meal::all();
         $similar_programs = $this->getSimilarPrograms($id);
-        return view("front.programs.details", compact('nights', 'meals', 'id', 'nationalities', 'rooms', 'new_dates_array', 'details', 'services_array', 'cities', 'hotels', 'similar_programs'));
+        return view("front.main_content.programs.details", compact('nights', 'meals', 'id', 'nationalities', 'rooms', 'new_dates_array', 'details', 'services_array', 'cities', 'hotels', 'similar_programs'));
     }
 
     public function getNationalitiesOfDate($id, $lang) {
@@ -260,28 +289,37 @@ class ProgramsController extends Controller {
         if ($request->ajax()) {
             $offset = $request->offset;
             $special = Special::where("active", 1)->orderBy("id", "desc")->limit(12)->offset($offset)->get();
-            $view = view("front.programs.special_render", compact('special'))->render();
+            $view = view("front.main_content.specials.special_render", compact('special'))->render();
             echo $view;
             die();
         }
         $other_special = Special::where("active", 1)->orderBy("id", "asc")->limit(12)->get();
 //        dd(count($other_special));
-        return view("front.programs.special", compact('special', 'special_count', 'other_special'));
+        return view("front.main_content.specials.index", compact('special', 'special_count', 'other_special'));
     }
 
     public function special_details($id) {
         $details = Special::find($id);
-        return view("front.programs.special_details", compact('details', 'id'));
+        return view("front.main_content.specials.details", compact('details', 'id'));
     }
 
     public function special_offers_book(Request $request) {
+//        echo $request;
+//            die();
         $special = new \App\Specialbook();
         $special->special_id = $request->id;
         $special->name = $request->name;
         $special->email = $request->email;
         $special->phone = $request->subject;
         $special->message = $request->message;
-        $special->save();
+        $saved=$special->save();
+        if($saved){
+            echo 1;
+            die();
+        }else{
+            echo 0;
+            die();
+        }
     }
 
 }

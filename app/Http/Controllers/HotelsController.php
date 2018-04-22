@@ -26,21 +26,21 @@ class HotelsController extends Controller {
                 ->with("hotel_rooms")
                 ->whereHas("hotel_rooms", function($query) use($start_date) {    // get hotels only have rooms
                     $query->where("start_date", ">", $start_date);
-                    $query->where("currency_id", Session::get("currency_id"));
+//                    $query->where("currency_id", Session::get("currency_id"));
                 })
                 ->limit(9)
                 ->get();
         $count = Hotel::with("hotel_rooms")   // get with the rooms of the hotel
                 ->whereHas("hotel_rooms", function($query) use($start_date) {    // get hotels only have rooms
                     $query->where("start_date", ">=", $start_date);
-                    $query->where("currency_id", Session::get("currency_id"));
+//                    $query->where("currency_id", Session::get("currency_id"));
                 })
                 ->orderBy("id", "desc")
                 ->get()
                 ->count();
         $cities = City::all();
         $rooms = Room::all();
-        return view("front.hotels.index", compact('hotels', 'hotels_count', 'cities', 'rooms', 'count'));
+        return view("front.main_content.hotels.index", compact('hotels', 'hotels_count', 'cities', 'rooms', 'count'));
     }
 
     public function details($id, $title) {
@@ -49,7 +49,7 @@ class HotelsController extends Controller {
                 ->with("hotel_rooms")
                 ->whereHas("hotel_rooms", function($query) use($start_date) {    // get hotels only have rooms
                     $query->where("start_date", ">", $start_date);
-                    $query->where("currency_id", Session::get("currency_id"));
+//                    $query->where("currency_id", Session::get("currency_id"));
                 })
                 ->with("country")
                 ->with("city")
@@ -69,7 +69,7 @@ class HotelsController extends Controller {
         $rooms = Room::all();
         $features_array = Feature::whereIn("id", $features)->get();
         $similar_hotels = Hotel::orderBy("id", "desc")->where("id", "!=", $id)->limit(9)->get();
-        return view("front.hotels.details", compact('details', 'features_array', 'similar_hotels', 'rooms', 'id', 'contained_array'));
+        return view("front.main_content.hotels.details", compact('details', 'features_array', 'similar_hotels', 'rooms', 'id', 'contained_array'));
     }
 
     public function getHotelRooms($hotel_id) {

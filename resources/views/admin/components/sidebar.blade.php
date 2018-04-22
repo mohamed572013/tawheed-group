@@ -233,7 +233,48 @@
             </li>
         </ul>
     </li>
-
+    
+    
+    <li class="nav-item  ">
+        <a href="javascript:;" class="nav-link nav-toggle">
+            <i class="icon-docs"></i>
+            <span class="title">التأشيرات</span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="nav-item  ">
+                <a href="{!! url('admin/visa_types') !!}" class="nav-link ">
+                    <span class="title">انواع التأشيرات</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="{!! url('admin/visa_periods') !!}" class="nav-link ">
+                    <span class="title">فترات التاشيرة</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="{!! url('admin/visa_jobs') !!}" class="nav-link ">
+                    <span class="title">الوظائف المتاحة</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="{!! url('admin/visa_documents') !!}" class="nav-link ">
+                    <span class="title"> المستندات المتاحة</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="{!! url('admin/visa_create') !!}" class="nav-link ">
+                    <span class="title">انشاء تأشيرة</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="{!! url('admin/visas_reservation') !!}" class="nav-link ">
+                    <span class="title">حجوزات التأشيرات</span>
+                </a>
+            </li>
+            
+        </ul>
+    </li>
 
 
 

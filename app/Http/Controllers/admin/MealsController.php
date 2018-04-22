@@ -43,6 +43,7 @@ class MealsController extends Controller {
         $meals = new Meal;
         $meals->title_ar = $request->title_ar;
         $meals->title_en = $request->title_en;
+        $meals->title_fr = $request->title_fr;
         $meals->title_ur = $request->title_ur;
 
         $meals->save();
@@ -74,6 +75,7 @@ class MealsController extends Controller {
 
         $meals->title_ar = $request->title_ar;
         $meals->title_en = $request->title_en;
+        $meals->title_fr = $request->title_fr;
         $meals->title_ur = $request->title_ur;
         $meals->save();
         return redirect()->route('admin_meals');

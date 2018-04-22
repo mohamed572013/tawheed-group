@@ -1,0 +1,363 @@
+
+@import url(http://fonts.googleapis.com/earlyaccess/notokufiarabic.css);
+body { direction: rtl;font-family:'Noto Kufi Arabic',sans-serif!important; font-weight: 400;}
+.loader {background: #dcdcdc;}
+.ltr { direction: ltr;}
+.tg-infonav {float: right;}
+.tg-addnavcartsearch {float: left;}
+.tg-infonav ul li + li {padding: 0 30px 0 0;}
+.tg-infonav ul li {float: right; }
+.tg-topbar {padding: 0 30px 0 30px;}
+.tg-navigationarea {float: right;padding: 0 30px 0 0;}
+.tg-logo {float: right;}
+.tg-socialsignin {float: left;}
+.tg-navigation ul li {float: right;padding: 0 20px;}
+.tg-btn,.tg-infonav { font-family:'Noto Kufi Arabic',sans-serif!important;font-weight: 400; font-size: 14px;}
+.tg-addnavcartsearch nav { font-family:'Noto Kufi Arabic',sans-serif!important;font-weight: 400; font-size: 14px;}
+.tg-navigation ul li a, .tg-sliderarea > h2 {font-family:'Noto Kufi Arabic',sans-serif!important;font-weight: 700;font-size: 16px;}
+.mega-menu > ul {float: right;}
+.sub-menu, .mega-menu {right: 0;left: inherit;text-align: right;}
+.tg-trendingtripsslider .tg-btnroundprev, .tg-trendingtripsslider .tg-btnroundnext {left: 30px;right: auto;}
+.tg-trendingtripsslider .tg-btnroundprev {left: 0;}
+.tg-infonav ul li i {padding: 12px 0 11px 10px;}
+
+.tg-infonav ul li i, .tg-infonav ul li span {
+    float: right;
+    line-height: inherit;
+}
+
+.mega-menu { background-image: url(../images/pattern.png);    border-top: 2px solid;}
+.tg-navigationarea { background-image: url(../images/pattern.png)}
+main#tg-main { background-image: url(../images/pattern.png)}
+.tg-btn, .tg-descount, .tg-formnewsletter button, .tg-locationname, .tg-btnplay, .tg-findtourvfour, .tg-btntoggleform, .tg-pagination ul li.tg-active a, .tg-pagination ul li a:hover, .tg-select .dropdown-menu>.active>a, .tg-select .dropdown-menu>.active>a:focus, .tg-select .dropdown-menu>.active>a:hover, .tg-select .dropdown-menu.inner li a:hover, .tg-bookingtabs .tg-themetabnav li:hover a:before, .tg-bookingtabs .tg-themetabnav li.active a:before, .tg-couponapply .form-group .tg-btn:hover, .tg-widgetpersonprice ul li .tg-btn, .tg-dashboardcontent table tr .tg-btnview:hover, .tg-fulltourdetail .tg-totalprice .tg-totalpayment, .tg-imgholder .tg-btn:hover, .tg-btnarea .tg-btn, .tg-pkgplanfoot .tg-btn:hover, .tg-btnaddtocart:hover, .tg-formleavecomment .tg-btn {
+    background: #ff9800;
+}
+.tg-homesliderfull .tg-slidercontent h1,.tg-homesliderfull .tg-slidercontent h2,.tg-btn span, .tg-homesliderthumbnails .tg-slidercontent h1, .tg-homesliderthumbnails .tg-slidercontent h2, body h1, body h2, body h3, body h4, body h5, body h6 { font-family:'Noto Kufi Arabic',sans-serif!important;}
+.tg-homesliderfull .tg-slidercontent h1 {
+    font-size: 55px;
+    line-height: 50px;
+    text-transform: uppercase;
+}
+.tg-sliderarea {
+    border-right: 2px solid #efefef;
+}
+html.mm-opening .mm-menu~.mm-slideout {
+    transform: translate(-80%, 0);
+    transform: translate3d(-80%, 0, 0);
+}
+
+@media (min-width: 550px)
+{
+    html.mm-opening .mm-menu~.mm-slideout {
+        transform: translate(-440px, 0);
+        transform: translate3d(-440px, 0, 0);
+    }
+}
+
+@media (max-width: 568px)
+{
+    .tg-logo {
+        display: block;
+    }
+    .tg-nav {float: right;}
+}
+
+@media (max-width: 991px)
+{
+    .navbar-header {
+        float: right;
+        border-radius: 5px;
+        margin: 13px 0 13px 35px;
+    }
+}
+
+.mm-listview .mm-next {right: inherit;left: 0;}
+.mm-listview .mm-next+a, .mm-listview .mm-next+span {
+    margin-right: 0;
+    margin-left: 50px;
+}
+
+.tg-verticalmiddle, .tg-verticaltop { float: left !important;}
+
+.tg-sectiontitle h2 {
+    margin: 0;
+    float: right;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 24px;
+    padding: 0 0 0 65px;
+    background: none;
+}
+
+.ptb40 {padding: 40px 0 !important;}
+.pt80 {padding-top: 80px !important;}
+.pb40 { padding-bottom: 40px !important;}
+.tg-description {float: right;text-align: right;}
+.tg-sectionspace {padding: 60px 0;}
+.pull-left { float: right !important;}
+.pull-right { float: left !important;}
+.loader .span {top: 50%;left: 50%;direction: ltr;}
+.pb0 { padding-bottom: 0 !important;}
+.tg-destination figure figcaption {text-align: right;}
+.tg-destination figure figcaption .tg-description p {text-align: left;}
+.tg-widgetcontent ul li {float: right;}
+.tg-widgetdestinations .tg-widgetcontent ul li a {
+    position: relative;
+    padding: 0 25px 0 0;
+}
+.tg-widgetdestinations .tg-widgetcontent ul li a:before {
+    top: 0;
+    left: auto;
+    right: 0;
+    font-size: 18px;
+    line-height: 18px;
+    content: '\e908';
+    position: absolute;
+    font-family: 'icomoon';
+}
+
+.tg-formnewsletter button {
+    top: 0;
+    left: 0;
+    right: auto;}
+
+.tg-socialsignin .tg-btn, .tg-navigation ul li a:before, .tg-btnvtwo:before, .tg-themetabsvtwo .tg-themetabnav li a:before, .tg-btnaddtocart, .tg-btndropdown, .tg-topdestination figure .tg-btnviewall:before, .tg-availhead, .navbar-header, .tg-btnroundprev:hover, .tg-btnroundnext:hover {
+    background: #ff9800;
+}
+
+.tg-infonav ul li span a, .tg-socialsignin .tg-btn:hover, .tg-widgettext .tg-widgetcontent > a, .tg-footercolumn .tg-widgetcontent ul li a:hover, .tg-footercolumn .tg-widgetcontent ul li a:hover:before, .tg-headervtwo .tg-navigation ul li a:hover, .tg-headervtwo .tg-navigation ul li.current-menu-item > a, .tg-trendingtrip figcaption .tg-pricearea h4, .tg-totaltours, .tg-btnviewall, .tg-search .tg-destinations li a em, .tg-addnav ul li:hover a, .tg-breadcrumb li:hover a {
+    color: #ff9800;
+}
+.tg-btn {padding: 0 30px}
+.tg-slidercontent a span {font-size: 23px;}
+.tg-calltoaction a.tg-btn span {
+    font-size: 25px;
+}
+
+
+
+.tg-infonav ul li:first-child i {
+    padding: 12px 0 12px 10px;
+}
+.tg-btn {
+    padding: 0 10px;
+}
+
+.tg-navigation > ul > li > a:before {
+    bottom: 10px;
+}
+a#tg-btnsignin {
+    font-weight: bold;
+    padding: 0 10px;}
+.tg-btn:after { display: none}
+
+.sub-menu > li > a:before, .mega-menu > ul > li > a:before {
+    bottom: 2px;
+}
+.tg-navigation ul li {
+    float: right;
+    padding: 0 8px;
+}
+
+
+@media (min-width: 991px) and (max-width: 1300px)
+{
+    .tg-navigation ul li {padding: 0 5px;}
+    .tg-navigation ul li a{font-size: 12px;}
+
+    .tg-navigationarea {
+        float: right;
+        padding: 0 10px 0 0;
+    }
+
+
+}
+
+.tg-homesliderthumbnails .tg-slidercontent h1 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    line-height: 20px;
+    text-transform: capitalize;
+}
+
+.chat {
+    position: fixed;
+    bottom: 0;
+    width: 160px;
+    height: 40px;
+    background: #ff9800;
+    line-height: 40px;
+    right: 30px;
+    color: #fff;
+    text-align: center;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.tg-slidercontent a.tg-btn {
+    height: 40px;
+    line-height: 40px;
+}
+
+
+.tg-slidercontent a.tg-btn span {font-size: 16px;}
+
+.tg-calltoaction h2 {font-size: 33px;}
+.rs-fullvideo-cover { display: none}
+
+.tp-caption.large_bold_white_med {
+    font-size: 38px !important;
+    color: #fff !important; line-height: 60px !important; text-align: center !important;
+}
+.tp-caption.large_bold_white_med strong { font-weight: bold !important; color: #fff}
+
+
+
+
+.chatt .col-md-2, .chatt .col-md-10{
+    padding:0;
+}
+.chatt .panel{
+    margin-bottom: 0px;
+width:100%;
+}
+.chat-window{
+    bottom:0;
+    position:fixed;
+    float:right;
+    margin-left:10px;
+right:0;
+}
+.chat-window > div > .panel{
+    border-radius: 5px 5px 0 0;
+}
+.icon_minim{
+    padding:2px 10px;
+}
+.msg_container_base{
+  background: #e5e5e5;
+  margin: 0;
+  padding: 0;
+  max-height:300px;
+  overflow-x:hidden;
+}
+.top-bar {
+  background: #0ab596;
+  color: white;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.msg_receive{
+    padding-left:0;
+    margin-left:0;
+}
+.msg_sent{
+    padding-bottom:20px !important;
+    margin-right:0;
+}
+.messages {
+  background: white;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  max-width:100%;
+}
+.messages > p {
+    font-size: 13px;
+    margin: 0 0 0.2rem 0;
+  }
+.messages > time {
+    font-size: 11px;
+    color: #ccc;
+}
+.msg_container {
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+}
+.chatt img {
+    display: block;
+    width: 100%;
+}
+.avatar {
+    position: relative;
+}
+.base_receive > .avatar:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border: 5px solid #FFF;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.base_sent {
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.base_sent > .avatar:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 5px solid white;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    box-shadow: 1px 1px 2px rgba(black, 0.2); }
+
+.msg_sent > time {
+    float: right;
+}
+
+
+.msg_container_base{padding:0px !important;}
+
+.msg_container_base::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+.msg_container_base::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+.msg_container_base::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+.btn-group.dropup{
+    position:fixed;
+    left:0px;
+    bottom:0;
+}
+
+.panel-footer { padding:0px !important;}
+
+.chat_box{float:left !important; width:85% !important; border:none; border-radius:0px;}
+
+
+    
+.chat_area {bottom:0; height:40px;     float: left !important;
+    width: 88% !important;position:absolute;
+    background: #fff !important;}
+    
+    .chat_box:focus,#btn-chat:focus{outline:none !important;}
+    .base_sent{margin: 4px;}
+    .base_receive{margin:4px;}

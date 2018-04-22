@@ -53,6 +53,7 @@ class GalleryController extends Controller {
         $gallery->title_ar = $request->title_ar;
         $gallery->title_en = $request->title_en;
         $gallery->title_ur = $request->title_ur;
+        $gallery->title_fr = $request->title_fr;
 
         if (!empty($request->image)) {
             $file = $request->image;
@@ -95,6 +96,7 @@ class GalleryController extends Controller {
         $gallery->title_ar = $request->title_ar;
         $gallery->title_en = $request->title_en;
         $gallery->title_ur = $request->title_ur;
+        $gallery->title_fr = $request->title_fr;
 
         if (!empty($request->image)) {
             $file = $request->image;

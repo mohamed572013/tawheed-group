@@ -42,6 +42,7 @@ class CategoriesController extends Controller {
         $categories = new Category;
         $categories->title_ar = $request->title_ar;
         $categories->title_en = $request->title_en;
+         $categories->title_fr = $request->title_fr;
         $categories->title_ur = $request->title_ur;
         $categories->save();
         return redirect()->route('admin_categories');
@@ -69,6 +70,7 @@ class CategoriesController extends Controller {
         $categories = Category::find((int) $id);
         $categories->title_ar = $request->title_ar;
         $categories->title_en = $request->title_en;
+         $categories->title_fr = $request->title_fr;
         $categories->title_ur = $request->title_ur;
         $categories->save();
         return redirect()->route('admin_categories');

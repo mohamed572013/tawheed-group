@@ -44,11 +44,11 @@ var Offers = function () {
     };
 
     var handleBook = function () {
-        tjq("#special_offer_form").submit(function (e) {
+        $("#special_offer_form").submit(function (e) {
             e.preventDefault();
             flag = true;
-            tjq(".required_field").each(function () {
-                var tjqthis = tjq(this);
+            $(".required_field").each(function () {
+                var tjqthis = $(this);
                 if (tjqthis.val() == "") {
                     flag = false;
                     tjqthis.css("border", "1px solid red");
@@ -59,31 +59,34 @@ var Offers = function () {
                     }, 1000);
                 }
             });
-            var email_value = tjq("input[name='email']").val();
+            var email_value = $("input[name='email']").val();
             if (!validateEmail(email_value)) {
                 flag = false;
-                tjq("input[name='email']").css("border", "1px solid red");
-                tjq("input[name='email']").closest(".form-group").find(".input-group-addon").css("color", "red").css("border", "1px solid red");
+                $("input[name='email']").css("border", "1px solid red");
+                $("input[name='email']").closest(".form-group").find(".input-group-addon").css("color", "red").css("border", "1px solid red");
                 setTimeout(function () {
-                    tjq("input[name='email']").css("border", "");
-                    tjq("input[name='email']").closest(".form-group").find(".input-group-addon").css("color", "").css("border", "");
+                    $("input[name='email']").css("border", "");
+                    $("input[name='email']").closest(".form-group").find(".input-group-addon").css("color", "").css("border", "");
                 }, 1000);
             }
 
             if (flag) {
                 var url = config.base_url + "/special_offers/book";
-                var formData = tjq("#special_offer_form").serialize();
-                tjq.ajax({
+                var formData = $("#special_offer_form").serialize();
+                console.log(formData);
+                $.ajax({
+                    
                     url: url,
                     type: "post",
                     headers: {
-                        'X-CSRF-TOKEN': tjq('meta[name="csrf-token"]').attr('content')
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     data: formData,
                     success: function (msg) {
+                        console.log(msg);
 //                        console.log(msg);
-                        tjq("#submit_btn").html(lang.complete_request);
-                        tjq("#submit_btn").attr("disabled", "disabled");
+                        $("#submit_btnf").html(lang.complete_request);
+                        $("#submit_btnf").attr("disabled", "disabled");
                     }
                 });
                 return false;

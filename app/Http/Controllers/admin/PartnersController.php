@@ -52,6 +52,7 @@ class PartnersController extends Controller {
         $partners->title_ar = $request->title_ar;
         $partners->title_en = $request->title_en;
         $partners->title_ur = $request->title_ur;
+        $partners->title_fr = $request->title_fr;
         $partners->url = $request->url;
 
         if (!empty($request->image)) {
@@ -105,6 +106,7 @@ class PartnersController extends Controller {
         $partners->title_ar = $request->title_ar;
         $partners->title_en = $request->title_en;
         $partners->title_ur = $request->title_ur;
+        $partners->title_fr = $request->title_fr;
         $partners->url = $request->url;
 
         if (!empty($request->image)) {

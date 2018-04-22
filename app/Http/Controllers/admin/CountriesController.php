@@ -44,6 +44,7 @@ class CountriesController extends Controller {
         $countries->title_ar = $request->title_ar;
         $countries->title_en = $request->title_en;
         $countries->title_ur = $request->title_ur;
+        $countries->title_fr = $request->title_fr;
 
         $countries->save();
         //return redirect()->route('sliders-web');
@@ -84,6 +85,7 @@ class CountriesController extends Controller {
         $countries->title_ar = $request->title_ar;
         $countries->title_en = $request->title_en;
         $countries->title_ur = $request->title_ur;
+        $countries->title_fr = $request->title_fr;
         $countries->save();
         return redirect()->route('admin_countries');
     }

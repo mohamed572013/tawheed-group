@@ -23,9 +23,10 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/ios/fickle-logo-114.png" />
 
         <!-- TODO: Add a favicon -->
-        <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" /> </head>
+        <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" /> 
+    </head>
 
-    <title>Tdamon Umrah | Login Page</title>
+    <title>Tawheed | Login Page</title>
 
     <!--Page loading plugin Start -->
     {!! HTML::style('assets/login/css/pace-rtl.css') !!}
@@ -62,7 +63,7 @@
                                 <i class="glyphicon glyphicon-user"></i>
 
                             </div>
-                            <h3>Tdamon Umrah | Login Page</h3>
+                            <h3>Tawheed | Login Page</h3>
                             <!--                            <div class="social-btn-login">
                                                             <ul>
                                                                 <li><a href="" target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -127,7 +128,7 @@
             </div>
         </div>
         <p class="copy-right big-screen hidden-xs hidden-sm">
-            <span>&#169;</span> Tdamon Umrah <span class="footer-year">2018</span>
+            <span>&#169;</span> Tawheed Umrah <span class="footer-year">2018</span>
         </p>
     </section>
 

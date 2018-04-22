@@ -26,7 +26,7 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $sliders = Slider::with('images')->get();
+        $sliders = Slider::all();
         $reviews = Review::all();
         $partners = Partner::all();
         $agents = Agent::all();
@@ -36,7 +36,7 @@ class HomeController extends Controller {
         $sightseeing = \App\Sightseeing::all();
         $packages = Program::whereHas('dates', function ($query) {
                     $today = date("Y-m-d");
-                    $query->where("currency_id", Session::get("currency_id"));
+                    //$query->where("currency_id", Session::get("currency_id"));
                     $query->where("start_date", ">", $today);
                 })
                 ->with("dates")
@@ -46,7 +46,8 @@ class HomeController extends Controller {
     }
 
     public function about() {
-        return view("front.about.index");
+       // $settings = \App\Setting::all();
+        return view("front.main_content.about.index");
     }
 
     public function search_agent($id) {
@@ -58,13 +59,18 @@ class HomeController extends Controller {
         echo json_encode($agents);
         die();
     }
-
+   public function gallery() {
+        
+            $galleries = Gallery::all();
+            return view("front.main_content.galleries.index", compact('galleries'));
+     
+    }
     public function make_your_umrah() {
         $categories = Category::all();
         $rooms = Room::all();
         $meals = \App\Meal::all();
         $services = Programservice::all();
-        return view("front.make_your_umrah.index", compact('meals', 'categories', 'rooms', 'services'));
+        return view("front.main_content.make_umra.index", compact('meals', 'categories', 'rooms', 'services'));
     }
 
     public function make_your_umrah_group() {
@@ -76,6 +82,7 @@ class HomeController extends Controller {
     }
 
     public function send_make_your_umrah(Request $request) {
+       // echo $request;        die();
         $make_your_umrah = new \App\MakeUmrah();
         $make_your_umrah->season_id = $request->season_id;
         $make_your_umrah->makka_hotel = $request->makka_hotel;
@@ -84,7 +91,7 @@ class HomeController extends Controller {
         $make_your_umrah->madina_hotel = $request->madina_hotel;
         $make_your_umrah->madina_nights = $request->madina_nights;
         $make_your_umrah->madina_arrive = $request->madina_arrive;
-        $make_your_umrah->services = json_encode($request->services);
+        $make_your_umrah->services = json_encode(['2']);
         $make_your_umrah->rooms = json_encode($request->rooms);
         $make_your_umrah->number_of_rooms = json_encode($request->number_of_rooms);
         $make_your_umrah->number_of_adults = json_encode($request->number_of_adults);
@@ -97,19 +104,39 @@ class HomeController extends Controller {
         $make_your_umrah->notes = $request->notes;
         $make_your_umrah->type = $request->type;
         $save = $make_your_umrah->save();
+        
         if ($save) {
-            echo 1;
-            die();
-        } else {
+            
+           //section to be done
+//        $flightUmra = new \App\FlightUmra();
+//        $flightUmra->departure_city = $request->flight_direction_from;
+//        $flightUmra->arrival_city = $request->flight_direction_to;
+//        $flightUmra->back_from = $request->direction_of_return_from;
+//        $flightUmra->back_to = $request->direction_of_return_to;
+//        $flightUmra->umra_id = $save->id;
+//        $saveF = $flightUmra->save();
+        //if ($saveF) {
+        
+            echo  1;
+        die();
+        
+        }else {
             echo 0;
             die();
         }
+//        } else {
+//            echo 0;
+//            die();
+//        }
     }
 
     public function get_more_make() {
         $lang = $_GET['lang'];
-        $data['rooms'] = Room::pluck("title_$lang", "id");
-        $data['meals'] = \App\Meal::pluck("title_$lang", "id");
+        $rooms = Room::all();
+        $meals = \App\Meal::all();
+         
+         echo view("front.main_content.make_umra.render", compact('rooms', 'meals'))->render();
+        die();
         echo json_encode($data);
         die();
     }

@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Auth;
 use App\Setting;
 use App\News;
 use App\City;
@@ -47,6 +48,7 @@ class Controller extends BaseController {
         view()->share("slug", $this->slug);
         view()->share("currencies", $this->_currencies);
         view()->share("destinations", $destinations);
+        //view()->share('user', Auth::user());
     }
 
     public function manage_slug() {

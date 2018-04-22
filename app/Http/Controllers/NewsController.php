@@ -18,18 +18,18 @@ class NewsController extends Controller {
         if ($request->ajax()) {
             $offset = $request->offset;
             $news = News::orderBy("id", "desc")->limit(6)->offset($offset)->get();
-            $view = view("front.news.render", compact('news'))->render();
+            $view = view("front.main_content.news.render", compact('news'))->render();
             echo $view;
             die();
         }
         $other_news = News::orderBy("id", "asc")->limit(6)->get();
-        return view("front.news.index", compact('news', 'news_count', 'other_news'));
+        return view("front.main_content.news.index", compact('news', 'news_count', 'other_news'));
     }
 
     public function details($id, $title) {
         $details = News::find($id);
         $other_news = News::where("id", " != ", $details->id)->get();
-        return view("front.news.details", compact('details', 'other_news'));
+        return view("front.main_content.news.details", compact('details', 'other_news'));
     }
 
 }

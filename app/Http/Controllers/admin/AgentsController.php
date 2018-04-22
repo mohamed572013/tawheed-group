@@ -54,6 +54,7 @@ class AgentsController extends Controller {
         $agents->title_en = $request->title_en;
         $agents->title_ur = $request->title_ur;
         $agents->country_id = $request->country_id;
+        $agents->title_fr = $request->title_fr;
         $agents->url = $request->url;
 
         if (!empty($request->image)) {
@@ -108,6 +109,7 @@ class AgentsController extends Controller {
         $agents->title_ar = $request->title_ar;
         $agents->title_en = $request->title_en;
         $agents->title_ur = $request->title_ur;
+         $agents->title_fr = $request->title_fr;
         $agents->country_id = $request->country_id;
         $agents->url = $request->url;
 

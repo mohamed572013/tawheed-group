@@ -37,6 +37,9 @@
                                 <a href="#tab_address" data-toggle="tab"> البيانات بالإنجليزية</a>
                             </li>
                             <li>
+                                <a href="#tab_fr" data-toggle="tab"> البيانات بالفرنسية</a>
+                            </li>
+                            <li>
                                 <a href="#tab_social" data-toggle="tab"> البيانات بالأردية</a>
                             </li>
 
@@ -106,6 +109,39 @@
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <textarea class="form-control" rows='5' name="content_en">{{ str_replace('<br />', '', $edit->content_en) }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane" id="tab_fr">
+                                <div class="form-body">
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> عنوان الخدمة
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" class="form-control" name="title_fr" value="{{ $edit->title_fr }}" placeholder="">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> محتوى الخدمة
+                                            <span class="required"> * </span>
+                                        </label>
+                                        <div class="col-md-9">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <textarea class="form-control" rows='5' name="content_fr">{{ str_replace('<br />', '', $edit->content_fr) }}</textarea>
                                             </div>
                                         </div>
                                     </div>

@@ -43,6 +43,8 @@ var FormValidation = function () {
                 },
                 site_phone: {
                     required: true,
+                     minlength: 7,
+                      digits: true
                 },
                 site_address_en: {
                     required: true,

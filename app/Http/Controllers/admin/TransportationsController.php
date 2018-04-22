@@ -44,6 +44,7 @@ class TransportationsController extends Controller {
         $transportations->title_ar = $request->title_ar;
         $transportations->title_en = $request->title_en;
         $transportations->title_ur = $request->title_ur;
+        $transportations->title_fr = $request->title_fr;
 
         $transportations->save();
         //return redirect()->route('sliders-web');
@@ -75,6 +76,7 @@ class TransportationsController extends Controller {
         $transportations->title_ar = $request->title_ar;
         $transportations->title_en = $request->title_en;
         $transportations->title_ur = $request->title_ur;
+         $transportations->title_fr = $request->title_fr;
         $transportations->save();
         return redirect()->route('admin_transportations');
     }

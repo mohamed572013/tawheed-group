@@ -44,7 +44,7 @@ class NationalitiesController extends Controller {
         $nationalities->title_ar = $request->title_ar;
         $nationalities->title_en = $request->title_en;
         $nationalities->title_ur = $request->title_ur;
-
+        $nationalities->title_fr = $request->title_fr;
         $nationalities->save();
         //return redirect()->route('sliders-web');
         return redirect()->route('admin_nationalities');
@@ -75,6 +75,7 @@ class NationalitiesController extends Controller {
         $nationalities->title_ar = $request->title_ar;
         $nationalities->title_en = $request->title_en;
         $nationalities->title_ur = $request->title_ur;
+        $nationalities->title_fr = $request->title_fr;
         $nationalities->save();
         return redirect()->route('admin_nationalities');
     }
